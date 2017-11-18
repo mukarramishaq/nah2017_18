@@ -22,6 +22,9 @@ Route::get('/logintest', function () {
 Route::get('/registertest', function () {
     return view('registerTest');
 });
+Route::get('/personalinformation', function () {
+    return view('personalInformation');
+});
 
 
 Auth::routes();
