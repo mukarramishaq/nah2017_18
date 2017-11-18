@@ -15,7 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/logintest', function () {
+    return view('loginTest');
+});
+
+Route::get('/registertest', function () {
+    return view('registerTest');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+<<<<<<< HEAD
+Route::get('/personalInformation',function(){
+    return view('personalInformation');
+});
 
+Route::get('/educationalInformation',function(){
+    return view('educationalInformation');
+});
+=======
+>>>>>>> 3f4f39073557435f3e631ec443938d5470388afb

@@ -20,4 +20,16 @@
         </div>
     </div>
 </div>
+<!--<div class="row">
+    
+
+</div>-->
+@endsection
+
+@section('footer-scripts')
+
+@endsection
+
+@section('header-styles')
+
 @endsection
