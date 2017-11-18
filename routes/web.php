@@ -36,3 +36,6 @@ Route::get('/educationalInformation',function(){
     return view('educationalInformation');
 });
 
+Route::get('/professionalInformation',function(){
+	return view('professionalInformation');
+});
