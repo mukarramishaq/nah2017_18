@@ -65,10 +65,4 @@
  <script type="text/javascript" src="{{asset('js/imagePicker.js')}}" >   
 
  </script>
-@endsection
-=======
-<div class="row">
-    
-</div>
-@endsection
->>>>>>> 89233ca4b5226485e7d6b3b9fb7a02b82008bd42
+ @endsection
