@@ -30,3 +30,15 @@ Route::get('/personalinformation', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/personalInformation',function(){
+    return view('personalInformation');
+});
+
+Route::get('/educationalInformation',function(){
+    return view('educationalInformation');
+});
+
+Route::get('/professionalInformation',function(){
+	return view('professionalInformation');
+});

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
           <!-- general form elements -->
@@ -65,3 +66,9 @@
 
  </script>
 @endsection
+=======
+<div class="row">
+    
+</div>
+@endsection
+>>>>>>> 89233ca4b5226485e7d6b3b9fb7a02b82008bd42
