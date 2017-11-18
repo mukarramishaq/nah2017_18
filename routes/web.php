@@ -27,7 +27,7 @@ Route::get('/registertest', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-<<<<<<< HEAD
+
 Route::get('/personalInformation',function(){
     return view('personalInformation');
 });
@@ -35,5 +35,12 @@ Route::get('/personalInformation',function(){
 Route::get('/educationalInformation',function(){
     return view('educationalInformation');
 });
-=======
->>>>>>> 3f4f39073557435f3e631ec443938d5470388afb
+
+Route::get('/professionalInformation',function(){
+    return view('professionalInformation');
+});
+
+Route::get('/sample',function(){
+    return view('sample');
+});
+
