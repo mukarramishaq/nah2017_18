@@ -4,18 +4,16 @@
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">
             
-            <div>
-            <center>
-                <h4>
-                    
-                {{Auth::user()->name == 'Unnamed' ? '' : Auth::user()->name}}
-                    
-                </h4>
-             </center>   
+           
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="{{asset('theme/lte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>{{Auth::user()->name == 'Unnamed' ? '' : Auth::user()->name}}</p>
+                
             </div>
         </div>
 
