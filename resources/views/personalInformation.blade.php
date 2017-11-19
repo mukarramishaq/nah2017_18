@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
+=======
+
+>>>>>>> 939715008ef49ba843d67c07194e35dce8b74a53
     <div class="row">
       <div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1">
           <!-- general form elements -->

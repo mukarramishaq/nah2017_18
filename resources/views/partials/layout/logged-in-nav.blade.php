@@ -4,9 +4,9 @@
     <!-- Logo -->
     <a href="{{url('/home')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <div class="logo-mini"><img src="{{asset('img/white_logo_transparent_200_50.png')}}" class="logo-lg" height="100%" width="100%"/></div>
-        <!-- logo for regular state and mobile devices -->
-        <img src="{{asset('img/white_logo_transparent_200_50.png')}}" class="logo-lg" height="100%" width="100%"/>
+      <span class="logo-mini"><b>N</b>AH</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">Alumni <b>Homecoming</b></span>
     </a>
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -39,7 +39,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{route('account')}}" class="btn btn-default btn-flat">Profile</a>
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
