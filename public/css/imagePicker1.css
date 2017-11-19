@@ -1,0 +1,36 @@
+.imgPicker{
+  width:100px;
+  height:100px;
+}
+.inputImage[type=file]{
+width:94px;
+height:25px;
+}
+#chooseImage{
+  padding:3px 3px;
+  background:#00ad2d;
+  border:1px solid #00ad2d;
+  position:relative;
+  color:#fff;
+  border-radius:2px;
+  text-align:center;
+  font-size: 12px;
+  cursor:pointer;
+  height:28px;
+  width: 100px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.hide_file {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    font-size: 12px;
+    
+  height:28px;
+  width: 100px;
+}
