@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-=======
-
->>>>>>> 939715008ef49ba843d67c07194e35dce8b74a53
     <div class="row">
       <div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1">
           <!-- general form elements -->
@@ -14,7 +10,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" id="personalInformationForm">
               <div class="box-body">
                 
                 <div class="row"> 
@@ -23,65 +19,55 @@
                   <div class="row">  
                     <div class="col-md-8 col-sm-4 col-xs-6 col-md-offset- col-sm-offset-4 col-xs-offset-3 text-center"> 
                       <label for="imgPicker" style="text-align: center;">Your Image</label>
-                      <img class="imgPicker" id="blah" src="http://placehold.it/120" alt="your image" />                      
-                      <div id="chooseImage">  Choose Image
-                         <input type="file" id="imgPicker" class="hide_file" onchange="readURL(this);">
-                      </div>                                           
+                      <img class="imgPicker" id="imgViewer" src="http://placehold.it/120" alt="your image" />                      
+                      <button type="button" id="uploadImage" >  Upload Image
+                         <input type="file" accept=".png,.jpeg,.jpg,.gif,.tif,.bmp"  id="imagePicker"  class="hide_file" onchange="readURL(this);">
+                      </button>                                           
                     </div>
-                  </div>    
+                  </div>
                 </div>
                 </div>
                 <div class="col-md-8 col-sm-12 col-xs-12 col-md-pull-4">                     
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="name" class="form-control" id="name" placeholder="Enter name">
+                  <input type="name" required="true" class="form-control" id="name" placeholder="Enter name">
                 </div>               
-                <div class="form-group">
-                  <label for="">Gender</label>
-                  <div class="row">
-                    <div class="radio col-md-2">
-                      <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                        Male
-                      </label>
-                    </div>
-                    <div class="radio col-md-2" style="margin-top: 10px;">
-                      <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                        Female
-                      </label>
-                    </div>
-                    <div class="radio col-md-2" style="margin-top: 10px;">
-                      <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                        Others
-                      </label>
-                    </div>
-                  </div>
-                </div>
+               <div class="form-group">
+                <label>Gender</label>
+                <select  required="true"  class="form-control select2 select2-hidden-accessible"  id="gender" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  <option selected="selected" value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
                 </div>
                
                 </div>
                 <div class="form-group">
                   <label for="cNIC">CNIC</label>
-                  <input type="number" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC">
+                  <input type="number"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC">
                   <p class="help-block">Example block-level help text here.</p>
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email"  placeholder="Enter email">
+                  <input type="email" required="true" class="form-control" id="email"  placeholder="Enter email">
 
                   <p class="help-block">Example block-level help text here.</p>
                 </div>
                  <div class="form-group">
                   <label for="phoneNumber">Phone Number</label>
-                  <input type="number" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
+                  <input type="text" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999"' data-mask>
                   <p class="help-block">Example block-level help text here.</p>
-                </div>               
+                </div>  
+                <div class="form-group">
+                  <label for="emergencyPhoneNumber">Emergency Phone Number</label>
+                  <input type="text" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                  <p class="help-block">Example block-level help text here.</p>
+                </div>              
               </div>
               <!-- /.box-body -->
               <div class="box-footer text-right">
-                <button type="submit" class="btn btn-primary" >Save</button>
+                <button type="button" class="btn btn-primary"  onclick="save();">Save</button>
                 <button type="submit" class="btn btn-primary">Save & Next</button>
               </div>
             </form>
@@ -95,7 +81,18 @@
  <link rel="stylesheet" type="text/css" href="{{asset('css/imagePicker1.css')}}">
 @endsection
 @section('footer-scripts')
- <script type="text/javascript" src="{{asset('js/imagePicker1.js')}}" >   
+ <script type="text/javascript" src="{{asset('js/imagePicker1.js')}}" > </script>
+ <script type="text/javascript" src="{{asset('js/personal.js')}}" > </script>
+ <script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.js')}}"></script>
+ <script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
+ <script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
+  <script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.phone.extensions.js')}}"></script>
+  <script>
+  $(function () {
+    //Money Euro
+    $('[data-mask]').inputmask()
 
- </script>
+  
+  })
+</script>
  @endsection

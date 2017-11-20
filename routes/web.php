@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/personalInformation/save', ['as'=>'personalSave', 'uses'=>'PersonalController@save']);
+Route::post('/personalInformation/saveImage', ['as'=>'personalSaveImage', 'uses'=>'PersonalController@saveImage']);
+
 Route::get('/logintest', function () {
     return view('loginTest');
 });
