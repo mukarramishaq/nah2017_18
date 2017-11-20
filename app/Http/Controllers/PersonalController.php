@@ -28,13 +28,12 @@ class PersonalController extends Controller
     {
       // $name = $request->input('name');
         $user = Auth::user();
-        \Log::info($request);
 
         $my_file = '..\\'. $user->id . '.' . $request->input('ext');
-         \Log::info($my_file + "here");
         $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file); //implicitly creates file
-        $data = $request->input('img');
+        $data = $request->input('content');
         fwrite($handle, $data);
+        file_put_contents($my_file, $data);
     
     }
 }

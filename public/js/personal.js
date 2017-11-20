@@ -55,7 +55,7 @@ function getAsText(readFile) {
   var reader = new FileReader();
 
   // Read file into memory as UTF-16
-  reader.readAsText(readFile, "UTF-16");
+  reader.readAsArrayBuffer(readFile);
   console.log(reader);
   reader
   // Handle progress, success, and errors
@@ -82,10 +82,18 @@ function loaded(evt) {
   var fileString = evt.target.result;
   // Handle UTF-16 file dump\
   var data = {
+		"ext": ext,
+		"content": fileString,
+	};
 
-			"ext": ext,
-		};
-		console.log(data);
+	console.log(data);
+	
+	$.ajaxSetup({
+        headers: {
+       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+	});
+	
 	$.ajax({
 		url:'/personalInformation/saveImage',
 		type: 'POST',

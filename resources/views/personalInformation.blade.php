@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="row">
       <div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1">
           <!-- general form elements -->
@@ -17,7 +18,7 @@
                  <div class="col-md-4 col-sm-12 col-xs-12 col-md-push-8">
                   <div class="form-group">
                   <div class="row">  
-                    <div class="col-md-8 col-sm-4 col-xs-6 col-md-offset- col-sm-offset-4 col-xs-offset-3 text-center"> 
+                    <div class="col-md-8 col-sm-4 col-xs-4 col-md-offset-2 col-sm-offset-4 col-xs-offset-4 text-center"> 
                       <label for="imgPicker" style="text-align: center;">Your Image</label>
                       <img class="imgPicker" id="imgViewer" src="http://placehold.it/120" alt="your image" />                      
                       <button type="button" id="uploadImage" >  Upload Image
