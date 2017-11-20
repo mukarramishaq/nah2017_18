@@ -83,7 +83,7 @@ function loaded(evt) {
   // Handle UTF-16 file dump\
   var data = {
 
-			"ext": ext,
+			"ext": ext
 		};
 		console.log(data);
 	$.ajax({
