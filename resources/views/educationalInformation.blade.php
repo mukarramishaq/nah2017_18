@@ -16,7 +16,7 @@
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="row">
-      <div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1">
+      <div class="col-md-12 col-sm-12">
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
@@ -50,35 +50,33 @@
                     </label>
                 </div>
                 <div class="form-group">
-                    <label>School</label>
+                    <label>School/College</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="school" id="school" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="male">NBS</option>
-                        <option value="female">SEECS</option>
-                        <option value="other">SADA</option>
+                        @foreach($schools as $school)                            
+                            <option value="{{$school->name}}">{{$school->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Discipline</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="discipline"  id="discipline" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="male">SE</option>
-                        <option value="female">EE</option>
-                        <option value="other">CS</option>
+                        
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Enrolment Year</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="enrolmentYear"  id="enrolmentYear" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="male">1960</option>
-                        <option value="female">1990</option>
-                        <option value="other">2017</option>
+                        @for($i = 1960; $i < 2017; $i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endfor
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Graduation Year</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="graduationYear"  id="graduationYear" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="male">1960</option>
-                        <option value="female">1990</option>
-                        <option value="other">2017</option>
+                        @for($i = 1960; $i < 2017; $i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endfor
                     </select>
                 </div>
                 <!-- radio -->
@@ -97,8 +95,8 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer text-right">
-                <button type="button" class="btn btn-primary"  onclick="save();">Save</button>
-                <button type="submit" class="btn btn-primary">Save & Next</button>
+                <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
+                <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
               </div>
             </form>
           </div>
@@ -137,4 +135,8 @@
 	   
 	  })
 	</script>
+    <script> 
+        var disciplines = {{$disciplines}};
+        console.log(disciplines);
+    </script>
 @endsection
