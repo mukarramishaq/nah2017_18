@@ -16,7 +16,7 @@
                 
                 <div class="form-group">
 	                <label for="nustRegistrationNumber">NUST Registration Number</label>
-	                <input type="number"  required="true" size="13" class="form-control" id="nustRegistrationNumber" placeholder="Enter registration Number">
+	                <input type="text"  required="true" class="form-control" name="nustRegistrationNumber" id="nustRegistrationNumber" placeholder="Enter registration Number">
 	                <p class="help-block">Example block-level help text here.</p>
                 </div>
                <!-- radio -->
@@ -24,21 +24,21 @@
                 	<label for="">Degree Name</label>
                 	<br>
                     <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="degreeRadio" value="bachelor" class="minimal-red" checked>
+                        <input type="radio" name="degreeName" value="bachelor" class="minimal-red" checked>
                         Bachelor
                     </label>
                     <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="degreeRadio" value="master" class="minimal-red">
+                        <input type="radio" name="degreeName" value="master" class="minimal-red">
                         Master
                     </label>
                     <label class = "radioLable">
-                        <input type="radio" name="degreeRadio" value="phd" class="minimal-red">
+                        <input type="radio" name="degreeName" value="phd" class="minimal-red">
                         PhD
                     </label>
                 </div>
                 <div class="form-group">
                     <label>School</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible"  id="gender" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="school" id="school" style="width: 100%;" tabindex="-1" aria-hidden="true">
                         <option selected="selected" value="male">NBS</option>
                         <option value="female">SEECS</option>
                         <option value="other">SADA</option>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     <label>Discipline</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible"  id="gender" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="discipline"  id="discipline" style="width: 100%;" tabindex="-1" aria-hidden="true">
                         <option selected="selected" value="male">SE</option>
                         <option value="female">EE</option>
                         <option value="other">CS</option>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group">
                     <label>Enrolment Year</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible"  id="gender" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="enrolmentYear"  id="enrolmentYear" style="width: 100%;" tabindex="-1" aria-hidden="true">
                         <option selected="selected" value="male">1960</option>
                         <option value="female">1990</option>
                         <option value="other">2017</option>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label>Graduation Year</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible"  id="gender" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="graduationYear"  id="graduationYear" style="width: 100%;" tabindex="-1" aria-hidden="true">
                         <option selected="selected" value="male">1960</option>
                         <option value="female">1990</option>
                         <option value="other">2017</option>
@@ -73,11 +73,11 @@
                 	<label for="">Do You Have an Alumni Card?</label>
                 	<br>
                     <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="cardRadio" class="minimal-red">
+                        <input type="radio" name="alumniCard" class="minimal-red">
                         Yes
                     </label>
                     <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="cardRadio" class="minimal-red" checked>
+                        <input type="radio" name="alumniCard" class="minimal-red" checked>
                         No
                     </label>                    
                 </div>            
