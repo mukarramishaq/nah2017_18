@@ -26,15 +26,15 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     
     Route::get('/personalInformation',function(){
         return view('personalInformation');
-    });
+    })->name('personalInformation');
     
     Route::get('/educationalInformation',function(){
         return view('educationalInformation');
-    });
+    })->name('educationalInformation');
     
     Route::get('/professionalInformation',function(){
         return view('professionalInformation');
-    });
+    })->name('professionalInformation');
 
     Route::get('/personalInformation/save', ['as'=>'personalSave', 'uses'=>'PersonalController@save']);
     Route::post('/personalInformation/saveImage', ['as'=>'personalSaveImage', 'uses'=>'PersonalController@saveImage']);
