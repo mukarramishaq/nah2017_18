@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\EducationalI;
 use App\School;
+use App\Discipline;
 class EducationalController extends Controller
 {
     //
@@ -13,6 +14,13 @@ class EducationalController extends Controller
         if($user){
             $schools = School::all();
             $disciplines = Discipline::all();
+            $educationalI = $user->educationalI()->get();
+            if($educationalI && count($educationalI) > 0){
+                $educationalI = $educationalI[0];
+            }
+            else{
+                $educationalI = new EducationalI;
+            }
             return view('educationalInformation')->with('schools',$schools)->with('disciplines',$disciplines)->with('educationalI',$educationalI);
         }
         else{

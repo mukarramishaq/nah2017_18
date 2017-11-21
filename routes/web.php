@@ -31,6 +31,7 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/professionalInformation',['as'=>'professionalInformation','uses'=>'ProfessionalController@index']);
 
     Route::get('/personalInformation/save', ['as'=>'personalSave', 'uses'=>'PersonalController@save']);
+    Route::post('/personalInformation/saveAndNext', ['as'=>'personalSaveAndNext', 'uses'=>'PersonalController@saveAndNext']);
     Route::post('/personalInformation/saveImage', ['as'=>'personalSaveImage', 'uses'=>'PersonalController@saveImage']);
     
 });

@@ -33,6 +33,14 @@
                 <!--------------------------
                   | Your Page Content Here |
                   -------------------------->
+                  @if ($alert = Session::get('msg'))
+                    <div class="alert alert-{{Session::get('type')}}">
+                        <center>
+                            {{ $alert }}
+                            
+                        </center>
+                    </div>
+                  @endif
                 @yield('content')
             </section>
             <!-- /.content -->

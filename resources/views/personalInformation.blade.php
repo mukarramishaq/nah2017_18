@@ -24,7 +24,8 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" id="personalInformationForm">
+            <form role="form" id="personalInformationForm" action="{{route('personalSaveAndNext')}}" method="POST">
+              {{ csrf_field() }}
               <div class="box-body">
                 
                 <div class="row"> 
@@ -44,11 +45,11 @@
                 <div class="col-md-8 col-sm-12 col-xs-12 col-md-pull-4">                     
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="name" required="true" value="{{$personalI->name}}" class="form-control" id="name" placeholder="Enter name">
+                  <input type="name" required="true" name="name" value="{{$personalI->name}}" class="form-control" id="name" placeholder="Enter name">
                 </div>               
                <div class="form-group">
                 <label>Gender</label>
-                <select  required="true"  class="form-control select2 select2-hidden-accessible"  id="gender" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <select  required="true" name="gender"  class="form-control select2 select2-hidden-accessible"  id="gender" style="width: 100%;" tabindex="-1" aria-hidden="true">
                   @if($personalI->gender == 'male')
                     <option selected="selected" value="male">Male</option>
                     <option value="female">Female</option>
@@ -73,23 +74,23 @@
                 </div>
                 <div class="form-group">
                   <label for="cNIC">CNIC</label>
-                  <input type="number" value="{{$personalI->cnic}}"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC">
+                  <input type="number" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC">
                   <p class="help-block">Example block-level help text here.</p>
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" value="{{$personalI->email}}" required="true" class="form-control" id="email"  placeholder="Enter email">
+                  <input type="email" value="{{$personalI->email}}" name="email" required="true" class="form-control" id="email"  placeholder="Enter email">
 
                   <p class="help-block">Example block-level help text here.</p>
                 </div>
                  <div class="form-group">
                   <label for="phoneNumber">Phone Number</label>
-                  <input type="text" value="{{$personalI->mobile_no}}" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                  <input type="text" value="{{$personalI->mobile_no}}" name="phoneNumber" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999"' data-mask>
                   <p class="help-block">Example block-level help text here.</p>
                 </div>  
                 <div class="form-group">
                   <label for="emergencyPhoneNumber">Emergency Phone Number</label>
-                  <input type="text" value="{{$personalI->emergency_no}}" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                  <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999"' data-mask>
                   <p class="help-block">Example block-level help text here.</p>
                 </div>              
               </div>
