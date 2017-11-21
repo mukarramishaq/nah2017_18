@@ -94,6 +94,9 @@
                 </div>              
               </div>
               <!-- /.box-body -->
+              <div class="overlay">
+                <i class="fa fa-refresh fa-spin fa-5x"></i>
+              </div>
               <div class="box-footer text-right">
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
                 <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
