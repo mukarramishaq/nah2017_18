@@ -6,16 +6,35 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller;
 use App\PersonalI;
-
+use App\User;
 class PersonalController extends Controller
 {
     //
+    public function index(){
+        $user = Auth::user();
+        if($user){
+            $personalI = $user->personalI()->get();
+            if($personalI && count($personalI) > 0){
+                $personalI = $personalI[0];
+            }
+            else{
+               $personalI = new PersonalI;
+               $personalI->name = 'Mukarram Is' ;
+            }
+            return view('personalInformation')->with('user',$user)->with('personalI',$personalI);
+        }
+        else{
+            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+        }
+    }
+
+
     public function save(Request $request)
     {
         $user = Auth::user();
         //if session is active
     	if($user){
-            $data = array(
+            $data = (object) array(
                 'user_id'=>$user->id,
                 'name'=> $request->input('name'),
                 'gender'=> $request->input('gender'),
@@ -25,11 +44,12 @@ class PersonalController extends Controller
             );
             //check if user has an entry of personal information in database
             //if yes
-            $personalI = $user->personalI();
-            if($personalI){
+            $personalI = $user->personalI()->get();
+            if($personalI && count($personalI)>0){
+                $personalI = $personalI[0];
                 $personalI->name = $data->name;
                 $personalI->gender = $data->gender;
-                $personalI->cninc = $data->cnic;
+                $personalI->cnic = $data->cnic;
                 $personalI->mobile_no = $data->mobile_no;
                 $personalI->emergency_no = $data->emergency_no;
                 //save to database
@@ -38,7 +58,8 @@ class PersonalController extends Controller
                 return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
             }
             else{
-                $personal = PersonalI::create($data);
+                
+                $personal = PersonalI::create((array) $data);
                 return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
             }
 
@@ -58,7 +79,7 @@ class PersonalController extends Controller
         //if session is still active
         if($user){
 
-            $data = array(
+            $data = (object) array(
                 'user_id'=>$user->id,
                 'name'=> $request->input('name'),
                 'gender'=> $request->input('gender'),
@@ -66,13 +87,14 @@ class PersonalController extends Controller
                 'mobile_no'=> $request->input('phoneNumber'),
                 'emergency_no'=> $request->input('emergencyPhoneNumber'),
             );
+            \Log::info((array) $data);
             //check if user has personalInformation entry in table already or not
             $personalI = $user->personalI();
             if($personalI){
                 //then update
                 $personalI->name = $data->name;
                 $personalI->gender = $data->gender;
-                $personalI->cninc = $data->cnic;
+                $personalI->cnic = $data->cnic;
                 $personalI->mobile_no = $data->mobile_no;
                 $personalI->emergency_no = $data->emergency_no;
                 //save to database

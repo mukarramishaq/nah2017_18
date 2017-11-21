@@ -24,17 +24,11 @@ Route::post('/auth/login',['as'=>'authLogin','uses'=>'Auth\LoginController@authe
 Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/home', 'HomeController@index')->name('home');
     
-    Route::get('/personalInformation',function(){
-        return view('personalInformation');
-    })->name('personalInformation');
+    Route::get('/personalInformation',['as'=>'personalInformation','uses'=>'PersonalController@index']);
     
-    Route::get('/educationalInformation',function(){
-        return view('educationalInformation');
-    })->name('educationalInformation');
+    Route::get('/educationalInformation',['as'=>'educationalInformation','uses'=>'EducationalController@index']);
     
-    Route::get('/professionalInformation',function(){
-        return view('professionalInformation');
-    })->name('professionalInformation');
+    Route::get('/professionalInformation',['as'=>'professionalInformation','uses'=>'ProfessionalController@index']);
 
     Route::get('/personalInformation/save', ['as'=>'personalSave', 'uses'=>'PersonalController@save']);
     Route::post('/personalInformation/saveImage', ['as'=>'personalSaveImage', 'uses'=>'PersonalController@saveImage']);

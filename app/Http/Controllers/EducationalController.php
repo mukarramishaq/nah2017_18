@@ -4,9 +4,23 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\EducationalI;
+use App\School;
 class EducationalController extends Controller
 {
     //
+    public function index(){
+        $user = Auth::user();
+        if($user){
+            $schools = School::all();
+            $disciplines = Discipline::all();
+            return view('educationalInformation')->with('schools',$schools)->with('disciplines',$disciplines)->with('educationalI',$educationalI);
+        }
+        else{
+            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+        }
+    }
+
+
     public function save(Request $request)
     {
         $user = Auth::user();
