@@ -8,7 +8,7 @@ use App\School;
 class EducationalController extends Controller
 {
     //
-    public function index(){
+    public function index(Request $request){
         $user = Auth::user();
         if($user){
             $schools = School::all();

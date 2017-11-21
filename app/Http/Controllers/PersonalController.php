@@ -10,7 +10,7 @@ use App\User;
 class PersonalController extends Controller
 {
     //
-    public function index(){
+    public function index(Request $request){
         $user = Auth::user();
         if($user){
             $personalI = $user->personalI()->get();
