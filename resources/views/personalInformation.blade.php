@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-md-12 col-sm-12">
           <!-- general form elements -->
-          <div class="box box-primary">
+          <div class="box box-danger">
             <div class="box-header with-border">
               <h3 class="box-title">Personal Information</h3>
             </div>
@@ -95,8 +95,8 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer text-right">
-                <button type="button" class="btn btn-primary"  onclick="save();">Save</button>
-                <button type="submit" class="btn btn-primary">Save & Next</button>
+                <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
+                <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
               </div>
             </form>
           </div>
