@@ -41,7 +41,7 @@ class User extends Authenticatable
         return $this->hasOne('App\ProfessionalI');
     }
     //wit personal_infromations table
-    public function PersonalI(){
+    public function personalI(){
         return $this->hasOne('App\PersonalI');
     }
     //with entreprenuer_informations table

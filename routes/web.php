@@ -31,6 +31,7 @@ Route::get('/personalinformation', function () {
 
 
 Auth::routes();
+Route::post('/auth/login',['as'=>'authLogin','uses'=>'Auth\LoginController@authenticateLogin']);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
