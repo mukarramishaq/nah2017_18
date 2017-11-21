@@ -15,34 +15,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/personalInformation/save', ['as'=>'personalSave', 'uses'=>'PersonalController@save']);
-Route::post('/personalInformation/saveImage', ['as'=>'personalSaveImage', 'uses'=>'PersonalController@saveImage']);
-
-Route::get('/logintest', function () {
-    return view('loginTest');
-});
-
-Route::get('/registertest', function () {
-    return view('registerTest');
-});
-Route::get('/personalinformation', function () {
-    return view('personalInformation');
-});
-
 
 Auth::routes();
 Route::post('/auth/login',['as'=>'authLogin','uses'=>'Auth\LoginController@authenticateLogin']);
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/personalInformation',function(){
-    return view('personalInformation');
-});
 
-Route::get('/educationalInformation',function(){
-    return view('educationalInformation');
-});
+Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+    
+    Route::get('/personalInformation',function(){
+        return view('personalInformation');
+    });
+    
+    Route::get('/educationalInformation',function(){
+        return view('educationalInformation');
+    });
+    
+    Route::get('/professionalInformation',function(){
+        return view('professionalInformation');
+    });
 
-Route::get('/professionalInformation',function(){
-	return view('professionalInformation');
+    Route::get('/personalInformation/save', ['as'=>'personalSave', 'uses'=>'PersonalController@save']);
+    Route::post('/personalInformation/saveImage', ['as'=>'personalSaveImage', 'uses'=>'PersonalController@saveImage']);
+    
 });
