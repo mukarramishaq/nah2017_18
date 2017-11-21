@@ -16,9 +16,9 @@
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="row">
-      <div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1">
+      <div class="col-md-12 col-sm-12">
           <!-- general form elements -->
-          <div class="box box-primary">
+          <div class="box box-danger">
             <div class="box-header with-border">
               <h3 class="box-title">Professional Information</h3>
             </div>
@@ -49,10 +49,6 @@
                   <label for="organization">Organization</label>
                   <input type="name" required="true" class="form-control" name="organization" id="organization" placeholder="Enter your organization name">
                 </div>  
-                <div class="form-group collapse Employed">
-                  <label for="designation">Designation</label>
-                  <input type="name" required="true" class="form-control" name="designation" id="designation" placeholder="Enter your desigantion">
-                </div>
                 <div class="form-group collapse Employed">
                     <label>Your Designation</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="designation" id="designation" style="width: 100%;" tabindex="-1" aria-hidden="true">
@@ -86,11 +82,11 @@
 		                <div class="input-group-addon">
 		            	    <i class="fa fa-calendar"></i>
 		                </div>
-		                <input type="text" class="form-control pull-right" name="establishedDate" id="establishedDate">
-		            </div>
+		                <input type="text" class="form-control pull-right" name="establishedDate" id="datepicker">
+		              </div>
 	                <!-- /.input group -->
-	            </div>
-	            <div class="form-group collapse Self-employed">
+	              </div>
+	              <div class="form-group collapse Self-employed">
                     <label>Your Designation</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="eDesignation" id="eDesignation" style="width: 100%;" tabindex="-1" aria-hidden="true">
                         <option selected="selected" value="male">Software House</option>
@@ -98,9 +94,9 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-                <div class="form-group collapse Self-employed-designation">
-                  <input type="name" required="true" class="form-control" name="eOtherDesignation" id="eOtherDesignation" placeholder="Enter your industry name">
-                </div>
+                  <div class="form-group collapse Self-employed-designation">
+                    <input type="name" required="true" class="form-control" name="eOtherDesignation" id="eOtherDesignation" placeholder="Enter your industry name">
+                  </div>
                 <div class="form-group collapse Self-employed">
                     <label for="eCompanyLogo">Company Logo</label>
                     <input type="file" name="eCompanyLogo" id="eCompanyLogo">
@@ -137,8 +133,8 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer text-right">
-                <button type="button" class="btn btn-primary"  onclick="save();">Save</button>
-                <button type="submit" class="btn btn-primary">Save & Next</button>
+                <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
+                <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
               </div>
             </form>
           </div>
@@ -149,6 +145,12 @@
 
 @section('header-styles')
   <link rel="stylesheet" href="{{asset('theme/lte/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset('theme/lte/bower_components/font-awesome/css/font-awesome.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{asset('theme/lte/bower_components/Ionicons/css/ionicons.min.css')}}">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="{{asset('theme/lte/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="{{asset('theme/lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
   <!-- iCheck for checkboxes and radio inputs -->
@@ -156,7 +158,14 @@
   <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="{{asset('theme/lte/plugins/timepicker/bootstrap-timepicker.min.css')}}">
   <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="{{asset('theme/lte/plugins/iCheck/all.css')}}">
+  <link rel="stylesheet" href="{{asset('theme/lte/plugins/iCheck/all.css')}}">  
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="{{asset('theme/lte/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="{{asset('theme/lte/plugins/timepicker/bootstrap-timepicker.min.css')}}">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="{{asset('theme/lte/dist/css/skins/_all-skins.min.css')}}">
   <style>
 		.radioLable{
 			font-weight:normal;
