@@ -1,4 +1,30 @@
 $("#employed").change(function () {
+	ChangeForm();
+ });
+$("#industry").change(function () {
+	AddOtherIndustry();
+});
+$("#eIndustry").change(function () {
+	AddOtherSIndustry();
+});
+$("#designation").change(function () {
+	AddOtherDesignation();
+});
+$("#eDesignation").change(function () {
+	AddOtherSDesignation();	
+});
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    ChangeForm();
+    AddOtherIndustry();
+    AddOtherSIndustry();
+    AddOtherDesignation();
+    AddOtherSDesignation();
+});
+
+function ChangeForm()
+{
 
 		if($("#employed").val() === 'employed'){
         
@@ -77,9 +103,10 @@ $("#employed").change(function () {
 				$('.Self-employed-industry').prop('required',true);
 			}
    		}
- });
-$("#industry").change(function () {
+}
 
+function AddOtherIndustry()
+{
 	if($("#industry").val() === 'other')
 	{
 		$('.Employed-industry').removeClass('collapse');
@@ -90,8 +117,9 @@ $("#industry").change(function () {
 		$('.Employed-industry').addClass('collapse');
 		$('.Employed-industry').prop('required',false);
 	}
-});
-$("#eIndustry").change(function () {
+}
+
+function AddOtherSIndustry(){
 
 	if($("#eIndustry").val() === 'other')
 	{
@@ -103,9 +131,10 @@ $("#eIndustry").change(function () {
 		$('.Self-employed-industry').addClass('collapse');
 		$('.Self-employed-industry').prop('required',false);
 	}
-});
-$("#designation").change(function () {
+}
 
+function AddOtherDesignation()
+{
 	if($("#designation").val() === 'other')
 	{
 		$('.Employed-designation').removeClass('collapse');
@@ -116,9 +145,9 @@ $("#designation").change(function () {
 		$('.Employed-designation').addClass('collapse');
 		$('.Employed-designation').prop('required',false);
 	}
-});
-$("#eDesignation").change(function () {
-
+}
+function AddOtherSDesignation()
+{
 	if($("#eDesignation").val() === 'other')
 	{
 		$('.Self-employed-designation').removeClass('collapse');
@@ -129,4 +158,5 @@ $("#eDesignation").change(function () {
 		$('.Self-employed-designation').addClass('collapse');
 		$('.Self-employed-designation').prop('required',false);
 	}
-});
+
+}
