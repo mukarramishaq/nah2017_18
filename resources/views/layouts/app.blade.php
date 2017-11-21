@@ -4,7 +4,7 @@
     @include('partials.layout.head')
     @yield('header-styles')
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-red-light sidebar-mini">
     <div id="app" class="wrapper">
         <!-- Main Header -->
         @if (Auth::guest())
@@ -42,10 +42,10 @@
         <footer class="main-footer">
             <!-- To the right -->
             <div class="pull-right hidden-xs">
-               {{__('footer.line2')}}
+               <a href="mailto:mukarramishaq189@gmail.com">Developers</a>
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2017 <a href="{{url('/')}}">Wordify</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2017-18 <a href="{{url('/')}}">NUST Alumni Homecoming</a>.</strong> All rights reserved.
         </footer>
     </div>
     @include('partials.layout.footer-scripts')
