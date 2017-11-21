@@ -6,21 +6,10 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{route('home')}}"><i class="fa fa-home"></i> <span>Home</span></a></li>
             
-            <li ><a href="#"><i class="fa fa-user"></i> <span>{{__('navbar.account')}}</span></a></li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-credit-card"></i> <span>{{__('navbar.billing.billing')}}</span>
-                    <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                </a>
-                <ul class="treeview-menu">
-                    
-                    <li><a href="#">{{__('navbar.billing.mycards')}}</a></li>
-                    <li><a href="#">{{__('navbar.billing.invoices')}}</a></li>
-                </ul>
-            </li>
-
-            <li ><a href="#"><i class="fa fa-handshake-o"></i> <span>{{__('navbar.support')}}</span></a></li>
+            <li ><a href="#"><i class="fa fa-user"></i> <span>Personal Information</span></a></li>
+            <li ><a href="#"><i class="fa fa-mortar-board"></i> <span>Educational Information</span></a></li>
+            <li ><a href="#"><i class="fa fa-black-tie"></i> <span>Professional Information</span></a></li>
+            <li ><a href="#"><i class="fa fa-handshake-o"></i> <span>Support</span></a></li>
         </ul>
 @endsection
 
