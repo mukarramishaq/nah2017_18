@@ -13,7 +13,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('theme/lte/dist/css/AdminLTE.min.css')}}">
   <!-- iCheck -->
-  <link rel="stylesheet" href="{{asset('theme/lte/plugins/iCheck/square/blue.css')}}">
+  <link rel="stylesheet" href="{{asset('theme/lte/plugins/iCheck/square/red.css')}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,13 +22,15 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+  
+
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{route('home')}}">NUST Alumni <b>Homecoming</b> 2017-18</a>
+    <a href="{{route('home')}}" >NUST Alumni <b>Homecoming</b> 2017-18</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -83,7 +85,7 @@
       <br>
       <div class="row">
         <div class="col-xs-12">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            <button type="submit" class="btn bg-red btn-block btn-flat">Sign In</button>
         </div>
         <!-- /.col -->
       </div>
@@ -115,8 +117,8 @@
 <script>
   $(function () {
     $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
+      checkboxClass: 'icheckbox_square-red',
+      radioClass: 'iradio_square-red',
       increaseArea: '20%' // optional
     });
   });

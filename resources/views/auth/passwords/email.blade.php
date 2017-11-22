@@ -76,7 +76,7 @@
     
     <div class="row">
       <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Send Password Reset Link</button>
+          <button type="submit" class="btn bg-red btn-block btn-flat">Send Password Reset Link</button>
       </div>
       <!-- /.col -->
     </div>

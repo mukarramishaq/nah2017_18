@@ -15,7 +15,7 @@
    <!-- Theme style -->
    <link rel="stylesheet" href="{{asset('theme/lte/dist/css/AdminLTE.min.css')}}">
    <!-- iCheck -->
-   <link rel="stylesheet" href="{{asset('theme/lte/plugins/iCheck/square/blue.css')}}">
+   <link rel="stylesheet" href="{{asset('theme/lte/plugins/iCheck/square/red.css')}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,7 +80,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign Up</button>
+          <button type="submit" class="btn bg-red btn-block btn-flat">Sign Up</button>
         </div>
         <!-- /.col -->
       </div>
@@ -107,8 +107,8 @@
 <script>
   $(function () {
     $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
+      checkboxClass: 'icheckbox_square-red',
+      radioClass: 'iradio_square-red',
       increaseArea: '20%' // optional
     });
   });

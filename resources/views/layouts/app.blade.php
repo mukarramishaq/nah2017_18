@@ -36,8 +36,7 @@
                   @if ($alert = Session::get('msg'))
                     <div class="alert alert-{{Session::get('type')}}">
                         <center>
-                            {{ $alert }}
-                            
+                            {{ $alert }}  
                         </center>
                     </div>
                   @endif

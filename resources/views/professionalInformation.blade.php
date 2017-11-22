@@ -16,7 +16,7 @@
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="row">
-      <div class="col-md-12 col-sm-12">
+      <div class="col-md-9">
           <!-- general form elements -->
           <div class="box box-danger">
             <div class="box-header with-border">
@@ -24,57 +24,65 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" id="personalInformationForm">
+            <form role="form" id="professionalInformationForm" action="{{route('professionalSaveAndNext')}}" method="POST">
+              {{csrf_field()}}
               <div class="box-body">
+                <div class="row">
+                <div class="col-md-6">
                 <div class="form-group">
                     <label>Employed</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="employed"  id="employed" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="unemployed">Un-employed</option>
-                        <option value="employed">Employed</option>
-                        <option value="selfemployed">Self-employed</option>
+                        @if($professionalI->employed == "selfemployed")
+                            <option value="unemployed" >Un-employed</option>
+                            <option value="employed">Employed</option>
+                            <option value="selfemployed" selected>Self-employed</option>
+                        @elseif($professionalI->employed == "employed")
+                            <option value="unemployed" >Un-employed</option>
+                            <option value="employed" selected>Employed</option>
+                            <option value="selfemployed">Self-employed</option>
+                        @else
+                            <option value="unemployed" selected>Un-employed</option>
+                            <option value="employed">Employed</option>
+                            <option value="selfemployed">Self-employed</option>
+                        @endif
                     </select>
                 </div> 
+                </div>
+                <div class="col-md-6">
                 <div class="form-group collapse Employed">
                     <label>Industry</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="industry"  id="industry" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="male">Software House</option>
-                        <option value="female">Bank</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <input type="name" required="true" class="form-control" name="eIndustry" id="eIndustry" placeholder="Enter your industry name">
+                </div> 
                 </div>
-                <div class="form-group collapse Employed-industry">
-                  <input type="name" required="true" class="form-control" name="otherIndustry" id="otherIndustry" placeholder="Enter your industry name">
-                </div>   
+                <div class="col-md-6">
+                <div class="form-group collapse Self-employed">
+                    <label>Industry</label>                    
+                    <input type="name" required="true" class="form-control" name="seIndustry" id="seIndustry" placeholder="Enter your industry name">
+                </div> 
+                </div>
+                </div> 
+                <div class="row"> 
+                <div class="col-md-6">
                 <div class="form-group collapse Employed">
                   <label for="organization">Organization</label>
-                  <input type="name" required="true" class="form-control" name="organization" id="organization" placeholder="Enter your organization name">
-                </div>  
-                <div class="form-group collapse Employed">
-                    <label>Your Designation</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="designation" id="designation" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="male">Software House</option>
-                        <option value="female">Bank</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group collapse Employed-designation">
-                  <input type="name" required="true" class="form-control" name="otherDesignation" id="otherDesignation" placeholder="Enter your industry name">
-                </div>
-                <div class="form-group collapse Self-employed">
-                    <label>Industry</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="eIndustry"  id="eIndustry" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="male">Software House</option>
-                        <option value="female">Bank</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group collapse Self-employed-industry">
-                	<input type="name" required="true" class="form-control" name="eOtherIndustry" id="eOtherIndustry" placeholder="Enter your industry name">
+                  <input type="name" required="true" class="form-control" name="eOrganization" id="eOrganization" placeholder="Enter your organization name">
                 </div> 
+                </div>
+                <div class="col-md-6"> 
+                <div class="form-group collapse Employed">
+                  <label>Your Designation</label>                    
+                  <input type="name" required="true" class="form-control" name="eDesignation" id="eDesignation" placeholder="Enter your industry name">
+                </div>  
+                </div>
+                </div>  
+                <div class="row">
+                <div class="col-md-6">            
                 <div class="form-group collapse Self-employed">
                   <label for="eCompany">Company</label>
-                  <input type="name" required="true" class="form-control" name="eCompany" id="eCompany" placeholder="Enter your company name">
+                  <input type="name" required="true" class="form-control" name="seCompany" id="seCompany" placeholder="Enter your company name">
                 </div> 
+                </div>
+                <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
 	                <label>Established Date</label>
 
@@ -82,38 +90,50 @@
 		                <div class="input-group-addon">
 		            	    <i class="fa fa-calendar"></i>
 		                </div>
-		                <input type="text" class="form-control pull-right" name="establishedDate" id="datepicker">
+		                <input type="text" class="form-control pull-right" name="seEstablishedDate" id="datepicker">
 		              </div>
 	                <!-- /.input group -->
 	              </div>
-	              <div class="form-group collapse Self-employed">
-                    <label>Your Designation</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="eDesignation" id="eDesignation" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="male">Software House</option>
-                        <option value="female">Bank</option>
-                        <option value="other">Other</option>
-                    </select>
                 </div>
-                  <div class="form-group collapse Self-employed-designation">
-                    <input type="name" required="true" class="form-control" name="eOtherDesignation" id="eOtherDesignation" placeholder="Enter your industry name">
-                  </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6">
+	              <div class="form-group collapse Self-employed">
+                    <label>Your Designation</label>                    
+                    <input type="name" required="true" class="form-control" name="seDesignation" id="seDesignation" placeholder="Enter your industry name">
+                </div>
+                </div>
+                <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
                     <label for="eCompanyLogo">Company Logo</label>
-                    <input type="file" name="eCompanyLogo" id="eCompanyLogo">
-                    <p class="help-block">Example block-level help text here.</p>
+                    <input type="file" name="seCompanyLogo" id="seCompanyLogo">
                 </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
                   <label for="eTotalEmployes">Total Employees</label>
-                  <input type="name" required="true" class="form-control" name="eTotalEmployes" id="eTotalEmployes" placeholder="Enter number of employees">
+                  <input type="name" required="true" class="form-control" name="seTotalEmployes" id="eTotalEmployes" placeholder="Enter number of employees">
                 </div>
+                </div>
+                <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
                   <label for="eTotalNustEmployes">Total NUSTians (Employees)</label>
-                  <input type="name" required="true" class="form-control" name="eTotalNustEmployes" id="eTotalNustEmployes" placeholder="Enter number of NUSTians employees">
-                </div>  
+                  <input type="name" required="true" class="form-control" name="seTotalNustEmployes" id="eTotalNustEmployes" placeholder="Enter number of NUSTians employees">
+                </div>
+                </div> 
+                </div>
+                <div class="row">
+                <div class="col-md-12">
                 <div class="form-group collapse Self-employed">
                   <label for="eWebsite">Website/Social Media Link</label>
                   <input type="url" required="true" class="form-control" name="eWebsite" id="eWebsite" placeholder="Enter website link">
                 </div> 
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6">
                 <div class="form-group">
                     <label>Current Country</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="currentCountry"  id="currentCountry" style="width: 100%;" tabindex="-1" aria-hidden="true">
@@ -122,13 +142,21 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
+                </div>
+                <div class="col-md-6">
                 <div class="form-group">
                   <label for="currentCity">Current City</label>
-                  <input type="text" required="true" class="form-control" name="currentCity"  id="currentCity" placeholder="Enter current city">
+                  <input type="text" required="true" value="{{$professionalI->city}}" class="form-control" name="currentCity"  id="currentCity" placeholder="Enter current city">
                 </div> 
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-12">
                 <div class="form-group">
                   <label for="currentAddress">Current Address</label>
-                  <input type="text" required="true" class="form-control" name="currentAddress" id="currentAddress" placeholder="Enter current address">
+                  <input type="text" required="true" value="{{$professionalI->address}}" class="form-control" name="currentAddress" id="currentAddress" placeholder="Enter current address">
+                </div>
+                </div>
                 </div>
               </div>
               <!-- /.box-body -->
@@ -139,6 +167,46 @@
             </form>
           </div>
           <!-- /.box -->
+        </div>
+        <div class="col-md-3">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Instructions</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+
+              <p class="text-muted">
+                B.S. in Computer Science from the University of Tennessee at Knoxville
+              </p>
+
+              <hr>
+
+              <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+
+              <p class="text-muted">Malibu, California</p>
+
+              <hr>
+
+              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+
+              <p>
+                <span class="label label-danger">UI Design</span>
+                <span class="label label-success">Coding</span>
+                <span class="label label-info">Javascript</span>
+                <span class="label label-warning">PHP</span>
+                <span class="label label-primary">Node.js</span>
+              </p>
+
+              <hr>
+
+              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+            </div>
+            <!-- /.box-body -->
+          </div>
         </div>
     </div>
 @endsection
@@ -241,5 +309,38 @@
     })
 
   })
+</script>
+<script>
+  function save()
+    {
+        
+        var data = {
+
+                'employed': $('#employed').val(),
+                'country':$('#currentCountry').val(),
+                'city':$('#currentCity').val(),
+                'address':$('#currentAddress').val(),
+                
+            };
+            console.log(data);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url:'/professionalInformation/save',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function(data){
+
+            },
+            error: function(request, error){
+
+            },
+
+        });
+    }
 </script>
 @endsection
