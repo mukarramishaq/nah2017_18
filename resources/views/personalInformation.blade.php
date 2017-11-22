@@ -16,7 +16,6 @@
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
         <div class="modal fade" id="modal-pic">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -34,7 +33,7 @@
                     <div class="preview-uploaded-image col-md-4 col-md-offset-4" >
                     </div>
                   </div>
-                    <div class="form-group input-picture">
+                  <div class="form-group input-picture">
                     <label>Image:</label>
                     <input type="file" name="image" class="form-control">
                   </div>
@@ -72,13 +71,7 @@
                 <div class="row"> 
                  <div class="col-md-4 col-sm-12 col-xs-12 col-md-push-8">
                   
-                  <div class="row">  
-                    <div class="col-md-4 col-sm-2 col-xs-4 col-md-offset-4 col-sm-offset-5 col-xs-offset-4 text-center"> 
-                      <label for="imgPicker" style="text-align: center;">Your Image</label>
-                      <img class="imgPicker" id="imgViewer" src="http://placehold.it/120" alt="your image" />                      
-                      <button type="button" id="uploadImage">  Upload Image
-                         <input type="file" accept=".png,.jpeg,.jpg,.gif,.tif,.bmp"  id="imagePicker"  class="hide_file" onchange="readURL(this);">
-                      </button>        
+                  <div class="row">      
                     <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 text-center"> 
                       
                       <img class="imgPicker" id="imgViewer" src="http://placehold.it/200x200" alt="your image"  width="100%"/>                      
@@ -86,7 +79,7 @@
                     </div>
                   
                 </div>
-                </div>
+              </div>
                 <div class="col-md-8 col-sm-12 col-xs-12 col-md-pull-4">                 
                 <div class="form-group">
                   <label for="name">Name</label>
@@ -150,6 +143,8 @@
                 </div>
                 </div>
                 </div>  
+                <div class="row">
+                <div class="col-md-12">
                 <div class="form-group">
                   <label for="">Any Disability?</label>
                   <br>
@@ -182,7 +177,9 @@
                         </label> 
                     @endif
                     --------------------------------------------------------------------------- --}}
-                </div>            
+                </div>    
+                </div> 
+                </div>       
               </div>
               <!-- /.box-body -->
               <div class="overlay">
@@ -238,9 +235,9 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
             </div>
             <!-- /.box-body -->
-          </div>
         </div>
     </div>
+  </div>
 @endsection
 
 @section('header-styles')
