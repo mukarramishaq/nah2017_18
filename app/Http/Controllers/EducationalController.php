@@ -34,20 +34,23 @@ class EducationalController extends Controller
         $user = Auth::user();
         //if session is active
     	if($user){
-            $data = array(
+            $data = (object) array(
                 'user_id'=>$user->id,
-                'reg_no'=> $request->input('registrationNumber'),
-                'degree'=> $request->input('degree'),
+                'reg_no'=> $request->input('nustRegistrationNumber'),
+                'degree'=> $request->input('degreeName'),
                 'school'=> $request->input('school'),
                 'discipline'=> $request->input('discipline'),
                 'enrollment_year'=> $request->input('enrollmentYear'),
                 'graduation_year'=> $request->input('graduationYear'),
-                'has_alumni_card'=> $request->input('hasAlumniCard'),
+                'has_alumni_card'=> $request->input('alumniCard'),
             );
             //check if user has an entry of educational information in database
             //if yes
-            $educationalI = $user->educationalI();
-            if($educationalI){
+            $educationalI = $user->educationalI()->get();
+            
+            
+            if($educationalI && count($educationalI) > 0){
+                $educationalI = $educationalI[0];
                $educationalI->reg_no = $data->reg_no;
                $educationalI->degree = $data->degree;
                $educationalI->school = $data->school;
@@ -61,7 +64,7 @@ class EducationalController extends Controller
                 return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
             }
             else{
-                $educational = EducationalI::create($data);
+                $educational = EducationalI::create((array)$data);
                 return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
             }
 
@@ -77,24 +80,27 @@ class EducationalController extends Controller
     }
 
 
-    public function saveAndNext(){
+    public function saveAndNext(Request $request){
         $user = Auth::user();
         //if session is still active
         if($user){
 
-            $data = array(
+            $data = (object)array(
                 'user_id'=>$user->id,
-                'reg_no'=> $request->input('registrationNumber'),
-                'degree'=> $request->input('degree'),
+                'reg_no'=> $request->input('nustRegistrationNumber'),
+                'degree'=> $request->input('degreeName'),
                 'school'=> $request->input('school'),
                 'discipline'=> $request->input('discipline'),
                 'enrollment_year'=> $request->input('enrollmentYear'),
                 'graduation_year'=> $request->input('graduationYear'),
-                'has_alumni_card'=> $request->input('hasAlumniCard'),
+                'has_alumni_card'=> $request->input('alumniCard'),
             );
             //check if user has educationalInformation entry in table already or not
-            $educationalI = $user->educationalI();
-            if($educationalI){
+            $educationalI = $user->educationalI()->get();
+            
+            
+            if($educationalI && count($educationalI) > 0){
+                $educationalI = $educationalI[0];
                 //then update
                 $educationalI->reg_no = $data->reg_no;
                 $educationalI->degree = $data->degree;
@@ -106,13 +112,13 @@ class EducationalController extends Controller
                 //save to database
                 $educationalI->save();
 
-                return redirect()->to('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
+                return redirect()->to('professionalInformation')->with('type','success')->with('msg','Educational Information saved successfully.');
                 
             }
             else{
                 //otherwise create one
-                $personal = EducationalI::create($data);
-                return redirect()->to('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
+                $personal = EducationalI::create((array)$data);
+                return redirect()->to('professionalInformation')->with('type','success')->with('msg','Educational Information saved successfully.');
                 
             }
 

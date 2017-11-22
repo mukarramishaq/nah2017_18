@@ -24,12 +24,13 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" id="personalInformationForm">
+            <form role="form" id="educationalInformationForm" action="{{route('educationalSaveAndNext')}}" method="POST">
+                {{csrf_field()}}
               <div class="box-body">
                 
                 <div class="form-group">
 	                <label for="nustRegistrationNumber">NUST Registration Number</label>
-	                <input type="text"  required="true" class="form-control" name="nustRegistrationNumber" id="nustRegistrationNumber" placeholder="Enter registration Number">
+	                <input type="text" value="{{$educationalI->reg_no}}"  required="true" class="form-control" name="nustRegistrationNumber" id="nustRegistrationNumber" placeholder="Enter registration Number">
 	                <p class="help-block">Example block-level help text here.</p>
                 </div>
                <!-- radio -->
@@ -37,45 +38,78 @@
                 	<label for="">Degree Name</label>
                 	<br>
                     <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="degreeName" value="bachelor" class="minimal-red" checked>
-                        Bachelor
+                        @if($educationalI->degree == 'bachelor')
+                            <input type="radio" name="degreeName" value="bachelor" class="minimal-red" checked>
+                            Bachelor
+                        @else
+                            <input type="radio" name="degreeName" value="bachelor" class="minimal-red" >
+                            Bachelor
+                        @endif
                     </label>
                     <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="degreeName" value="master" class="minimal-red">
-                        Master
+                        @if($educationalI->degree == 'master')
+                            <input type="radio" name="degreeName" value="master" class="minimal-red" checked>
+                            Master
+                        @else
+                            <input type="radio" name="degreeName" value="master" class="minimal-red" >
+                            Master
+                        @endif
                     </label>
                     <label class = "radioLable">
-                        <input type="radio" name="degreeName" value="phd" class="minimal-red">
-                        PhD
+                        @if($educationalI->degree == 'phd')
+                            <input type="radio" name="degreeName" value="phd" class="minimal-red" checked>
+                            PhD
+                        @else
+                            <input type="radio" name="degreeName" value="phd" class="minimal-red" >
+                            PhD
+                        @endif
                     </label>
                 </div>
                 <div class="form-group">
                     <label>School/College</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="school" id="school" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        @foreach($schools as $school)                            
-                            <option value="{{$school->name}}">{{$school->name}}</option>
+                        @foreach($schools as $school) 
+                            @if(strpos($educationalI->school,$school->name) !== false)                           
+                                <option value="{{$school->name}}" selected>{{$school->name}}</option>
+                            @else
+                                <option value="{{$school->name}}">{{$school->name}}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Discipline</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="discipline"  id="discipline" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        
+                    @foreach($disciplines as $discipline)  
+                        @if($educationalI->discipline == $discipline->name)  
+                            <option value="{{$discipline->name}}" selected>{{$discipline->name}}</option>
+                        @else                        
+                            <option value="{{$discipline->name}}">{{$discipline->name}}</option>
+                        @endif
+                    @endforeach
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Enrolment Year</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="enrolmentYear"  id="enrolmentYear" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <label>Enrollment Year</label>
+                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="enrollmentYear"  id="enrollmentYear" style="width: 100%;" tabindex="-1" aria-hidden="true">
                         @for($i = 1960; $i < 2017; $i++)
-                            <option value="{{$i}}">{{$i}}</option>
+                            @if($educationalI->enrollment_year == $i)
+                                <option value="{{$i}}" selected>{{$i}}</option>
+                            @else
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endif
                         @endfor
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Graduation Year</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="graduationYear"  id="graduationYear" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        @for($i = 1960; $i < 2017; $i++)
-                            <option value="{{$i}}">{{$i}}</option>
+                        @for($i = 1960; $i <= 2017; $i++)
+                            @if($educationalI->graduation_year == $i)
+                                <option value="{{$i}}" selected>{{$i}}</option>
+                            @else
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endif
                         @endfor
                     </select>
                 </div>
@@ -83,14 +117,26 @@
                 <div class="form-group">
                 	<label for="">Do You Have an Alumni Card?</label>
                 	<br>
-                    <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="alumniCard" class="minimal-red">
-                        Yes
-                    </label>
-                    <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="alumniCard" class="minimal-red" checked>
-                        No
-                    </label>                    
+                    @if($educationalI->has_alumni_card == true)
+                        <label class = "radioLable" style="margin-right: 20px;">
+                            <input type="radio" name="alumniCard" class="minimal-red" value="1" checked>
+                            Yes
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                            <input type="radio" name="alumniCard" class="minimal-red" value="0">
+                            No
+                        </label> 
+                    @else
+                        <label class = "radioLable" style="margin-right: 20px;">
+                            <input type="radio" name="alumniCard" class="minimal-red" value="1">
+                            Yes
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                            <input type="radio" name="alumniCard" class="minimal-red" value="0" checked>
+                            No
+                        </label> 
+                    @endif
+
                 </div>            
               </div>
               <!-- /.box-body -->
@@ -136,7 +182,39 @@
 	  })
 	</script>
     <script> 
-        var disciplines = {{$disciplines}};
-        console.log(disciplines);
+        
+        function save()
+        {
+            
+            var data = {
+
+                    'nustRegistrationNumber': $('#nustRegistrationNumber').val(),
+                    'degreeName':$('input[name=degreeName]:checked').val(),
+                    'school':$('#school').val(),
+                    'discipline':$('#discipline').val(),
+                    'enrollmentYear':$('#enrollmentYear').val(),
+                    'graduationYear': $('#graduationYear').val(),
+                    'alumniCard': $('input[name=alumniCard]:checked').val(),
+                };
+                console.log(data);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url:'/educationalInformation/save',
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function(data){
+
+                },
+                error: function(request, error){
+
+                },
+
+            });
+        }
     </script>
 @endsection
