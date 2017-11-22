@@ -125,16 +125,14 @@ class PersonalController extends Controller
 
     }
 
-    public function saveImage(Request $request)
-    {
-      // $name = $request->input('name');
+    public function fileUpload(Request $request) {
         $user = Auth::user();
-
-        $my_file = '..\\'. $user->id . '.' . $request->input('ext');
-        $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file); //implicitly creates file
-        $data = $request->input('content');
-        fwrite($handle, $data);
-        file_put_contents($my_file, $data);
-    
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          ]);
+        $image = time().'.'.$request->image->getClientOriginalExtension();
+        $request->image->move(public_path('images'), $image);
+        $url='images/'.$image;
+        return response()->json(['url'=>$url]);
     }
 }
