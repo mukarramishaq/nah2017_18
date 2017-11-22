@@ -35,7 +35,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 text-center"> 
                       <label for="imgPicker" style="text-align: center;">Your Image</label>
                       <img class="imgPicker" id="imgViewer" src="http://placehold.it/120" alt="your image" />                      
-                      <button type="button" id="uploadImage" >  Upload Image
+                      <button type="button" id="uploadImage">  Upload Image
                          <input type="file" accept=".png,.jpeg,.jpg,.gif,.tif,.bmp"  id="imagePicker"  class="hide_file" onchange="readURL(this);">
                       </button>                                           
                     </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="form-group">
                   <label for="cNIC">CNIC</label>
-                  <input type="number" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC">
+                  <input type="text" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC" data-inputmask='"mask": "99999-9999999-9"' data-mask>
                   <p class="help-block">Example block-level help text here.</p>
                 </div>
                 <div class="form-group">

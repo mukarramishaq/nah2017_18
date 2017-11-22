@@ -24,14 +24,25 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" id="personalInformationForm">
+            <form role="form" id="professionalInformationForm" action="{{route('professionalSaveAndNext')}}" method="POST">
+              {{csrf_field()}}
               <div class="box-body">
                 <div class="form-group">
                     <label>Employed</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="employed"  id="employed" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="unemployed">Un-employed</option>
-                        <option value="employed">Employed</option>
-                        <option value="selfemployed">Self-employed</option>
+                        @if($professionalI->employed == "selfemployed")
+                            <option value="unemployed" >Un-employed</option>
+                            <option value="employed">Employed</option>
+                            <option value="selfemployed" selected>Self-employed</option>
+                        @elseif($professionalI->employed == "employed")
+                            <option value="unemployed" >Un-employed</option>
+                            <option value="employed" selected>Employed</option>
+                            <option value="selfemployed">Self-employed</option>
+                        @else
+                            <option value="unemployed" selected>Un-employed</option>
+                            <option value="employed">Employed</option>
+                            <option value="selfemployed">Self-employed</option>
+                        @endif
                     </select>
                 </div> 
                 <div class="form-group collapse Employed">
@@ -124,11 +135,11 @@
                 </div>
                 <div class="form-group">
                   <label for="currentCity">Current City</label>
-                  <input type="text" required="true" class="form-control" name="currentCity"  id="currentCity" placeholder="Enter current city">
+                  <input type="text" required="true" value="{{$professionalI->city}}" class="form-control" name="currentCity"  id="currentCity" placeholder="Enter current city">
                 </div> 
                 <div class="form-group">
                   <label for="currentAddress">Current Address</label>
-                  <input type="text" required="true" class="form-control" name="currentAddress" id="currentAddress" placeholder="Enter current address">
+                  <input type="text" required="true" value="{{$professionalI->address}}" class="form-control" name="currentAddress" id="currentAddress" placeholder="Enter current address">
                 </div>
               </div>
               <!-- /.box-body -->
@@ -241,5 +252,38 @@
     })
 
   })
+</script>
+<script>
+  function save()
+    {
+        
+        var data = {
+
+                'employed': $('#employed').val(),
+                'country':$('#currentCountry').val(),
+                'city':$('#currentCity').val(),
+                'address':$('#currentAddress').val(),
+                
+            };
+            console.log(data);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url:'/professionalInformation/save',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function(data){
+
+            },
+            error: function(request, error){
+
+            },
+
+        });
+    }
 </script>
 @endsection
