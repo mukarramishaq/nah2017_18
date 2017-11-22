@@ -8,7 +8,7 @@
         }
         public function ajaxUploadImage(Request $request){
             $this->validate($request, [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1020',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:65',
               ]);
             $image = time().'.'.$request->image->getClientOriginalExtension();
             $request->image->move(public_path('images'), $image);
