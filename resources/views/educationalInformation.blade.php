@@ -60,7 +60,9 @@
                 <div class="form-group">
                     <label>Discipline</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="discipline"  id="discipline" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        
+                        @foreach($disciplines as $discipline)
+                            <option value="{{$discipline->name}}">{{$discipline->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
@@ -131,12 +133,17 @@
 	      checkboxClass: 'icheckbox_flat-green',
 	      radioClass   : 'iradio_flat-green'
 	    })
-
+        
 	   
 	  })
 	</script>
-    <script> 
-        var disciplines = {{$disciplines}};
-        console.log(disciplines);
+    <script src="{{asset('js/educationalInformation.js')}}"> 
+       
+    </script>
+    <script>
+        @foreach($disciplines as $discipline)
+             console.log('{{$discipline->name}}');
+        @endforeach
+       
     </script>
 @endsection
