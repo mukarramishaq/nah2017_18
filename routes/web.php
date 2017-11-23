@@ -24,6 +24,13 @@ Route::post('/auth/login',['as'=>'authLogin','uses'=>'Auth\LoginController@authe
 Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/home', 'HomeController@index')->name('home');
     
+    Route::get('/adminPanel', function () {
+    return view('adminPanel');
+    });
+    Route::get('/userDetails', function () {
+    return view('userDetails');
+    });
+
     Route::get('/personalInformation',['as'=>'personalInformation','uses'=>'PersonalController@index']);
     
     Route::get('/educationalInformation',['as'=>'educationalInformation','uses'=>'EducationalController@index']);
