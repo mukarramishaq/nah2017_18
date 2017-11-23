@@ -125,53 +125,70 @@ class ProfessionalController extends Controller
                     'user_id'=>$user->id,
                     'employed'=>$request->input('employed'),
                     'industry'=>$request->input('selfIndustry'),
-                    'company'=>$request->input('ecompany'),
-                    'designation'=>$request->input('selfDesignation'),
-                    'date'=>$request->input('date'),
-                    'logo'=>$request->input('logo'),
-                    'totalEmployes'=>$request->input('totalEmployes'),
-                    'nustians'=>$request->input('nustians'),
-                    'link'=>$request->input('link'),
+                    
+                    'designation'=>$request->input('eDesignation'),
+                    
+                    // 'company_logo_path'=>$request->input('eCompanyLogo'),
+                    
                     'country'=>$request->input('country'),
                     'city'=>$request->input('city'),
                     'address'=>$request->input('address')
                 );
-                if($request->input('selfIndustry') == 'other')
+
+                $data1 = (object) array(
+                    'user_id'=>$user->id,
+                    'industry'=>$request->input('eOtherIndustry'),
+                    'company_name'=>$request->input('ecompany'),
+                    'established_date'=>$request->input('date'),
+                    'designation'=>$request->input('selfDesignation'),
+                    'total_employees'=>$request->input('totalEmployes'),
+                    'total_nustian_employees'=>$request->input('nustians'),
+                    'website_link'=>$request->input('link'),
+
+
+
+                );
+                if($request->input('eIndustry') == 'other')
                 {
                     $data->industry = $request->input('selfOtherIndustry');
+                    $data1->industry = $request->input('selfOtherIndustry');
+                    
                 }
 
-                if($request->input('selfDesignation') == 'other')
+                if($request->input('eDesignation') == 'other')
                 {
                     $data->designation = $request->input('selfOtherDesignation');
+                    $data1->designation = $request->input('selfOtherDesignation');
+                    
                 }
 
                 
                 $professionalI = $user->professionalI()->get();
-                // $entrepI = $user->entrepI()->get();
-                // if($entrepI && count($entrepI)>0)
-                // {
-                //     $entrepI = $entrepI[0];
-                //     $entrepI->industry = $data->industry;
-                //     $entrepI->company_name = $data->company;
-                //     $entrepI->established_date = $data->date;
-                //     $entrepI->designation = $data->designation;
-                //     $entrepI->company_logo_path = $data->logo;
-                //     $entrepI->total_employees = $data->totalEmployes;
-                //     $entrepI->total_nustian_employees = $data->nustians;
-                //     $entrepI->website_link = $data->link;
+                $entrepI = $user->entrepI()->get();
+                if($entrepI && count($entrepI)>0)
+                {
+                    $entrepI = $entrepI[0];
+                    $entrepI->industry = $data1->industry;
+                    $entrepI->company_name = $data1->company_name;
+                    $entrepI->established_date = $data1->established_date;
+                    $entrepI->designation = $data1->designation;
+                    // $entrepI->company_logo_path = $data->logo;
+                    $entrepI->total_employees = $data1->total_employees;
+                    $entrepI->total_nustian_employees = $data1->total_nustian_employees;
+                    $entrepI->website_link = $data1->website_link;
                     
-                //     $entrepI->save(); // save to database...    
-                // }
-                // else{
-                //     $entrepI = EntrepI::create((array)$data);
+                    $entrepI->save(); // save to database...    
+                }
+                else{
+                    $data1 = (array) $data1;
+                    $entrepI = EntrepI::create((array)$data1);
                     
-                // }
+                }
 
                 if($professionalI && count($professionalI)>0){
                     $professionalI = $professionalI[0];
                     $professionalI->user_id = $data->user_id;
-                    $professionalI->employed = $data->employed;
+                    $professionalI->employed = "selfemplyed";
                     $professionalI->industry = $data->industry;
                     $professionalI->designation = $data->designation;
                     $professionalI->country = $data->country;
@@ -183,6 +200,7 @@ class ProfessionalController extends Controller
                 }
                 else{
                     //create entry
+                    $data = (array) $data;
                     $professionalI = ProfessionalI::create((array)$data);
                     return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
                 }
