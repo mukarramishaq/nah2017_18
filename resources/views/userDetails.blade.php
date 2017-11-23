@@ -100,8 +100,9 @@
               </div>
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-          Status: 
+        <div class="box-footer text-right">
+          <button type="button" class="btn btn-flat bg-green"  onclick="">Approve</button>
+
         </div>
         <!-- /.box-footer-->
       </div>
