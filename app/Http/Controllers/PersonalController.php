@@ -90,7 +90,8 @@ class PersonalController extends Controller
                 'mobile_no'=> $request->input('phoneNumber'),
                 'emergency_no'=> $request->input('emergencyPhoneNumber'),
             );
-            \Log::info((array) $data);
+            // \Log::info((array) $data);
+            \Log::info(gettype($data));
             //check if user has personalInformation entry in table already or not
             $personalI = $user->personalI()->get();
             if($personalI && count($personalI)>0){

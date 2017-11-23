@@ -104,7 +104,11 @@
                 "singularize",
                 "string"
             ],
+<<<<<<< HEAD
+            "time": "2017-07-22T12:18:28+00:00"
+=======
             "time": "2015-11-06T14:35:42+00:00"
+>>>>>>> ede0818c7d4dd9bcc6531e31e9f9dd47040a751c
         },
         {
             "name": "erusev/parsedown",
@@ -2489,6 +2493,18 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
+<<<<<<< HEAD
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+                "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/2d3d238c433cf69caeb4842e97a3223a116f94b2",
+                "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2",
+=======
             "version": "3.3.2",
             "source": {
                 "type": "git",
@@ -2499,6 +2515,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/bf329f6c1aadea3299f08ee804682b7c45b326a2",
                 "reference": "bf329f6c1aadea3299f08ee804682b7c45b326a2",
+>>>>>>> ede0818c7d4dd9bcc6531e31e9f9dd47040a751c
                 "shasum": ""
             },
             "require": {
@@ -2844,7 +2861,11 @@
         },
         {
             "name": "phpunit/php-token-stream",
+<<<<<<< HEAD
+            "version": "2.0.1",
+=======
             "version": "1.4.11",
+>>>>>>> ede0818c7d4dd9bcc6531e31e9f9dd47040a751c
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
@@ -2852,8 +2873,13 @@
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/9a02332089ac48e704c70f6cefed30c224e3c0b0",
+                "reference": "9a02332089ac48e704c70f6cefed30c224e3c0b0",
+=======
                 "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e03f8f67534427a787e21a385a67ec3ca6978ea7",
                 "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7",
+>>>>>>> ede0818c7d4dd9bcc6531e31e9f9dd47040a751c
                 "shasum": ""
             },
             "require": {

@@ -24,7 +24,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" id="professionalInformationForm" action="{{route('professionalSaveAndNext')}}" method="POST">
+            <form role="form" id="professionalInformationForm" action="{{route('professionalSaveAndNext')}}" method="POST" novalidate>
               {{csrf_field()}}
               <div class="box-body">
                 <div class="row">
@@ -284,37 +284,7 @@
 
   })
 </script>
-<script>
-  function save()
-    {
-        
-        var data = {
-
-                'employed': $('#employed').val(),
-                'country':$('#currentCountry').val(),
-                'city':$('#currentCity').val(),
-                'address':$('#currentAddress').val(),
-                
-            };
-            console.log(data);
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url:'/professionalInformation/save',
-            type: 'POST',
-            data: data,
-            dataType: 'json',
-            success: function(data){
-
-            },
-            error: function(request, error){
-
-            },
-
-        });
-    }
+<script src="{{asset('js/professional.js')}}">
+  
 </script>
 @endsection
