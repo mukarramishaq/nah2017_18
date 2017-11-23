@@ -69,39 +69,38 @@
               <div class="box-body">
                 
                 <div class="row"> 
-                 <div class="col-md-4 col-sm-12 col-xs-12 col-md-push-8">
+                 <div class="col-md-4 col-sm-12 col-xs-12 col-md-push-7">
                   
                   <div class="row">      
-                    <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 text-center"> 
-                      
-                      <img class="imgPicker" id="imgViewer" src="http://placehold.it/200x200" alt="your image"  width="100%"/>                      
-                      <input type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/>                          
+                    <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4"> 
+                      <div style="width: 100px; margin-top: 10px;">
+                      <img class="imgPicker" id="imgViewer" src="http://placehold.it/200x200" alt="your image"  width="100%"/>
+                      <input style="margin-top: 5px; width: inherit; font-size: 12px;" type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/> 
+                      </div>                         
                     </div>
                   
                 </div>
               </div>
-                <div class="col-md-8 col-sm-12 col-xs-12 col-md-pull-4">                 
+                <div class="col-md-8 col-sm-12 col-xs-12 col-md-pull-4">   
+                <div class="row">  
+                <div class="col-md-9">            
                 <div class="form-group">
                   <label for="name">Name</label>
                   <input type="name" required="true" name="name" value="{{$personalI->name}}" class="form-control" id="name" placeholder="Enter name">
-                </div>   
+                </div>
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" value="{{$personalI->email}}" name="email" required="true" class="form-control" id="email"  placeholder="Enter email">
-                </div>           
+                  <label for="cNIC">CNIC</label>
+                  <input type="text" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC" data-inputmask='"mask": "99999-9999999-9"' data-mask>
+                  <p class="help-block">Example block-level help text here.</p>
+                </div>  
+                </div>
+                </div>        
                 
                 </div>
                
                 </div>
 
                 <div class="row">
-                <div class="col-md-6">
-                <div class="form-group">
-                  <label for="cNIC">CNIC</label>
-                  <input type="text" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC" data-inputmask='"mask": "99999-9999999-9"' data-mask>
-                  <p class="help-block">Example block-level help text here.</p>
-                </div>
-                </div>
                 <div class="col-md-6">
                 <div class="form-group">
                 <label>Gender</label>
@@ -126,25 +125,22 @@
                 </select>
                 </div>
                 </div>
-                </div>
-                <div class="row">
-                <div class="col-md-6">
-                 <div class="form-group">
-                  <label for="phoneNumber">Phone Number</label>
-                  <input type="text" value="{{$personalI->mobile_no}}" name="phoneNumber" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
-                  <p class="help-block">Example block-level help text here.</p>
-                </div>  
-                </div>
                 <div class="col-md-6">
                 <div class="form-group">
-                  <label for="emergencyPhoneNumber">Emergency Phone Number</label>
-                  <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
-                  <p class="help-block">Example block-level help text here.</p>
+                  <label>Date of Birth</label>
+
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" name="" id="datepicker">
+                  </div>
+                  <!-- /.input group -->
                 </div>
                 </div>
                 </div>  
-                <div class="row">
-                <div class="col-md-12">
+                <div class="row"> 
+                <div class="col-md-6">
                 <div class="form-group">
                   <label for="">Any Disability?</label>
                   <br>
@@ -178,7 +174,30 @@
                     @endif
                     --------------------------------------------------------------------------- --}}
                 </div>    
-                </div> 
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" value="{{$personalI->email}}" name="email" required="true" class="form-control" id="email"  placeholder="Enter email">
+                </div>                   
+                </div>
+                
+                </div>
+                <div class="row">
+                <div class="col-md-6">
+                 <div class="form-group">
+                  <label for="phoneNumber">Phone Number</label>
+                  <input type="text" value="{{$personalI->mobile_no}}" name="phoneNumber" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
+                  <p class="help-block">Example block-level help text here.</p>
+                </div>  
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                  <label for="emergencyPhoneNumber">Emergency Phone Number</label>
+                  <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
+                  <p class="help-block">Example block-level help text here.</p>
+                </div>
+                </div>
                 </div>       
               </div>
               <!-- /.box-body -->
@@ -204,8 +223,8 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-               <ul>
-                    <li>instruction1</li>
+               <ul style="padding-left: 15px;">
+                    <li>Name: Enter your full name. Use only alphabets.</li>
                 </ul>
             </div>
             <!-- /.box-body -->
@@ -216,6 +235,10 @@
 
 @section('header-styles')
  <link rel="stylesheet" type="text/css" href="{{asset('css/imagePicker1.css')}}">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="{{asset('theme/lte/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="{{asset('theme/lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
 @endsection
 @section('footer-scripts')
  <script type="text/javascript" src="{{asset('js/imagePicker1.js')}}" > </script>
@@ -225,6 +248,11 @@
  <script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
   <script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.phone.extensions.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js"></script>
+<!-- date-range-picker -->
+<script src="{{asset('theme/lte/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('theme/lte/bower_components/moment/min/moment.min.js')}}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{asset('theme/lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
   <script>
   $(function () {
     //Money Euro
@@ -264,5 +292,43 @@
         //$('#modal-pic').modal('show');
        
       });
+</script>
+<script>
+  $(function () {
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+      //Money Euro
+    $('[data-mask]').inputmask()
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+
+  })
 </script>
  @endsection
