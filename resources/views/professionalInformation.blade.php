@@ -24,7 +24,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" id="professionalInformationForm" action="{{route('professionalSaveAndNext')}}" method="POST">
+            <form role="form" id="professionalInformationForm" action="{{route('professionalSaveAndNext')}}" method="POST" novalidate>
               {{csrf_field()}}
               <div class="box-body">
                 <div class="form-group">
@@ -54,7 +54,7 @@
                     </select>
                 </div>
                 <div class="form-group collapse Employed-industry">
-                  <input type="name" required="true" class="form-control" name="otherIndustry" id="otherIndustry" placeholder="Enter your industry name">
+                  <input type="name" required="true" class="form-control"  name="otherIndustry" id="otherIndustry" placeholder="Enter your industry name">
                 </div>   
                 <div class="form-group collapse Employed">
                   <label for="organization">Organization</label>
@@ -256,15 +256,57 @@
 <script>
   function save()
     {
-        
-        var data = {
+      var data;
+      if($('#employed').val()=='unemployed')
+      {
+        data = {
+                'employed': $('#employed').val(),
+                'country':$('#currentCountry').val(),
+                'city':$('#currentCity').val(),
+                'address':$('#currentAddress').val()
+                
+        };
+      }
+      else if($('#employed').val()=='employed')
+      {
+        data = {
+                'employed': $('#employed').val(),
+                'country':$('#currentCountry').val(),
+                'city':$('#currentCity').val(),
+                'address':$('#currentAddress').val(),
+                'industry':$('#industry').val(),
+                'otherIndustry':$('#otherIndustry').val(),
+                'organization':$('#organization').val(),
+                'designation':$('#designation').val(),
+                'otherDesignation':$('#otherDesignation').val(),
+
+
+
+        };
+      }
+      else if($('#employed').val()=='selfemployed')
+      {
+          data = {
 
                 'employed': $('#employed').val(),
                 'country':$('#currentCountry').val(),
                 'city':$('#currentCity').val(),
                 'address':$('#currentAddress').val(),
-                
+                'selfIndustry': $('#eIndustry'),
+                'selfOtherIndustry': $('#eOtherIndustry'),
+                'ecompany': $('#eCompany').val(),
+                'date': $('#datepicker').val(),
+                'selfDesignation': $('#eDesignation').val(),
+                'selfOtherDesignation':$('#eOtherDesignation').val(),
+                'logo':$('#eCompanyLogo').val(),
+                'totalEmployes':$('#eTotalEmployes').val(),
+                'nustians': $('#eTotalNustEmployes').val(),
+                'link':$('#eWebsite').val()
+                 
             };
+      }
+        
+        
             console.log(data);
         $.ajaxSetup({
             headers: {
