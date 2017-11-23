@@ -79,21 +79,21 @@ class ProfessionalController extends Controller
                     'city'=>$request->input('city'),
                     'address'=>$request->input('address')
                 );
-                if($request->input('industry') == 'other')
-                {
+                // if($request->input('industry') == 'other')
+                // {
                     
-                    // $data['industry'] = $request->input('otherIndustry');
-                    $data->industry = $request->input('otherIndustry');
+                //     // $data['industry'] = $request->input('otherIndustry');
+                //     $data->industry = $request->input('otherIndustry');
                     
-                }
+                // }
 
-                if($request->input('designation') == 'other')
-                {
-                    // $data['designation'] = $request->input('otherDesignation');
-                    $data->designation = $request->input('otherDesignation');
+                // if($request->input('designation') == 'other')
+                // {
+                //     // $data['designation'] = $request->input('otherDesignation');
+                //     $data->designation = $request->input('otherDesignation');
                     
 
-                }
+                // }
 
                 
 
@@ -127,7 +127,7 @@ class ProfessionalController extends Controller
                     'employed'=>$request->input('employed'),
                     'industry'=>$request->input('selfIndustry'),
                     
-                    'designation'=>$request->input('eDesignation'),
+                    'designation'=>$request->input('selfDesignation'),
                     
                     // 'company_logo_path'=>$request->input('eCompanyLogo'),
                     
@@ -138,7 +138,7 @@ class ProfessionalController extends Controller
 
                 $data1 = (object) array(
                     'user_id'=>$user->id,
-                    'industry'=>$request->input('eOtherIndustry'),
+                    'industry'=>$request->input('selfIndustry'),
                     'company_name'=>$request->input('ecompany'),
                     'established_date'=>$request->input('date'),
                     'designation'=>$request->input('selfDesignation'),
@@ -149,19 +149,19 @@ class ProfessionalController extends Controller
 
 
                 );
-                if($request->input('eIndustry') == 'other')
-                {
-                    $data->industry = $request->input('selfOtherIndustry');
-                    $data1->industry = $request->input('selfOtherIndustry');
+                // if($request->input('eIndustry') == 'other')
+                // {
+                //     $data->industry = $request->input('selfOtherIndustry');
+                //     $data1->industry = $request->input('selfOtherIndustry');
                     
-                }
+                // }
 
-                if($request->input('eDesignation') == 'other')
-                {
-                    $data->designation = $request->input('selfOtherDesignation');
-                    $data1->designation = $request->input('selfOtherDesignation');
+                // if($request->input('eDesignation') == 'other')
+                // {
+                //     $data->designation = $request->input('selfOtherDesignation');
+                //     $data1->designation = $request->input('selfOtherDesignation');
                     
-                }
+                // }
 
                 
                 $professionalI = $user->professionalI()->get();
@@ -272,25 +272,25 @@ class ProfessionalController extends Controller
                 $data = (object) array(
                     'user_id'=>$user->id,
                     'employed'=>$request->input('employed'),
-                    'industry'=>$request->input('industry'),
-                    'organization'=>$request->input('organization'),
-                    'designation'=>$request->input('designation'),
+                    'industry'=>$request->input('eIndustry'),
+                    'organization'=>$request->input('eOrganization'),
+                    'designation'=>$request->input('eDesignation'),
                     'country'=>$request->input('currentCountry'),
                     'city'=>$request->input('currentCity'),
                     'address'=>$request->input('currentAddress')
                 );
-                if($request->input('industry') == 'other')
-                {
-                    $data->industry = $request->input('otherIndustry');
-                }
+                // if($request->input('industry') == 'other')
+                // {
+                //     $data->industry = $request->input('otherIndustry');
+                // }
 
-                if($request->input('designation') == 'other')
-                {
-                    // $data['designation'] = $request->input('otherDesignation');
-                    $data->designation = $request->input('otherDesignation');
+                // if($request->input('designation') == 'other')
+                // {
+                //     // $data['designation'] = $request->input('otherDesignation');
+                //     $data->designation = $request->input('otherDesignation');
                     
 
-                }
+                // }
 
                 \Log::info((array) $data);
                 $professionalI = $user->professionalI()->get();
@@ -326,9 +326,9 @@ class ProfessionalController extends Controller
                 $data = (object) array(
                     'user_id'=>$user->id,
                     'employed'=>$request->input('employed'),
-                    'industry'=>$request->input('eOtherIndustry'),
+                    'industry'=>$request->input('seIndustry'),
                     
-                    'designation'=>$request->input('eDesignation'),
+                    'designation'=>$request->input('seDesignation'),
                     
                     // 'company_logo_path'=>$request->input('eCompanyLogo'),
                     
@@ -339,12 +339,12 @@ class ProfessionalController extends Controller
 
                 $data1 = (object) array(
                     'user_id'=>$user->id,
-                    'industry'=>$request->input('eOtherIndustry'),
-                    'company_name'=>$request->input('eCompany'),
-                    'established_date'=>$request->input('establishedDate'),
-                    'designation'=>$request->input('eDesignation'),
-                    'total_employees'=>$request->input('eTotalEmployes'),
-                    'total_nustian_employees'=>$request->input('eTotalNustEmployes'),
+                    'industry'=>$request->input('seIndustry'),
+                    'company_name'=>$request->input('seCompany'),
+                    'established_date'=>$request->input('seEstablishedDate'),
+                    'designation'=>$request->input('seDesignation'),
+                    'total_employees'=>$request->input('seTotalEmployes'),
+                    'total_nustian_employees'=>$request->input('seTotalNustEmployes'),
                     'website_link'=>$request->input('eWebsite'),
 
 

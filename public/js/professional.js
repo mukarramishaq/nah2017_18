@@ -14,11 +14,11 @@ function save() {
             'country': $('#currentCountry').val(),
             'city': $('#currentCity').val(),
             'address': $('#currentAddress').val(),
-            'industry': $('#industry').val(),
-            'otherIndustry': $('#otherIndustry').val(),
-            'organization': $('#organization').val(),
-            'designation': $('#designation').val(),
-            'otherDesignation': $('#otherDesignation').val(),
+            'industry': $('#eIndustry').val(),
+            // 'otherIndustry': $('#otherIndustry').val(),
+            'organization': $('#eOrganization').val(),
+            'designation': $('#eDesignation').val(),
+            // 'otherDesignation': $('#otherDesignation').val(),
 
 
 
@@ -31,13 +31,13 @@ function save() {
             'country': document.getElementById("currentCountry").value,
             'city': document.getElementById("currentCity").value,
             'address': document.getElementById("currentAddress").value,
-            'selfIndustry': document.getElementById("eIndustry").value,
-            'selfOtherIndustry': document.getElementById("eOtherIndustry").value,
-            'ecompany': document.getElementById("eCompany").value,
+            'selfIndustry': document.getElementById("seIndustry").value,
+            // 'selfOtherIndustry': document.getElementById("eOtherIndustry").value,
+            'ecompany': document.getElementById("seCompany").value,
             'date': document.getElementById("datepicker").value,
-            'selfDesignation': document.getElementById("eDesignation").value,
-            'selfOtherDesignation': document.getElementById("eOtherDesignation").value,
-            'logo': document.getElementById("eCompanyLogo").value,
+            'selfDesignation': document.getElementById("seDesignation").value,
+            // 'selfOtherDesignation': document.getElementById("eOtherDesignation").value,
+            'logo': document.getElementById("seCompanyLogo").value,
             'totalEmployes': document.getElementById("eTotalEmployes").value,
             'nustians': document.getElementById("eTotalNustEmployes").value,
             'link': document.getElementById("eWebsite").value,
@@ -46,7 +46,7 @@ function save() {
     }
 
 
-    // console.log(data);
+    console.log(data);
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
