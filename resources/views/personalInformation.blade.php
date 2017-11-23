@@ -91,7 +91,6 @@
                 <div class="form-group">
                   <label for="cNIC">CNIC</label>
                   <input type="text" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC" data-inputmask='"mask": "99999-9999999-9"' data-mask>
-                  <p class="help-block">Example block-level help text here.</p>
                 </div>  
                 </div>
                 </div>        
@@ -139,7 +138,27 @@
                 </div>
                 </div>
                 </div>  
-                <div class="row"> 
+                <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" value="{{$personalI->email}}" name="email" required="true" class="form-control" id="email"  placeholder="Enter email">
+                </div>                   
+                </div>
+                <div class="col-md-6">
+                 <div class="form-group">
+                  <label for="phoneNumber">Phone Number</label>
+                  <input type="text" value="{{$personalI->mobile_no}}" name="phoneNumber" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
+                </div>
+                </div>                
+                </div>
+                <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                  <label for="emergencyPhoneNumber">Emergency Phone Number</label>
+                  <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
+                </div>
+                </div>
                 <div class="col-md-6">
                 <div class="form-group">
                   <label for="">Any Disability?</label>
@@ -174,29 +193,7 @@
                     @endif
                     --------------------------------------------------------------------------- --}}
                 </div>    
-                </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" value="{{$personalI->email}}" name="email" required="true" class="form-control" id="email"  placeholder="Enter email">
-                </div>                   
-                </div>
-                
-                </div>
-                <div class="row">
-                <div class="col-md-6">
-                 <div class="form-group">
-                  <label for="phoneNumber">Phone Number</label>
-                  <input type="text" value="{{$personalI->mobile_no}}" name="phoneNumber" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
-                  <p class="help-block">Example block-level help text here.</p>
-                </div>  
-                </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                  <label for="emergencyPhoneNumber">Emergency Phone Number</label>
-                  <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
-                  <p class="help-block">Example block-level help text here.</p>
-                </div>
+
                 </div>
                 </div>       
               </div>
