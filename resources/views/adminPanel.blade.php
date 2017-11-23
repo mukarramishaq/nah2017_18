@@ -25,8 +25,9 @@
         </thead>
         <tbody>
           {{--
-        <tr onclick="document.location = 'professionalInformation';"> 
+
           @foreach($data as $person) 
+        <tr onclick="document.location = 'userDetails/?id={{$person->id}}';"> 
               <td>{{$person->id}}</td>
               <td>{{$person->name}}</td>
               <td>{{$person->cnic}}</td>              
@@ -34,8 +35,9 @@
               <td>{{$person->challan_id}}</td>
               <td>{{$person->status}}</td>
               <td>{{$person->status_updated_by}}</td>
-          @endforeach
+         
         </tr>
+         @endforeach
         --}}
         </a>
         <tr>

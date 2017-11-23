@@ -40,56 +40,64 @@
                   
                 </div>
               </div>
-                <div class="col-md-8 col-sm-12 col-xs-12 col-md-pull-4">                 
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <p>Farooqi</p>
-                </div>   
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <p>abdulsamadfaruqi@gmail.com</p>
-                </div>           
-                
-                </div>
-               
-                </div>
+              <div class="col-md-8 col-sm-12 col-xs-12 col-md-pull-4">                 
+              <div class="form-group">
+                <label for="name">Name</label>
+                <p>Farooqi</p>
+              </div>   
+              <div class="form-group">
+                <label for="email">Email</label>
+                <p>abdulsamadfaruqi@gmail.com</p>
+              </div>           
+              
+              </div>
+             
+              </div>
 
-                <div class="row">
-                <div class="col-md-6">
-                <div class="form-group">
-                  <label for="cNIC">CNIC</label>
-                  <p>1234567890</p>
-                </div>
-                </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                <label>Gender</label>
-                <p>Male</p>
-                </div>
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-md-6">
-                 <div class="form-group">
-                  <label for="phoneNumber">Phone Number</label>
-                  <p>1234567890</p>
-                </div>  
-                </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                  <label for="emergencyPhoneNumber">Emergency Phone Number</label>
-                  <p>1234567890</p>
-                </div>
-                </div>
-                </div>  
-                <div class="row">
-                <div class="col-md-12">
-                <div class="form-group">
-                  <label for="">Any Disability?</label>
-                  <p>No</p>
-                </div>    
-                </div> 
-                </div>
+              <div class="row">
+              <div class="col-md-6">
+              <div class="form-group">
+                <label for="cNIC">CNIC</label>
+                <p>1234567890</p>
+              </div>
+              </div>
+              <div class="col-md-6">
+              <div class="form-group">
+              <label>Gender</label>
+              <p>Male</p>
+              </div>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col-md-6">
+               <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <p>1234567890</p>
+              </div>  
+              </div>
+              <div class="col-md-6">
+              <div class="form-group">
+                <label for="emergencyPhoneNumber">Emergency Phone Number</label>
+                <p>1234567890</p>
+              </div>
+              </div>
+              </div>  
+              <div class="row">
+              <div class="col-md-12">
+              <div class="form-group">
+                <label for="">Any Disability?</label>
+                <p>No</p>
+              </div>    
+              </div> 
+              </div>
+              <div class="row">
+              <div class="col-md-12">
+              <div class="form-group">
+                <label for="">Challan</label>
+                <img class="img-responsive pad" src="http://www.sepeb.com/hot-girl-wallpaper-hd/hot-girl-wallpaper-hd-006.jpg" alt="Photo">
+              </div>
+              </div>
+              </div>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
