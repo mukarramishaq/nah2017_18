@@ -16,7 +16,6 @@
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
         <div class="modal fade" id="modal-pic">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -34,7 +33,7 @@
                     <div class="preview-uploaded-image col-md-4 col-md-offset-4" >
                     </div>
                   </div>
-                    <div class="form-group input-picture">
+                  <div class="form-group input-picture">
                     <label>Image:</label>
                     <input type="file" name="image" class="form-control">
                   </div>
@@ -57,7 +56,7 @@
 
 
     <div class="row">
-      <div class="col-md-12 col-sm-12">
+      <div class="col-md-9">
           <!-- general form elements -->
           <div class="box box-danger">
             <div class="box-header with-border">
@@ -72,21 +71,39 @@
                 <div class="row"> 
                  <div class="col-md-4 col-sm-12 col-xs-12 col-md-push-8">
                   
-                  <div class="row">  
+                  <div class="row">      
                     <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 text-center"> 
                       
                       <img class="imgPicker" id="imgViewer" src="http://placehold.it/200x200" alt="your image"  width="100%"/>                      
-                      <input type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/>                                       
+                      <input type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/>                          
                     </div>
                   
                 </div>
-                </div>
-                <div class="col-md-8 col-sm-12 col-xs-12 col-md-pull-4">                     
+              </div>
+                <div class="col-md-8 col-sm-12 col-xs-12 col-md-pull-4">                 
                 <div class="form-group">
                   <label for="name">Name</label>
                   <input type="name" required="true" name="name" value="{{$personalI->name}}" class="form-control" id="name" placeholder="Enter name">
-                </div>               
-               <div class="form-group">
+                </div>   
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" value="{{$personalI->email}}" name="email" required="true" class="form-control" id="email"  placeholder="Enter email">
+                </div>           
+                
+                </div>
+               
+                </div>
+
+                <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                  <label for="cNIC">CNIC</label>
+                  <input type="text" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC" data-inputmask='"mask": "99999-9999999-9"' data-mask>
+                  <p class="help-block">Example block-level help text here.</p>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
                 <label>Gender</label>
                 <select  required="true" name="gender"  class="form-control select2 select2-hidden-accessible"  id="gender" style="width: 100%;" tabindex="-1" aria-hidden="true">
                   @if($personalI->gender == 'male')
@@ -107,42 +124,94 @@
                     <option value="other" >Other</option>
                   @endif
                 </select>
-              </div>
                 </div>
-               
                 </div>
-                <div class="form-group">
-                  <label for="cNIC">CNIC</label>
-                  <input type="text" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC" data-inputmask='"mask": "99999-9999999-9"' data-mask>
-                  <p class="help-block">Example block-level help text here.</p>
                 </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" value="{{$personalI->email}}" name="email" required="true" class="form-control" id="email"  placeholder="Enter email">
-
-                  <p class="help-block">Example block-level help text here.</p>
-                </div>
+                <div class="row">
+                <div class="col-md-6">
                  <div class="form-group">
                   <label for="phoneNumber">Phone Number</label>
-                  <input type="text" value="{{$personalI->mobile_no}}" name="phoneNumber" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                  <input type="text" value="{{$personalI->mobile_no}}" name="phoneNumber" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
                   <p class="help-block">Example block-level help text here.</p>
                 </div>  
+                </div>
+                <div class="col-md-6">
                 <div class="form-group">
                   <label for="emergencyPhoneNumber">Emergency Phone Number</label>
-                  <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                  <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
                   <p class="help-block">Example block-level help text here.</p>
-                </div>              
+                </div>
+                </div>
+                </div>  
+                <div class="row">
+                <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Any Disability?</label>
+                  <br>
+                  <label class = "radioLable" style="margin-right: 20px;">
+                  <input type="radio" name="disability" class="minimal-red" value="1" checked>
+                  Yes
+                  </label>
+                  <label class = "radioLable" style="margin-right: 20px;">
+                      <input type="radio" name="disability" class="minimal-red" value="0">
+                      No
+                  </label> 
+                  {{-- --------------------------------------------------------------------
+                    @if($educationalI->any_disability == true)
+                        <label class = "radioLable" style="margin-right: 20px;">
+                            <input type="radio" name="disability" class="minimal-red" value="1" checked>
+                            Yes
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                            <input type="radio" name="disability" class="minimal-red" value="0">
+                            No
+                        </label> 
+                    @else
+                        <label class = "radioLable" style="margin-right: 20px;">
+                            <input type="radio" name="disability" class="minimal-red" value="1">
+                            Yes
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                            <input type="radio" name="disability" class="minimal-red" value="0" checked>
+                            No
+                        </label> 
+                    @endif
+                    --------------------------------------------------------------------------- --}}
+                </div>    
+                </div> 
+                </div>       
               </div>
               <!-- /.box-body -->
+              <div class="overlay">
+                <i class="fa fa-refresh fa-spin fa-5x"></i>
+              </div>
+              <div class="row">
+              <div class="col-md-12">
               <div class="box-footer text-right">
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
                 <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
+              </div>
+              </div>
               </div>
             </form>
           </div>
           <!-- /.box -->
         </div>
+        <div class="col-md-3">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Instructions</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+               <ul>
+                    <li>instruction1</li>
+                </ul>
+            </div>
+            <!-- /.box-body -->
+        </div>
     </div>
+  </div>
 @endsection
 
 @section('header-styles')

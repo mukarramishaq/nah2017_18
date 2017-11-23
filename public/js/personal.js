@@ -1,4 +1,5 @@
 var ext;
+$('.overlay').hide();
 function readURL(input) {
     if (input.files && input.files[0]) {
 
@@ -24,7 +25,7 @@ function readURL(input) {
 }
 function save()
 {
-	
+	$('.overlay').show();
 	var data = {
 
 			'name': $('#name').val(),
@@ -41,10 +42,10 @@ function save()
 		data: data,
 		dataType: 'json',
 		success: function(data){
-
+			$('.overlay').hide();
 		},
 		error: function(request, error){
-
+			$('.overlay').hide();
 		},
 
 	});

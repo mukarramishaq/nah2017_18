@@ -662,3 +662,45 @@
 </script>
 </body>
 </html>
+@endsection
+
+@section('header-styles')
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset('theme/lte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+  <style type="text/css">
+    
+  tr:hover {
+    cursor: pointer;
+}
+  </style>
+@endsection
+@section('footer-scripts')
+
+<!-- DataTables -->
+<script src="{{asset('theme/lte/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('theme/lte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+ <script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.js')}}"></script>
+ <script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>k
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js"></script>
+  <script>
+  $(function () {
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+  
+  })
+</script>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  });
+</script>
+ @endsection

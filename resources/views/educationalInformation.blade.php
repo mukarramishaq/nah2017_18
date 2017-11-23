@@ -15,8 +15,8 @@
 
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
+    <div class="row">        
+      <div class="col-md-9">
           <!-- general form elements -->
           <div class="box box-danger">
             <div class="box-header with-border">
@@ -27,13 +27,9 @@
             <form role="form" id="educationalInformationForm" action="{{route('educationalSaveAndNext')}}" method="POST">
                 {{csrf_field()}}
               <div class="box-body">
+                <div class="row">
                 
-                <div class="form-group">
-	                <label for="nustRegistrationNumber">NUST Registration Number</label>
-	                <input type="text" value="{{$educationalI->reg_no}}"  required="true" class="form-control" name="nustRegistrationNumber" id="nustRegistrationNumber" placeholder="Enter registration Number">
-	                <p class="help-block">Example block-level help text here.</p>
-                </div>
-               <!-- radio -->
+                <div class="col-md-6">               
                 <div class="form-group">
                 	<label for="">Degree Name</label>
                 	<br>
@@ -65,6 +61,16 @@
                         @endif
                     </label>
                 </div>
+                </div>
+                <div class="col-md-6">                
+                <div class="form-group">
+                    <label for="nustRegistrationNumber">NUST Registration Number</label>
+                    <input type="text" value="{{$educationalI->reg_no}}"  required="true" class="form-control" name="nustRegistrationNumber" id="nustRegistrationNumber" placeholder="Enter registration Number">
+                </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6">
                 <div class="form-group">
                     <label>School/College</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="school" id="school" style="width: 100%;" tabindex="-1" aria-hidden="true">
@@ -77,6 +83,8 @@
                         @endforeach
                     </select>
                 </div>
+                </div>
+                <div class="col-md-6">
                 <div class="form-group">
                     <label>Discipline</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="discipline"  id="discipline" style="width: 100%;" tabindex="-1" aria-hidden="true">
@@ -89,6 +97,10 @@
                     @endforeach
                     </select>
                 </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-6">
                 <div class="form-group">
                     <label>Enrollment Year</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="enrollmentYear"  id="enrollmentYear" style="width: 100%;" tabindex="-1" aria-hidden="true">
@@ -101,6 +113,8 @@
                         @endfor
                     </select>
                 </div>
+                </div>
+                <div class="col-md-6">
                 <div class="form-group">
                     <label>Graduation Year</label>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="graduationYear"  id="graduationYear" style="width: 100%;" tabindex="-1" aria-hidden="true">
@@ -113,7 +127,11 @@
                         @endfor
                     </select>
                 </div>
+                </div>
+                </div>
                 <!-- radio -->
+                <div class="row">
+                <div class="col-md-12">
                 <div class="form-group">
                 	<label for="">Do You Have an Alumni Card?</label>
                 	<br>
@@ -137,7 +155,9 @@
                         </label> 
                     @endif
 
-                </div>            
+                </div>
+                </div> 
+                </div>           
               </div>
               <!-- /.box-body -->
               <div class="box-footer text-right">
@@ -147,6 +167,20 @@
             </form>
           </div>
           <!-- /.box -->
+        </div>
+        <div class="col-md-3">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Instructions</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <ul>
+                    <li>instruction1</li>
+                </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
         </div>
     </div>
 @endsection
@@ -177,11 +211,19 @@
 	      checkboxClass: 'icheckbox_flat-green',
 	      radioClass   : 'iradio_flat-green'
 	    })
-
+        
 	   
 	  })
 	</script>
-    <script> 
+    <script src="{{asset('js/educationalInformation.js')}}"> 
+       
+    </script>
+    <script>
+        @foreach($disciplines as $discipline)
+             console.log('{{$discipline->name}}');
+        @endforeach
+       
+ 
         
         function save()
         {
