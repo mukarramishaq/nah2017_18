@@ -13,14 +13,24 @@ class ProfessionalController extends Controller
     public function index(Request $request){
         $user = Auth::user();
         $professionalI = $user->professionalI()->get();
+        $entrepI = $user->entrepI()->get();
+
         if($professionalI && count($professionalI)>0){
             $professionalI = $professionalI[0];
         }
         else{
             $professionalI = new ProfessionalI;
         }
+
+        if($entrepI && count($entrepI)>0){
+            $entrepI = $entrepI[0];
+        }
+        else{
+            $entrepI = new EntrepI;
+        }
+
         if($user){
-            return view('professionalInformation')->with('professionalI',$professionalI);
+            return view('professionalInformation')->with('professionalI',$professionalI)->with('entrepI',$entrepI);
         }
         else{
             return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
@@ -189,7 +199,7 @@ class ProfessionalController extends Controller
                 if($professionalI && count($professionalI)>0){
                     $professionalI = $professionalI[0];
                     $professionalI->user_id = $data->user_id;
-                    $professionalI->employed = "selfemplyed";
+                    $professionalI->employed = $data->employed;
                     $professionalI->industry = $data->industry;
                     $professionalI->designation = $data->designation;
                     $professionalI->country = $data->country;
@@ -388,7 +398,7 @@ class ProfessionalController extends Controller
                 if($professionalI && count($professionalI)>0){
                     $professionalI = $professionalI[0];
                     $professionalI->user_id = $data->user_id;
-                    $professionalI->employed = "selfemplyed";
+                    $professionalI->employed = $data->employed;
                     $professionalI->industry = $data->industry;
                     $professionalI->designation = $data->designation;
                     $professionalI->country = $data->country;

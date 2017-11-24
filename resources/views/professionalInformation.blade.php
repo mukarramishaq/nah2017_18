@@ -51,13 +51,13 @@
                 <div class="col-md-6">
                 <div class="form-group collapse Employed">
                     <label>Industry</label>
-                    <input type="name" required="true" class="form-control" name="eIndustry" id="eIndustry" placeholder="Enter your industry name">
+                    <input type="name" required="true" value="{{$professionalI->industry}}" class="form-control" name="eIndustry" id="eIndustry" placeholder="Enter your industry name">
                 </div> 
                 </div>
                 <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
                     <label>Industry</label>                    
-                    <input type="name" required="true" class="form-control" name="seIndustry" id="seIndustry" placeholder="Enter your industry name">
+                    <input type="name" required="true" class="form-control" name="seIndustry" value="{{$professionalI->industry}}" id="seIndustry" placeholder="Enter your industry name">
                 </div> 
                 </div>
                 </div> 
@@ -65,13 +65,13 @@
                 <div class="col-md-6">
                 <div class="form-group collapse Employed">
                   <label for="organization">Organization</label>
-                  <input type="name" required="true" class="form-control" name="eOrganization" id="eOrganization" placeholder="Enter your organization name">
+                  <input type="name" required="true" value="{{$professionalI->organization}}" class="form-control" name="eOrganization" id="eOrganization" placeholder="Enter your organization name">
                 </div> 
                 </div>
                 <div class="col-md-6"> 
                 <div class="form-group collapse Employed">
                   <label>Your Designation</label>                    
-                  <input type="name" required="true" class="form-control" name="eDesignation" id="eDesignation" placeholder="Enter your industry name">
+                  <input type="name" required="true" value="{{$professionalI->designation}}" class="form-control" name="eDesignation" id="eDesignation" placeholder="Enter your industry name">
                 </div>  
                 </div>
                 </div>  
@@ -79,7 +79,7 @@
                 <div class="col-md-6">            
                 <div class="form-group collapse Self-employed">
                   <label for="eCompany">Company</label>
-                  <input type="name" required="true" class="form-control" name="seCompany" id="seCompany" placeholder="Enter your company name">
+                  <input type="name" required="true" class="form-control" value="{{$entrepI->company_name}}" name="seCompany" id="seCompany" placeholder="Enter your company name">
                 </div> 
                 </div>
                 <div class="col-md-6">
@@ -90,7 +90,7 @@
 		                <div class="input-group-addon">
 		            	    <i class="fa fa-calendar"></i>
 		                </div>
-		                <input type="text" class="form-control pull-right" name="seEstablishedDate" id="datepicker">
+		                <input type="text" value="{{$entrepI->established_date}}" class="form-control pull-right" name="seEstablishedDate" id="datepicker">
 		              </div>
 	                <!-- /.input group -->
 	              </div>
@@ -100,7 +100,7 @@
                 <div class="col-md-6">
 	              <div class="form-group collapse Self-employed">
                     <label>Your Designation</label>                    
-                    <input type="name" required="true" class="form-control" name="seDesignation" id="seDesignation" placeholder="Enter your industry name">
+                    <input type="name" required="true" value="{{$entrepI->designation}}" class="form-control" name="seDesignation" id="seDesignation" placeholder="Enter your industry name">
                 </div>
                 </div>
                 <div class="col-md-6">
@@ -114,13 +114,13 @@
                 <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
                   <label for="eTotalEmployes">Total Employees</label>
-                  <input type="name" required="true" class="form-control" name="seTotalEmployes" id="eTotalEmployes" placeholder="Enter number of employees">
+                  <input type="name" required="true" value="{{$entrepI->total_employees}}" class="form-control" name="seTotalEmployes" id="eTotalEmployes" placeholder="Enter number of employees">
                 </div>
                 </div>
                 <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
                   <label for="eTotalNustEmployes">Total NUSTians (Employees)</label>
-                  <input type="name" required="true" class="form-control" name="seTotalNustEmployes" id="eTotalNustEmployes" placeholder="Enter number of NUSTians employees">
+                  <input type="name" required="true" value="{{$entrepI->total_nustian_employees}}" class="form-control" name="seTotalNustEmployes" id="eTotalNustEmployes" placeholder="Enter number of NUSTians employees">
                 </div>
                 </div> 
                 </div>
@@ -128,7 +128,7 @@
                 <div class="col-md-12">
                 <div class="form-group collapse Self-employed">
                   <label for="eWebsite">Website/Social Media Link</label>
-                  <input type="url" required="true" class="form-control" name="eWebsite" id="eWebsite" placeholder="Enter website link">
+                  <input type="url" required="true" value="{{$entrepI->website_link}}" class="form-control" name="eWebsite" id="eWebsite" placeholder="Enter website link">
                 </div> 
                 </div>
                 </div>
