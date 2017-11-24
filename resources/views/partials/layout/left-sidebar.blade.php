@@ -8,7 +8,8 @@
            
         <!-- Sidebar user panel -->
         <div class="user-panel">
-            <div class="pull-left image">
+            <div class="pull-left image" id="id-left-image">
+                
                 <img src="{{asset('theme/lte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">

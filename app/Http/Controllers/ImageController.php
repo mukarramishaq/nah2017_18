@@ -22,6 +22,8 @@ class ImageController extends Controller
         $request->image->move(public_path('images'), $image);
         $url='images/'.$image;
 
+        
+
         $personalI = $user->personalI()->get();
         if($personalI && count($personalI)>0){
             $personalI = $personalI[0];
@@ -29,12 +31,18 @@ class ImageController extends Controller
             $personalI->picture_path = $image;
             $personalI->save();
 
+            $user->is_image_uploaded = true;
+            $user->save();
+
         }
         else{
             $personalI = PersonalI::create(array(
                 'user_id'=>$user->id,
                 'picture_path'=>$image,
             ));
+
+            $user->is_image_uploaded = true;
+            $user->save();
         }
 
 

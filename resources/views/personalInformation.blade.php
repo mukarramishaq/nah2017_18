@@ -132,7 +132,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control pull-right" name="" id="datepicker">
+                    <input type="text" value="{{$personalI->dob}}" class="form-control pull-right" name="dob" id="datepicker">
                   </div>
                   <!-- /.input group -->
                 </div>
@@ -160,39 +160,30 @@
                 </div>
                 </div>
                 <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">Any Disability?</label>
-                  <br>
-                  <label class = "radioLable" style="margin-right: 20px;">
-                  <input type="radio" name="disability" class="minimal-red" value="1" checked>
-                  Yes
-                  </label>
-                  <label class = "radioLable" style="margin-right: 20px;">
-                      <input type="radio" name="disability" class="minimal-red" value="0">
-                      No
-                  </label> 
-                  {{-- --------------------------------------------------------------------
-                    @if($educationalI->any_disability == true)
-                        <label class = "radioLable" style="margin-right: 20px;">
-                            <input type="radio" name="disability" class="minimal-red" value="1" checked>
-                            Yes
-                        </label>
-                        <label class = "radioLable" style="margin-right: 20px;">
-                            <input type="radio" name="disability" class="minimal-red" value="0">
-                            No
-                        </label> 
+                  <div class="form-group">
+                    <label for="">Any Disability?</label>
+                    <br>
+                    @if($personalI->disability)
+                      <label class = "radioLable" style="margin-right: 20px;">
+                      <input type="radio" name="disability" class="minimal-red" value="1" checked>
+                      Yes
+                      </label>
+                      <label class = "radioLable" style="margin-right: 20px;">
+                        <input type="radio" name="disability" class="minimal-red" value="0" >
+                        No
+                      </label> 
                     @else
-                        <label class = "radioLable" style="margin-right: 20px;">
-                            <input type="radio" name="disability" class="minimal-red" value="1">
-                            Yes
-                        </label>
-                        <label class = "radioLable" style="margin-right: 20px;">
-                            <input type="radio" name="disability" class="minimal-red" value="0" checked>
-                            No
-                        </label> 
+                      <label class = "radioLable" style="margin-right: 20px;">
+                      <input type="radio" name="disability" class="minimal-red" value="1">
+                      Yes
+                      </label>
+                      <label class = "radioLable" style="margin-right: 20px;">
+                        <input type="radio" name="disability" class="minimal-red" value="0" checked>
+                        No
+                      </label> 
                     @endif
-                    --------------------------------------------------------------------------- --}}
-                </div>    
+                    
+                  </div>    
 
                 </div>
                 </div>       

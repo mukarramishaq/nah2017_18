@@ -31,9 +31,11 @@ function save()
 			'name': $('#name').val(),
 			'gender':$('#gender').val(),
 			'cNIC':$('#cNIC').val(),
+			'dob':$('#datepicker').val(),
 			'email':$('#email').val(),
 			'phoneNumber':$('#phoneNumber').val(),
 			'emergencyPhoneNumber': $('#emergencyPhoneNumber').val(),
+			'disability':$('input[name=disability]:checked').val(),
 		};
 		console.log(data);
 	$.ajax({
