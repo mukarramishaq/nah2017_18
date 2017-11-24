@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\ProfessionalI;
 use App\EntrepI;
+use App\Country;
 class ProfessionalController extends Controller
 {
     //
@@ -14,6 +15,7 @@ class ProfessionalController extends Controller
         $user = Auth::user();
         $professionalI = $user->professionalI()->get();
         $entrepI = $user->entrepI()->get();
+        $countries = Country::all();
 
         if($professionalI && count($professionalI)>0){
             $professionalI = $professionalI[0];
@@ -30,7 +32,7 @@ class ProfessionalController extends Controller
         }
 
         if($user){
-            return view('professionalInformation')->with('professionalI',$professionalI)->with('entrepI',$entrepI);
+            return view('professionalInformation')->with('professionalI',$professionalI)->with('entrepI',$entrepI)->with('countries',$countries);
         }
         else{
             return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');

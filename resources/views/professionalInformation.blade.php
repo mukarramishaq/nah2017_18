@@ -136,11 +136,18 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label>Current Country</label>
+                    <div class="input-group">
+                    <span class="input-group-addon" id="span-flag-img"></span>
                     <select  required="true"  class="form-control select2 select2-hidden-accessible" name="currentCountry"  id="currentCountry" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="male">Pakistan</option>
-                        <option value="female">USA</option>
-                        <option value="other">Other</option>
+                        @foreach($countries as $country)
+                          @if($professionalI->country == $country->iso_3166_2)
+                            <option value="{{$country->iso_3166_2}}" selected>{{$country->name}}</option>
+                          @else
+                            <option value="{{$country->iso_3166_2}}"> {{$country->name}}</option>
+                          @endif
+                        @endforeach
                     </select>
+                    </div>
                 </div>
                 </div>
                 <div class="col-md-6">
@@ -283,6 +290,17 @@
     })
 
   })
+</script>
+<script>
+  $(document).ready(function(){
+    p = "{{url('flags')}}";
+    flagname = $('#currentCountry').val();
+    $('#span-flag-img').html('<img src="'+p+'/'+flagname+'.png" />');
+    $('#currentCountry').on('change',function(e){
+      flagname = $('#currentCountry').val();
+      $('#span-flag-img').html('<img src="'+p+'/'+flagname+'.png" />');
+    });
+  });
 </script>
 <script src="{{asset('js/professional.js')}}">
   
