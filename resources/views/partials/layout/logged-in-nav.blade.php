@@ -22,14 +22,17 @@
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        @if(!Auth::user()->is_image_uploaded)
+                            <span> <i class="fa fa-user fa-lg"> </i></span>
+                        @else
+                            <img src="{{asset('profile_images/'.Auth::user()->id.'.png')}}" class="user-image" alt="User Image">
+                        @endif
                         
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">
-                            @if(Auth::user()->name == 'Unnamed')
-                            <i class="fa fa-user fa-lg"></i>
-                            @else
+                            
                                 {{Auth::user()->name}}
-                            @endif
+                            
                             
                             
                         </span>
@@ -38,11 +41,9 @@
                         
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
+                            
+                            <div>
+                                <a href="{{ route('logout') }}" class="btn btn-default btn-flat col-md-12"
                                    onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                     Logout

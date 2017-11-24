@@ -74,7 +74,11 @@
                   <div class="row">      
                     <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4"> 
                       <div style="width: 100px; margin-top: 10px;" class="class-imgv-div">
-                      <img class="imgPicker" id="imgViewer" src="{{asset('images/'.$personalI->picture_path)}}" alt="your image"  width="100%"/>
+                      @if(!$personalI->picture_path)
+                      <img class="imgPicker" id="imgViewer" src="http://via.placeholder.com/400" alt="your image"  width="100%"/>
+                      @else
+                        <img class="imgPicker" id="imgViewer" src="{{asset('profile_images/'.$personalI->picture_path)}}" alt="your image"  width="100%"/>
+                      @endif
                       <input style="margin-top: 5px; width: inherit; font-size: 12px;" type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/> 
                       </div>                         
                     </div>
