@@ -73,8 +73,8 @@
                   
                   <div class="row">      
                     <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4"> 
-                      <div style="width: 100px; margin-top: 10px;">
-                      <img class="imgPicker" id="imgViewer" src="http://placehold.it/200x200" alt="your image"  width="100%"/>
+                      <div style="width: 100px; margin-top: 10px;" class="class-imgv-div">
+                      <img class="imgPicker" id="imgViewer" src="{{asset('images/'.$personalI->picture_path)}}" alt="your image"  width="100%"/>
                       <input style="margin-top: 5px; width: inherit; font-size: 12px;" type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/> 
                       </div>                         
                     </div>
@@ -260,16 +260,19 @@
 </script>
 <script type="text/javascript">
       $("body").on("click",".upload-image",function(e){
-        
+        $.ajaxSetup({ cache: false });
         $(this).parents("form").ajaxForm({ 
           complete: function(response) 
           {
             
             if($.isEmptyObject(response.responseJSON.image)){
               $('.error-msg').css('display','none');
-              $('.preview-uploaded-image').html('<img src="'+response.responseJSON.url+'" height="100px" width="100px">');
+              d = new Date();
+              $('.preview-uploaded-image').html('<img src="'+response.responseJSON.url+'?'+d.getTime()+'" height="100px" width="100px">');
               $('#modal-pic .modal-footer .form-footer').html('<button class="btn bg-red upload-image" type="submit">Upload Image</button><button class="btn bg-red" data-dismiss="modal">Close</button>');
+              $('.class-imgv-div').html('<img class="imgPicker" id="imgViewer" src="'+response.responseJSON.url+'?'+d.getTime()+'" alt="your image"  width="100%"/><input style="margin-top: 5px; width: inherit; font-size: 12px;" type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/> ');
               
+                      
             }else{
               var msg=response.responseJSON.image;
               $(".error-msg").find("ul").html('');
