@@ -58,7 +58,7 @@
                     <!-- general form elements -->
                     <div class="box box-default col-md-10 col-md-offset-1">
                         <div class="box-header with-border">
-                        <h3 class="box-title">Get Chalan</h3>
+                        <h3 class="box-title">For Online Payment</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
@@ -67,7 +67,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-1">
-                                <button class="btn btn-flat bg-red">Download Chalan Form</button>
+                                <!-- <button class="btn btn-flat bg-red">Download Chalan Form</button> -->
                                 </div>
                             </div>
                                     
@@ -81,7 +81,7 @@
                     <!-- general form elements -->
                     <div class="box box-default col-md-10 col-md-offset-1">
                         <div class="box-header with-border">
-                        <h3 class="box-title">Paid Chalan Details</h3>
+                        <h3 class="box-title">After Online Payment</h3>
                         </div>
                         <!-- /.box-header -->
                         <div>
@@ -89,7 +89,7 @@
                         </div>
                         <!-- form start -->
                         
-                        <form role="form" id="chalanMethodForm" action="{{route('chalanMethodSubmit')}}" method="POST" >
+                        <form role="form" id="onlineMethodForm" action="{{route('onlineMethodSubmit')}}" method="POST" >
                         {{csrf_field()}}
                         <div class="box-body">
                             <div class="row">
@@ -98,8 +98,8 @@
                                     <input type="number" required="true" name="amount" class="form-control" id="amount" placeholder="Enter paid amount">
                                 </div>
                                 <div class="form-group col-md-4 col-md-offset-1">
-                                    <label for="branch-address">Branch Address of HBL</label>
-                                    <input type="text" required="true" name="branch-address" class="form-control" id="branch-address" placeholder="Enter Branch Address">
+                                    <label for="account-no">Your Account No</label>
+                                    <input type="text" required="true" name="account-no" class="form-control" id="account-no" placeholder="Enter Your Account No">
                                 </div>
                             </div>
 
@@ -119,7 +119,7 @@
                             <br> <br>
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-1">
-                                <button type="button" class="btn btn-flat bg-red" data-toggle="modal" data-target="#modal-chalan"><span class="fa fa-cloud-upload"></span> Upload Paid Chalan Copy</button>
+                                <button type="button" class="btn btn-flat bg-red" data-toggle="modal" data-target="#modal-chalan"><span class="fa fa-cloud-upload"></span> Upload Copy of Receipt</button>
                                 </div>
                             </div>
 
