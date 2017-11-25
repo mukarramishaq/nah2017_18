@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function entrepI(){
         return $this->hasOne('App\EntrepI');
     }
+    //with stages table
+    public function stage(){
+        return $this->hasOne('App\Stage');
+    }
 }
