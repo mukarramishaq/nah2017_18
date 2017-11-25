@@ -56,4 +56,8 @@ class User extends Authenticatable
     public function payment(){
         return $this->hasOne('App\Payment');
     }
+
+    public function guest(){
+        return $this->hasOne('App\Guest');
+    }
 }

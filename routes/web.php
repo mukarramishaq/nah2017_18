@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// guest route
+Route::get('/guests', ['as'=>'guestsInfo','uses'=>'GuestController@index']);
+Route::post('/guest/add', ['as'=>'guestAdd','uses'=>'GuestController@addGuest']);
+
 
 Auth::routes();
 Route::post('/auth/login',['as'=>'authLogin','uses'=>'Auth\LoginController@authenticateLogin']);
