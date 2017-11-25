@@ -37,9 +37,7 @@ class PaymentController extends Controller
                 $payment = $payment[0];
             }
             else{
-                $payment = Payment::create(array(
-                    'user_id'=>$user->id,
-                ));
+                $payment = new Payment;
             }
             return view('paymentMethod')->with('payment',$payment);
         }
@@ -51,12 +49,74 @@ class PaymentController extends Controller
     public function chalanMethodIndex(){
         $user = Auth::user();
         if($user){
-            return view('chalanMethod');
+            $payment = $user->payment()->get();
+            if($payment && count($payment)>0){
+                $payment = $payment[0];
+            }
+            else{
+                $payment = new Payment;
+            }
+            return view('chalanMethod')->with('payment',$payment);
         }
         else{
             return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
         } 
     }
+
+    public function onlineMethodIndex(){
+        $user = Auth::user();
+        if($user){
+            $payment = $user->payment()->get();
+            if($payment && count($payment)>0){
+                $payment = $payment[0];
+            }
+            else{
+                $payment = new Payment;
+            }
+            return view('onlineMethod')->with('payment',$payment);
+        }
+        else{
+            return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
+        } 
+    }
+
+    public function codMethodIndex(){
+        $user = Auth::user();
+        if($user){
+            $payment = $user->payment()->get();
+            if($payment && count($payment)>0){
+                $payment = $payment[0];
+            }
+            else{
+                $payment = new Payment;
+            }
+            return view('codMethod')->with('payment',$payment);
+        }
+        else{
+            return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
+        } 
+    }
+
+    public function overseasMethodIndex(){
+        $user = Auth::user();
+        if($user){
+            $payment = $user->payment()->get();
+            if($payment && count($payment)>0){
+                $payment = $payment[0];
+            }
+            else{
+                $payment = new Payment;
+            }
+            return view('overseasMethod')->with('payment',$payment);
+        }
+        else{
+            return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
+        } 
+
+    }
+
+
+
     public function afterPaymentIndex(){
         $user = Auth::user();
         if($user){
@@ -153,6 +213,30 @@ class PaymentController extends Controller
                 $payment = $payment[0];
                 $payment->amount = $request->input('amount');
                 $payment->branch_address = $request->input('branch-address');
+                $payment->save();
+
+                return redirect('afterPayment');
+            }
+            else{
+                
+                return redirect('resident')->with('type','danger')->with('msg','Please select your resident first');
+            }
+            return redirect('resident')->with('type','danger')->with('unknown error. Please try again');
+        }
+        else{
+            return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
+        } 
+    }
+
+
+    public function onlineMethodSubmit(Request $request){
+        $user = Auth::user();
+        if($user){
+            $payment = $user->payment()->get();
+            if($payment && count($payment)>0){
+                $payment = $payment[0];
+                $payment->amount = $request->input('amount');
+                $payment->account_no = $request->input('account-no');
                 $payment->save();
 
                 return redirect('afterPayment');

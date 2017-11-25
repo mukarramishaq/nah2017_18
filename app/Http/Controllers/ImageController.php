@@ -60,5 +60,43 @@ class ImageController extends Controller
         return response()->json(['url'=>$url]);
 
     }
+
+    public function ajaxUploadChalan(Request $request){
+        $user = Auth::user();
+        if(!$user){
+          return response()->json(['type'=>'error','msg'=>'Session expired']);  
+        }
+        
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+        $image = $user->id.'.'.$request->image->getClientOriginalExtension();
+        
+        $request->image->move(public_path('temp_chalan_images'), $image);
+        
+        
+        $source = public_path('temp_chalan_images/').$image;
+        \Log::info($source);
+        $dest = public_path('chalan_images/').$user->id.'.png';
+        \Log::info($dest);
+        $img = \Image::make($source);
+        $img->save($dest);
+
+        $url='chalan_images/'.$user->id.'.png';
+        
+        
+
+        $payment = $user->payment()->get();
+        if($payment && count($payment)>0){
+            $payment = $payment[0];
+
+            $payment->paid_chalan_path = $user->id.'.png';
+            $payment->save();
+
+        }
+
+        return response()->json(['url'=>$url]);
+
+    }
 }
 

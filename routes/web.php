@@ -47,6 +47,7 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     
     Route::get('get-image','ImageController@getImage');
     Route::post('ajax-upload-image', ['as'=>'ajax.upload-image','uses'=>'ImageController@ajaxUploadImage']);
+    Route::post('ajax-upload-chalan', ['as'=>'ajax.upload-chalan','uses'=>'ImageController@ajaxUploadChalan']);
 
 
     Route::get("/resident",['as'=>'resident','uses'=>'PaymentController@residentIndex'])->middleware('checkResidentStage');
@@ -55,7 +56,13 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::post('/paymentMethodSubmit',['as'=>'paymentMethodSubmit','uses'=>'PaymentController@paymentMethodSubmit'])->middleware('checkPaymentMethodStage');
     Route::get('/chalanMethod',['as'=>'chalanMethod','uses'=>'PaymentController@chalanMethodIndex']);
     Route::post('/chalanMethodSubmit',['as'=>'chalanMethodSubmit','uses'=>'PaymentController@chalanMethodSubmit']);
+    
     Route::get('/afterPayment',['as'=>'afterPayment','uses'=>'PaymentController@afterPaymentIndex']);
 
+    Route::get('/onlineMethod',['as'=>'onlineMethod','uses'=>'PaymentController@onlineMethodIndex']);
+    Route::post('/onlineMethodSubmit',['as'=>'onlineMethodSubmit','uses'=>'PaymentController@onlineMethodSubmit']);
 
+    Route::get('/codMethod',['as'=>'codMethod','uses'=>'PaymentController@codMethodIndex']);
+
+    Route::get('/overseasMethod',['as'=>'overseasMethod','uses'=>'PaymentController@overseasMethodIndex']);
 });
