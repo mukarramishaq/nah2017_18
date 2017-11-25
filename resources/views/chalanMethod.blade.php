@@ -45,7 +45,7 @@
                         <!-- /.box-header -->
                         <!-- form start -->
                         
-                        <form role="form" id="paymentMethodForm" action="#" method="POST" >
+                        <form role="form" id="chalanMethodForm" action="{{route('chalanMethodSubmit')}}" method="POST" >
                         {{csrf_field()}}
                         <div class="box-body">
                             <div class="row">

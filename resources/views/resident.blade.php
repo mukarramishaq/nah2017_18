@@ -11,24 +11,40 @@
             <!-- /.box-header -->
             <!-- form start -->
             
-            <form role="form" id="residentForm" action="#" method="POST" >
+            <form role="form" id="residentForm" action="{{route('residentSubmit')}}" method="POST" >
                 {{csrf_field()}}
               <div class="box-body">
                 <div class="row">
                     
                     <div class="form-group">
-                        <div class="col-md-4 col-md-offset-1 form-group">
-                            <label>
-                                <input type="radio" name="resident" class="minimal minimal-red form-control" checked>
-                                In Pakistan
-                            </label>
-                        </div>
-                        <div class="col-md-4 col-md-offset-1 form-group">
-                            <label>
-                                <input type="radio" name="resident" class="minimal minimal-red form-control">
-                                Overseas Alumni
-                            </label>
-                        </div>
+                        @if($payment->resident == 'pakistani')
+                            <div class="col-md-4 col-md-offset-1 form-group">
+                                <label>
+                                    <input type="radio" value="pakistani" name="resident" class="minimal minimal-red form-control" checked>
+                                    In Pakistan
+                                </label>
+                            </div>
+                            <div class="col-md-4 col-md-offset-1 form-group">
+                                <label>
+                                    <input type="radio" value="overseas" name="resident" class="minimal minimal-red form-control">
+                                    Overseas Alumni
+                                </label>
+                            </div>
+                        @else
+                            <div class="col-md-4 col-md-offset-1 form-group">
+                                <label>
+                                    <input type="radio" value="pakistani" name="resident" class="minimal minimal-red form-control">
+                                    In Pakistan
+                                </label>
+                            </div>
+                            <div class="col-md-4 col-md-offset-1 form-group">
+                                <label>
+                                    <input type="radio" value="overseas" name="resident" class="minimal minimal-red form-control" checked>
+                                    Overseas Alumni
+                                </label>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                            
@@ -50,7 +66,10 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <ul>
-                    <li>instruction1</li>
+                    <li>If you are residing in Pakistan then click "In Pakistan"</li>
+                    <li>Or If you are residing abroad and any your relative or friend can pay dues for you in Pakistan then click "In Pakistan"</li>
+                    <li>But If you are residing abroad and no one from your relatives or friends are able to pay your dues in Pakistan then click "Overseas Alumni"</li>
+
                 </ul>
             </div>
             <!-- /.box-body -->

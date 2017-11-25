@@ -11,30 +11,70 @@
             <!-- /.box-header -->
             <!-- form start -->
             
-            <form role="form" id="paymentMethodForm" action="#" method="POST" >
+            <form role="form" id="paymentMethodForm" action="{{route('paymentMethodSubmit')}}" method="POST" >
                 {{csrf_field()}}
               <div class="box-body">
                 <div class="row">
                     
                     <div class="form-group">
-                        <div class="col-md-4  form-group">
-                            <label>
-                                <input type="radio" name="payment-method" class="minimal minimal-red form-control" checked>
-                                Chalan
-                            </label>
-                        </div>
-                        <div class="col-md-4  form-group">
-                            <label>
-                                <input type="radio" name="payment-method" class="minimal minimal-red form-control">
-                                Online Payment
-                            </label>
-                        </div>
-                        <div class="col-md-4  form-group">
-                            <label>
-                                <input type="radio" name="payment-method" class="minimal minimal-red form-control">
-                                Cash on Delivery
-                            </label>
-                        </div>
+                        @if($payment->payment_method == 'cod')
+                            <div class="col-md-4  form-group">
+                                <label>
+                                    <input type="radio" value="chalan" name="payment-method" class="minimal minimal-red form-control">
+                                    Chalan
+                                </label>
+                            </div>
+                            <div class="col-md-4  form-group">
+                                <label>
+                                    <input type="radio" value="online" name="payment-method" class="minimal minimal-red form-control">
+                                    Online Payment
+                                </label>
+                            </div>
+                            <div class="col-md-4  form-group">
+                                <label>
+                                    <input type="radio" value="cod" name="payment-method" class="minimal minimal-red form-control"  checked>
+                                    Cash on Delivery
+                                </label>
+                            </div>
+                        @elseif($payment->payment_method == 'online')
+                            <div class="col-md-4  form-group">
+                                <label>
+                                    <input type="radio" value="chalan" name="payment-method" class="minimal minimal-red form-control">
+                                    Chalan
+                                </label>
+                            </div>
+                            <div class="col-md-4  form-group">
+                                <label>
+                                    <input type="radio" value="online" name="payment-method" class="minimal minimal-red form-control" checked>
+                                    Online Payment
+                                </label>
+                            </div>
+                            <div class="col-md-4  form-group">
+                                <label>
+                                    <input type="radio" value="cod" name="payment-method" class="minimal minimal-red form-control">
+                                    Cash on Delivery
+                                </label>
+                            </div>
+                        @else
+                            <div class="col-md-4  form-group">
+                                <label>
+                                    <input type="radio" value="chalan" name="payment-method" class="minimal minimal-red form-control" checked>
+                                    Chalan
+                                </label>
+                            </div>
+                            <div class="col-md-4  form-group">
+                                <label>
+                                    <input type="radio" value="online" name="payment-method" class="minimal minimal-red form-control">
+                                    Online Payment
+                                </label>
+                            </div>
+                            <div class="col-md-4  form-group">
+                                <label>
+                                    <input type="radio" value="cod" name="payment-method" class="minimal minimal-red form-control">
+                                    Cash on Delivery
+                                </label>
+                            </div>
+                        @endif
                     </div>
                 </div>
                            

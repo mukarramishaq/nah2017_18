@@ -3,66 +3,30 @@
 @section('content')
 <div class="row">        
       <div class="col-md-9">
-          <!-- general form elements -->
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Payment Method | Payment Decision</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            
-            <form role="form" id="paymentMethodForm" action="#" method="POST" >
-                {{csrf_field()}}
-              <div class="box-body">
-                <div class="row">
-                    
-                    <div class="form-group">
-                        <div class="col-md-4  form-group">
-                            <label>
-                                <input type="radio" name="payment-method" class="minimal minimal-red form-control" checked>
-                                Chalan
-                            </label>
-                        </div>
-                        <div class="col-md-4  form-group">
-                            <label>
-                                <input type="radio" name="payment-method" class="minimal minimal-red form-control">
-                                Online Payment
-                            </label>
-                        </div>
-                        <div class="col-md-4  form-group">
-                            <label>
-                                <input type="radio" name="payment-method" class="minimal minimal-red form-control">
-                                Cash on Delivery
-                            </label>
-                        </div>
-                    </div>
+            <!-- general form elements -->
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                <h3 class="box-title">Payment Verification</h3>
                 </div>
-                           
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer text-right">
-                <button type="submit" class="btn btn-flat bg-red">Next</button>
-              </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+            
+            
+                <div class="box-body">
+                    <div class="row">
+                        
+                        <p class="col-md-10 col-md-offset-1">Thank You for registering for this worderful event. We'll inform you about your payment verification through email or call within 24-48 hours.</p>
+                    </div>
+                            
+                </div>
+                <!-- /.box-body -->
               
-            </form>
-          </div>
-          <!-- /.box -->
-        </div>
-        <div class="col-md-3">
-        <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Instructions</h3>
+              
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <ul>
-                    <li>instruction1</li>
-                </ul>
-            </div>
-            <!-- /.box-body -->
-          </div>
+            <!-- /.box -->
         </div>
-    </div>
+        
+</div>
 @endsection
 @section('header-styles')
 <link rel="stylesheet" href="{{asset('theme/lte/plugins/iCheck/all.css')}}">

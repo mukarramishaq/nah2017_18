@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
-use App\Stage;
 use App\User;
-class CheckProfessionalStage
+use App\Stage;
+class CheckPaymentMethodStage
 {
     /**
      * Handle an incoming request.
@@ -21,23 +21,27 @@ class CheckProfessionalStage
             $stage = $user->stage()->get();
             if($stage && count($stage)>0){
                 $stage = $stage[0];
-                if(!$stage->is_personal_info_done){
-                    return redirect('personalInformation');
+                
+                if(!$stage->is_professional_info_done){
+                    return redirect('professionalInformation');
                 }
-                if(!$stage->is_educational_info_done){
-                    return redirect('educationalInformation');
-                }
-                if($stage->is_professional_info_done){
+                
+                if(!$stage->is_residence_done){
+                    // return redirect('chalanMethod');
                     return redirect('resident');
                 }
-                return $next($request);
+                else if(!$stage->is_payment_method_done){
+                    return $next($request);
+                }
+                else{
+                    return redirect('chalanMethod');
+                }
+                
             }
             else{
-                $stage = Stage::create(array(
-                    'user_id'=>$user->id,
-                ));
                 Auth::logout();
-                return redirect('login')->with('type','danger')->with('msg',"Don't try to be smart! Otherwise the consequences will not be light!");
+                //return $next($request);
+                return redirect('login')->with('type','warning')->with('msg','Your account was logged out due to your smartness :) Please login again to proceed');
             }
         }
         else{

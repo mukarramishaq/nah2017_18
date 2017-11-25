@@ -49,13 +49,13 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::post('ajax-upload-image', ['as'=>'ajax.upload-image','uses'=>'ImageController@ajaxUploadImage']);
 
 
-    Route::get('/resident',function(){
-        return view('resident');
-    });
-    Route::get('/paymentMethod',function(){
-        return view('paymentMethod');
-    });
-    Route::get('/chalanMethod',function(){
-        return view('chalanMethod');
-    });
+    Route::get("/resident",['as'=>'resident','uses'=>'PaymentController@residentIndex'])->middleware('checkResidentStage');
+    Route::post('/residentSubmit',['as'=>'residentSubmit','uses'=>'PaymentController@residentSubmit'])->middleware('checkResidentStage');
+    Route::get('/paymentMethod',['as'=>'paymentMethod','uses'=>'PaymentController@paymentMethodIndex'])->middleware('checkPaymentMethodStage');
+    Route::post('/paymentMethodSubmit',['as'=>'paymentMethodSubmit','uses'=>'PaymentController@paymentMethodSubmit'])->middleware('checkPaymentMethodStage');
+    Route::get('/chalanMethod',['as'=>'chalanMethod','uses'=>'PaymentController@chalanMethodIndex']);
+    Route::post('/chalanMethodSubmit',['as'=>'chalanMethodSubmit','uses'=>'PaymentController@chalanMethodSubmit']);
+    Route::get('/afterPayment',['as'=>'afterPayment','uses'=>'PaymentController@afterPaymentIndex']);
+
+
 });

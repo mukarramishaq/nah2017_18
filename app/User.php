@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function stage(){
         return $this->hasOne('App\Stage');
     }
+
+    public function payment(){
+        return $this->hasOne('App\Payment');
+    }
 }

@@ -59,5 +59,7 @@ class Kernel extends HttpKernel
         'checkPersonalStage'=>\App\Http\Middleware\CheckPersonalStage::class,
         'checkEducationalStage'=>\App\Http\Middleware\CheckEducationalStage::class,
         'checkProfessionalStage'=>\App\Http\Middleware\CheckProfessionalStage::class,
+        'checkPaymentMethodStage'=>\App\Http\Middleware\CheckPaymentMethodStage::class,
+        'checkResidentStage'=>\App\Http\Middleware\CheckResidentStage::class,
     ];
 }
