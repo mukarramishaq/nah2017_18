@@ -27,7 +27,7 @@
             <div>
                 <span class=" ajax-info label col-md-12"></span>
             </div>
-            <form role="form" id="educationalInformationForm" action="{{route('educationalSaveAndNext')}}" method="POST">
+            <form role="form" id="educationalInformationForm" action="{{route('educationalSaveAndNext')}}" method="POST" onsubmit="return confirm('Once submitted, you cannot access this section anymore!. Do you want to submit?');">
                 {{csrf_field()}}
               <div class="box-body">
                 <div class="row">

@@ -27,7 +27,7 @@
                 <span class=" ajax-info label col-md-12"></span>
             </div>
             <!-- form start -->
-            <form role="form" id="professionalInformationForm" action="{{route('professionalSaveAndNext')}}" method="POST" novalidate>
+            <form role="form" id="professionalInformationForm" action="{{route('professionalSaveAndNext')}}" method="POST" novalidate onsubmit="return confirm('Once submitted, you cannot access this section anymore!. Do you want to submit?');">
               {{csrf_field()}}
               <div class="box-body">
                 <div class="row">

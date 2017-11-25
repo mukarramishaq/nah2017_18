@@ -67,7 +67,7 @@
                 <span class=" ajax-info label col-md-12"></span>
             </div>
             <!-- form start -->
-            <form role="form" id="personalInformationForm" action="{{route('personalSaveAndNext')}}" method="POST">
+            <form role="form" id="personalInformationForm" action="{{route('personalSaveAndNext')}}" method="POST" onsubmit="return confirm('Once submitted, you cannot access this section anymore!. Do you want to submit?');">
               {{ csrf_field() }}
               <div class="box-body">
                 
@@ -203,7 +203,7 @@
               <div class="col-md-12">
               <div class="box-footer text-right">
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
-                <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
+                <button type="submit" class="btn btn-flat bg-red" >Save & Next</button>
               </div>
               </div>
               </div>
