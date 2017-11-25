@@ -9,6 +9,16 @@ use App\Discipline;
 class EducationalController extends Controller
 {
     //
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+     public function __construct()
+     {
+         $this->middleware('checkEducationalStage');
+     }
+
     public function index(Request $request){
         $user = Auth::user();
         if($user){
@@ -112,12 +122,37 @@ class EducationalController extends Controller
                 //save to database
                 $educationalI->save();
 
+                $stage = $user->stage()->get();
+                if($stage && count($stage)>0){
+                    $stage = $stage[0];
+                    $stage->is_educational_info_done = true;
+                    $stage->save();
+                }
+                else{
+                    $stage = Stage::create(array(
+                        'user_id'=>$user_id,
+                        'is_educational_info_done'=>true,
+                    ));
+                }
+
                 return redirect()->to('professionalInformation')->with('type','success')->with('msg','Educational Information saved successfully.');
                 
             }
             else{
                 //otherwise create one
                 $personal = EducationalI::create((array)$data);
+                $stage = $user->stage()->get();
+                if($stage && count($stage)>0){
+                    $stage = $stage[0];
+                    $stage->is_educational_info_done = true;
+                    $stage->save();
+                }
+                else{
+                    $stage = Stage::create(array(
+                        'user_id'=>$user_id,
+                        'is_educational_info_done'=>true,
+                    ));
+                }
                 return redirect()->to('professionalInformation')->with('type','success')->with('msg','Educational Information saved successfully.');
                 
             }

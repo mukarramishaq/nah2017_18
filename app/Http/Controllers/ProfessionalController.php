@@ -11,6 +11,16 @@ use App\Country;
 class ProfessionalController extends Controller
 {
     //
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+     public function __construct()
+     {
+         $this->middleware('checkProfessionalStage');
+     }
+
     public function index(Request $request){
         $user = Auth::user();
         $professionalI = $user->professionalI()->get();
@@ -264,12 +274,37 @@ class ProfessionalController extends Controller
                     $professionalI->address = $data->address;
                     
                     $professionalI->save(); //save to database
+                    $stage = $user->stage()->get();
+                    if($stage && count($stage)>0){
+                        $stage = $stage[0];
+                        $stage->is_professional_info_done = true;
+                        $stage->save();
+                    }
+                    else{
+                        $stage = Stage::create(array(
+                            'user_id'=>$user_id,
+                            'is_professional_info_done'=>true,
+                        ));
+                    }
+
                     return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
                 }
                 else{
                     //otherwise create one
                     $data = (array) $data;
                     $professional = ProfessionalI::create($data);
+                    $stage = $user->stage()->get();
+                    if($stage && count($stage)>0){
+                        $stage = $stage[0];
+                        $stage->is_professional_info_done = true;
+                        $stage->save();
+                    }
+                    else{
+                        $stage = Stage::create(array(
+                            'user_id'=>$user_id,
+                            'is_professional_info_done'=>true,
+                        ));
+                    }
                     return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
                     
                 }
@@ -317,12 +352,36 @@ class ProfessionalController extends Controller
                     $professionalI->address = $data->address;
                     
                     $professionalI->save(); //save to database
+                    $stage = $user->stage()->get();
+                    if($stage && count($stage)>0){
+                        $stage = $stage[0];
+                        $stage->is_professional_info_done = true;
+                        $stage->save();
+                    }
+                    else{
+                        $stage = Stage::create(array(
+                            'user_id'=>$user_id,
+                            'is_professional_info_done'=>true,
+                        ));
+                    }
                     return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
                 }
                 else{
                     //otherwise create one
                     $data = (array) $data;
                     $professional = ProfessionalI::create($data);
+                    $stage = $user->stage()->get();
+                    if($stage && count($stage)>0){
+                        $stage = $stage[0];
+                        $stage->is_professional_info_done = true;
+                        $stage->save();
+                    }
+                    else{
+                        $stage = Stage::create(array(
+                            'user_id'=>$user_id,
+                            'is_professional_info_done'=>true,
+                        ));
+                    }
                     return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
                     
                 }
@@ -408,12 +467,36 @@ class ProfessionalController extends Controller
                     $professionalI->address = $data->address;
                     
                     $professionalI->save(); //save to database
+                    $stage = $user->stage()->get();
+                    if($stage && count($stage)>0){
+                        $stage = $stage[0];
+                        $stage->is_professional_info_done = true;
+                        $stage->save();
+                    }
+                    else{
+                        $stage = Stage::create(array(
+                            'user_id'=>$user_id,
+                            'is_professional_info_done'=>true,
+                        ));
+                    }
                     return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
                 }
                 else{
                     //otherwise create one
                     $data = (array) $data;
                     $professional = ProfessionalI::create($data);
+                    $stage = $user->stage()->get();
+                    if($stage && count($stage)>0){
+                        $stage = $stage[0];
+                        $stage->is_professional_info_done = true;
+                        $stage->save();
+                    }
+                    else{
+                        $stage = Stage::create(array(
+                            'user_id'=>$user_id,
+                            'is_professional_info_done'=>true,
+                        ));
+                    }
                     return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
                     
                 }

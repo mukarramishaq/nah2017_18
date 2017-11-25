@@ -7,9 +7,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller;
 use App\PersonalI;
 use App\User;
+use App\Stage;
 class PersonalController extends Controller
 {
     //
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+     public function __construct()
+     {
+         $this->middleware('checkPersonalStage');
+     }
+
+
     public function index(Request $request){
         $user = Auth::user();
         if($user){
@@ -114,12 +126,37 @@ class PersonalController extends Controller
                 //save to database
                 $personalI->save();
 
+                $stage = $user->stage()->get();
+                if($stage && count($stage)>0){
+                    $stage = $stage[0];
+                    $stage->is_personal_info_done = true;
+                    $stage->save();
+                }
+                else{
+                    $stage = Stage::create(array(
+                        'user_id'=>$user_id,
+                        'is_personal_info_done'=>true,
+                    ));
+                }
+
                 return redirect()->to('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
                 
             }
             else{
                 //otherwise create one
-                $personal = PersonalI::create($data);
+                $personal = PersonalI::create((array)$data);
+                $stage = $user->stage()->get();
+                if($stage && count($stage)>0){
+                    $stage = $stage[0];
+                    $stage->is_personal_info_done = true;
+                    $stage->save();
+                }
+                else{
+                    $stage = Stage::create(array(
+                        'user_id'=>$user_id,
+                        'is_personal_info_done'=>true,
+                    ));
+                }
                 return redirect()->to('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
                 
             }
