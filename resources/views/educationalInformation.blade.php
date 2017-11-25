@@ -24,6 +24,9 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
+            <div>
+                <span class=" ajax-info label col-md-12"></span>
+            </div>
             <form role="form" id="educationalInformationForm" action="{{route('educationalSaveAndNext')}}" method="POST">
                 {{csrf_field()}}
               <div class="box-body">
@@ -164,6 +167,9 @@
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
                 <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
               </div>
+              <div class="overlay">
+              <i class="fa fa-refresh fa-spin"></i>
+            </div>
             </form>
           </div>
           <!-- /.box -->
@@ -219,14 +225,18 @@
        
     </script>
     <script>
-        @foreach($disciplines as $discipline)
-             console.log('{{$discipline->name}}');
-        @endforeach
-       
+        // @foreach($disciplines as $discipline)
+        //      console.log('{{$discipline->name}}');
+        // @endforeach
+        
  
         
         function save()
         {
+            $('.overlay').show();
+            $('.ajax-info').addClass('label-info').text('Sending data ...');
+            $('.ajax-info').show(500);
+            
             
             var data = {
 
@@ -238,7 +248,7 @@
                     'graduationYear': $('#graduationYear').val(),
                     'alumniCard': $('input[name=alumniCard]:checked').val(),
                 };
-                console.log(data);
+                
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -250,13 +260,36 @@
                 data: data,
                 dataType: 'json',
                 success: function(data){
+                    
+                    $('.overlay').hide();
+                    if(data.type == 'success'){
+                        $('.ajax-info').removeClass('label-info').addClass('label-success').text(data.msg);
+                        setTimeout(function() {
+                            $('.ajax-info').hide().removeClass('label-success').addClass('label-info');
+                        }, 3000);
+                    }
+                    else{
+                        $('.ajax-info').removeClass('label-info').addClass('label-danger').text(data.msg);
+                        setTimeout(function() {
+                            $('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
+                        }, 3000);
+                    }
 
+                    
+                
                 },
                 error: function(request, error){
-
+                    $('.overlay').hide();
+                    $('.ajax-info').removeClass('label-info').addClass('label-danger').text('Error: Unknown error. Make sure you have working internet connection!');
+                    setTimeout(function() {
+                        $('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
+                    }, 5000);
                 },
 
             });
         }
+    </script>
+    <script>
+        $(document).ready(function(){$('.overlay').hide();});
     </script>
 @endsection

@@ -1,5 +1,9 @@
 function save() {
     var data;
+    $('.overlay').show();
+    $('.ajax-info').addClass('label-info').text('Sending data ...');
+    $('.ajax-info').show(500);
+
     if ($('#employed').val() == 'unemployed') {
         data = {
             'employed': $('#employed').val(),
@@ -58,9 +62,27 @@ function save() {
         data: data,
         dataType: 'json',
         success: function(data) {
+            $('.overlay').hide();
+            if(data.type == 'success'){
+                $('.ajax-info').removeClass('label-info').addClass('label-success').text(data.msg);
+                setTimeout(function() {
+                    $('.ajax-info').hide().removeClass('label-success').addClass('label-info');
+                }, 3000);
+            }
+            else{
+                $('.ajax-info').removeClass('label-info').addClass('label-danger').text(data.msg);
+                setTimeout(function() {
+                    $('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
+                }, 3000);
+            }
 
         },
         error: function(request, error) {
+            $('.overlay').hide();
+            $('.ajax-info').removeClass('label-info').addClass('label-danger').text('Error: Unknown error. Make sure you have working internet connection!');
+            setTimeout(function() {
+                $('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
+            }, 5000);
 
         },
 

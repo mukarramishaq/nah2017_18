@@ -45,7 +45,7 @@ class ProfessionalController extends Controller
             //if applicant is unemployed
 
             if($request->input('employed') == 'unemployed'){
-                echo "test";
+                
                 $data = (object) array(
                     'user_id'=>$user->id,
                     'country'=>$request->input('country'),
@@ -64,20 +64,20 @@ class ProfessionalController extends Controller
                     $professionalI->address = $data->address;
                     
                     $professionalI->save(); //save to database
-                    return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
+                    return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
                 }
                 else{
                     //create entry
                     $professionalI = ProfessionalI::create((array)$data);
-                    return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
+                    return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
                 }
 
-                return \Response::json(['error'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
+                return \Response::json(['type'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
 
             }
 
             else if($request->input('employed') == 'employed'){
-                echo "test";
+                
                 $data = (object) array(
                     
                     'user_id'=>$user->id,
@@ -121,15 +121,15 @@ class ProfessionalController extends Controller
                     $professionalI->address = $data->address;
                     
                     $professionalI->save(); //save to database
-                    return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
+                    return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
                 }
                 else{
                     //create entry
                     $professionalI = ProfessionalI::create((array)$data);
-                    return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
+                    return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
                 }
 
-                return \Response::json(['error'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
+                return \Response::json(['type'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
 
             }
             // selfemplyed
@@ -209,16 +209,16 @@ class ProfessionalController extends Controller
                     $professionalI->address = $data->address;
                     
                     $professionalI->save(); //save to database
-                    return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
+                    return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
                 }
                 else{
                     //create entry
                     $data = (array) $data;
                     $professionalI = ProfessionalI::create((array)$data);
-                    return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
+                    return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
                 }
 
-                return \Response::json(['error'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
+                return \Response::json(['type'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
 
 
 
@@ -228,7 +228,7 @@ class ProfessionalController extends Controller
         }
         else{
             //either session is expired or page is directly being accessed so stop it
-            return \Response::json(['error'=>'error','msg'=>'Your session is expired. Please login to continue']);
+            return \Response::json(['type'=>'error','msg'=>'Your session is expired. Please login to continue']);
         }
     }
 // save function ends here...

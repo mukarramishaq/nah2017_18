@@ -23,6 +23,9 @@
               <h3 class="box-title">Professional Information</h3>
             </div>
             <!-- /.box-header -->
+            <div>
+                <span class=" ajax-info label col-md-12"></span>
+            </div>
             <!-- form start -->
             <form role="form" id="professionalInformationForm" action="{{route('professionalSaveAndNext')}}" method="POST" novalidate>
               {{csrf_field()}}
@@ -171,6 +174,9 @@
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
                 <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
               </div>
+              <div class="overlay">
+              <i class="fa fa-refresh fa-spin"></i>
+            </div>
             </form>
           </div>
           <!-- /.box -->
@@ -187,6 +193,7 @@
                 </ul>
             </div>
             <!-- /.box-body -->
+           
           </div>
         </div>
     </div>
@@ -293,6 +300,7 @@
 </script>
 <script>
   $(document).ready(function(){
+    $('.overlay').hide();
     p = "{{url('flags')}}";
     flagname = $('#currentCountry').val();
     $('#span-flag-img').html('<img src="'+p+'/'+flagname+'.png" />');

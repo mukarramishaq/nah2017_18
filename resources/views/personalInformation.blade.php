@@ -63,6 +63,9 @@
               <h3 class="box-title">Personal Information</h3>
             </div>
             <!-- /.box-header -->
+            <div>
+                <span class=" ajax-info label col-md-12"></span>
+            </div>
             <!-- form start -->
             <form role="form" id="personalInformationForm" action="{{route('personalSaveAndNext')}}" method="POST">
               {{ csrf_field() }}

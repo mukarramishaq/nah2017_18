@@ -61,19 +61,19 @@ class EducationalController extends Controller
                 //save to database
                 $educationalI->save();
 
-                return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
+                return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
             }
             else{
                 $educational = EducationalI::create((array)$data);
-                return \Response::json(['success'=>'success','msg'=>'Data saved successfully.']);
+                return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
             }
 
-            return \Response::json(['error'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
+            return \Response::json(['type'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
             
         }
         else{
             //either session is expired or page is directly being accessed so stop it
-            return \Response::json(['error'=>'error','msg'=>'Your session is expired. Please login to continue']);
+            return \Response::json(['type'=>'error','msg'=>'Your session is expired. Please login to continue']);
         }
     	
 
