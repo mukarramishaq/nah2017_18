@@ -27,8 +27,9 @@ function readURL(input) {
 function pivf(){
 	$('.ajax-info').hide();
 	if(document.getElementById('id-is-picture-uploaded').value.indexOf('.png') !== -1 || document.getElementById('id-is-picture-uploaded').value != ""){
-		out= confirm('Once submitted, you cannot access this section anymore! Do you want to submit?');	
-		return out;
+		//out= confirm('Once submitted, you cannot access this section anymore! Do you want to submit?');	
+		//return out;
+		return true;
 	}
 	else{
 		$('.ajax-info').addClass('label-info').text('Upload your picture please!');
@@ -37,6 +38,7 @@ function pivf(){
 	}
 	
 }
+
 
 function save()
 {

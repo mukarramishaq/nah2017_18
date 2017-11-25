@@ -67,7 +67,7 @@
                 <span class=" ajax-info label col-md-12"></span>
             </div>
             <!-- form start -->
-            <form role="form" id="personalInformationForm" action="{{route('personalSaveAndNext')}}" method="POST" onsubmit="return pivf();">
+            <form role="form" id="personalInformationForm" action="{{route('personalSaveAndNext')}}" method="POST" onsubmit="return confirm('Once submitted, you cannot access this section anymore! Do you want to submit?');">
               {{ csrf_field() }}
               <div class="box-body">
                 
@@ -82,7 +82,7 @@
                       @else
                         <img class="imgPicker" id="imgViewer" src="{{asset('profile_images/'.$personalI->picture_path)}}" alt="your image"  width="100%"/>
                       @endif
-                      <input style="display:none;" type="text" id="id-is-picture-uploaded" name="is-picture-uploaded" value="{{$personalI->picture_path}}">
+                      <input style="display:none;" type="text" id="id-is-picture-uploaded" name="is-picture-uploaded" value="{{$personalI->picture_path}}" required>
                       <input style="margin-top: 5px; width: inherit; font-size: 12px;" type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/> 
                       </div>                         
                     </div>
@@ -204,7 +204,7 @@
               <div class="col-md-12">
               <div class="box-footer text-right">
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
-                <button type="submit" class="btn btn-flat bg-red" >Save & Next</button>
+                <button type="submit" class="btn btn-flat bg-red" onclick="pivf();">Save & Next</button>
               </div>
               </div>
               </div>
