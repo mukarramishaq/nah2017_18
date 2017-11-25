@@ -48,4 +48,14 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('get-image','ImageController@getImage');
     Route::post('ajax-upload-image', ['as'=>'ajax.upload-image','uses'=>'ImageController@ajaxUploadImage']);
 
+
+    Route::get('/resident',function(){
+        return view('resident');
+    });
+    Route::get('/paymentMethod',function(){
+        return view('paymentMethod');
+    });
+    Route::get('/chalanMethod',function(){
+        return view('chalanMethod');
+    });
 });
