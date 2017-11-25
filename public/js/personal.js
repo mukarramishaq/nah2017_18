@@ -23,6 +23,21 @@ function readURL(input) {
 
     }
 }
+
+function pivf(){
+	$('.ajax-info').hide();
+	if(document.getElementById('id-is-picture-uploaded').value.indexOf('.png') !== -1 || document.getElementById('id-is-picture-uploaded').value != ""){
+		out= confirm('Once submitted, you cannot access this section anymore! Do you want to submit?');	
+		return out;
+	}
+	else{
+		$('.ajax-info').addClass('label-info').text('Upload your picture please!');
+		$('.ajax-info').show();
+		return false;
+	}
+	
+}
+
 function save()
 {
 	$('.overlay').show();

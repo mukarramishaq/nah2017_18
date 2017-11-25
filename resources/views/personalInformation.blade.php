@@ -67,7 +67,7 @@
                 <span class=" ajax-info label col-md-12"></span>
             </div>
             <!-- form start -->
-            <form role="form" id="personalInformationForm" action="{{route('personalSaveAndNext')}}" method="POST" onsubmit="return confirm('Once submitted, you cannot access this section anymore!. Do you want to submit?');">
+            <form role="form" id="personalInformationForm" action="{{route('personalSaveAndNext')}}" method="POST" onsubmit="return pivf();">
               {{ csrf_field() }}
               <div class="box-body">
                 
@@ -82,6 +82,7 @@
                       @else
                         <img class="imgPicker" id="imgViewer" src="{{asset('profile_images/'.$personalI->picture_path)}}" alt="your image"  width="100%"/>
                       @endif
+                      <input style="display:none;" type="text" id="id-is-picture-uploaded" name="is-picture-uploaded" value="{{$personalI->picture_path}}">
                       <input style="margin-top: 5px; width: inherit; font-size: 12px;" type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/> 
                       </div>                         
                     </div>
@@ -139,7 +140,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" value="{{$personalI->dob}}" class="form-control pull-right" name="dob" id="datepicker">
+                    <input type="text" value="{{$personalI->dob}}" class="form-control pull-right" name="dob" id="datepicker" required>
                   </div>
                   <!-- /.input group -->
                 </div>
@@ -269,7 +270,7 @@
               $('.preview-uploaded-image').html('<img src="'+response.responseJSON.url+'?'+d.getTime()+'" height="100px" width="100px">');
               $('#modal-pic .modal-footer .form-footer').html('<button class="btn bg-red upload-image" type="submit">Upload Image</button><button class="btn bg-red" data-dismiss="modal">Close</button>');
               $('.class-imgv-div').html('<img class="imgPicker" id="imgViewer" src="'+response.responseJSON.url+'?'+d.getTime()+'" alt="your image"  width="100%"/><input style="margin-top: 5px; width: inherit; font-size: 12px;" type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/> ');
-              
+              $('#id-is-picture-uploaded').val(response.responseJSON.url+"");
                       
             }else{
               var msg=response.responseJSON.image;
