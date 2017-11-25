@@ -74,61 +74,35 @@
   <!-- ends here  -->
 <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Data Table</h3>
+      <h3 class="box-title">Guest Information</h3>
     </div>
   <!-- /.box-header -->
     <div class="box-body">
       <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th>User Id</th>
           <th>Name</th>
-          <th>CNIC</th>
-          <th>Pakage Name</th>
-          <th>Challan ID</th>
-          <th>Status</th>
-          <th>Status Updated by</th>
+          <th>Contact Number</th>
+          <th>Relation</th>
+          
         </tr>
         </thead>
         <tbody>
-          {{--
+         
 
-          @foreach($data as $person) 
-        <tr onclick="document.location = 'userDetails/?id={{$person->id}}';"> 
-              <td>{{$person->id}}</td>
-              <td>{{$person->name}}</td>
-              <td>{{$person->cnic}}</td>              
-              <td>{{$person->package_name}}</td>
-              <td>{{$person->challan_id}}</td>
-              <td>{{$person->status}}</td>
-              <td>{{$person->status_updated_by}}</td>
+          @foreach($guests as $g) 
+        <tr> 
+              
+              <td>{{$g->name}}</td>
+              <td>{{$g->contact_no}}</td>              
+              <td>{{$g->relation}}</td>
+              
          
         </tr>
          @endforeach
-        --}}
-        </a>
-        <tr>
-          <td>Trident</td>
-          <td>Internet
-            Explorer 5.0
-          </td>
-          <td>Win 95+</td>
-          <td>5</td>
-          <td>C</td>
-          <td>X</td>
-          <td>X</td>
-        </tr>
-        <tr>
-          <td>Trident</td>
-          <td>Internet
-            Explorer 5.5
-          </td>
-          <td>Win 95+</td>
-          <td>5.5</td>
-          <td>A</td>
-          <td>X</td>
-          <td>X</td>
-        </tr>
+        
+       </tbody>
+        
         </tfoot>
       </table>
     </div>
