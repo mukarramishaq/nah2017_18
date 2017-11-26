@@ -57,7 +57,7 @@ class GuestController extends Controller
         $user = Auth::user();
         if($user)
         {
-            $guest = Guest::find($id);
+            $guest = Guest::where('user_id',$user->id)->where('id',$id)->first();
             if(count($guest)>0)
             {
                 $guest->delete();
