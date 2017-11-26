@@ -54,15 +54,15 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::post('/residentSubmit',['as'=>'residentSubmit','uses'=>'PaymentController@residentSubmit'])->middleware('checkResidentStage');
     Route::get('/paymentMethod',['as'=>'paymentMethod','uses'=>'PaymentController@paymentMethodIndex'])->middleware('checkPaymentMethodStage');
     Route::post('/paymentMethodSubmit',['as'=>'paymentMethodSubmit','uses'=>'PaymentController@paymentMethodSubmit'])->middleware('checkPaymentMethodStage');
-    Route::get('/chalanMethod',['as'=>'chalanMethod','uses'=>'PaymentController@chalanMethodIndex']);
-    Route::post('/chalanMethodSubmit',['as'=>'chalanMethodSubmit','uses'=>'PaymentController@chalanMethodSubmit']);
+    Route::get('/chalanMethod',['as'=>'chalanMethod','uses'=>'PaymentController@chalanMethodIndex'])->middleware('checkChalanMethod');
+    Route::post('/chalanMethodSubmit',['as'=>'chalanMethodSubmit','uses'=>'PaymentController@chalanMethodSubmit'])->middleware('checkChalanMethod');
     
     Route::get('/afterPayment',['as'=>'afterPayment','uses'=>'PaymentController@afterPaymentIndex']);
 
-    Route::get('/onlineMethod',['as'=>'onlineMethod','uses'=>'PaymentController@onlineMethodIndex']);
-    Route::post('/onlineMethodSubmit',['as'=>'onlineMethodSubmit','uses'=>'PaymentController@onlineMethodSubmit']);
+    Route::get('/onlineMethod',['as'=>'onlineMethod','uses'=>'PaymentController@onlineMethodIndex'])->middleware('checkOnlineMethod');
+    Route::post('/onlineMethodSubmit',['as'=>'onlineMethodSubmit','uses'=>'PaymentController@onlineMethodSubmit'])->middleware('checkOnlineMethod');
 
-    Route::get('/codMethod',['as'=>'codMethod','uses'=>'PaymentController@codMethodIndex']);
+    Route::get('/codMethod',['as'=>'codMethod','uses'=>'PaymentController@codMethodIndex'])->middleware('checkCODMethod');
 
-    Route::get('/overseasMethod',['as'=>'overseasMethod','uses'=>'PaymentController@overseasMethodIndex']);
+    Route::get('/overseasMethod',['as'=>'overseasMethod','uses'=>'PaymentController@overseasMethodIndex'])->middleware('checkOverseasMethod');
 });

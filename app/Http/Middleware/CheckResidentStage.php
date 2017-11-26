@@ -30,7 +30,23 @@ class CheckResidentStage
                     return $next($request);
                 }
                 else if($stage->is_residence_done && $stage->is_payment_method_done){
-                    return redirect('paymentMethod');
+                    $payment = $user->payment()->get();
+                    if($payment && count($payment)>0){
+                        $payment = $payment[0];
+                        if($payment->resident == 'pakistani'){
+                            return redirect('paymentMethod');
+                        }
+                        else if($payment->resident == 'overseas'){
+                            return redirect('overseasMethod');
+                        }
+                    }
+
+                    $stage->is_residence_done=false;
+                    $stage->is_payment_method_done=false;
+                    $stage->save();
+                    return redirect('resident');
+                    
+                    
                 }
                 else{
                     $stage->is_residence_done=false;

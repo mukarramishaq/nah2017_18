@@ -23,6 +23,7 @@ class PaymentController extends Controller
                     'user_id'=>$user->id,
                 ));
             }
+            
             return view('resident')->with('payment',$payment);
         }
         else{
@@ -142,6 +143,10 @@ class PaymentController extends Controller
                     $stage = $stage[0];
                     $stage->is_residence_done = true;
                     $stage->save();
+                }
+
+                if($payment->resident == 'overseas'){
+                    return redirect('overseasMethod');
                 }
 
                 return redirect('paymentMethod');

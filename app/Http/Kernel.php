@@ -61,5 +61,9 @@ class Kernel extends HttpKernel
         'checkProfessionalStage'=>\App\Http\Middleware\CheckProfessionalStage::class,
         'checkPaymentMethodStage'=>\App\Http\Middleware\CheckPaymentMethodStage::class,
         'checkResidentStage'=>\App\Http\Middleware\CheckResidentStage::class,
+        'checkChalanMethod'=>\App\Http\Middleware\CheckChalanMethod::class,
+        'checkOnlineMethod'=>\App\Http\Middleware\CheckOnlineMethod::class,
+        'checkCODMethod'=>\App\Http\Middleware\CheckCODMethod::class,
+        'checkOverseasMethod'=>\App\Http\Middleware\CheckOverseasMethod::class,
     ];
 }

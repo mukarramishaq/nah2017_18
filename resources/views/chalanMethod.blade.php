@@ -8,7 +8,7 @@
             <div class="modal-content">
               <div class="modal-header bg-red">
                 
-                <h4 class="modal-title">Upload Your Picture</h4>
+                <h4 class="modal-title">Upload Paid Chalan Copy</h4>
               </div>
               {!! Form::open(['route'=>'ajax.upload-chalan','files'=>'true']) !!}
               <div class="modal-body">
@@ -21,7 +21,7 @@
                     </div>
                   </div>
                   <div class="form-group input-picture">
-                    <label>Chalan Image:</label>
+                    <label>Paid Chalan Image:</label>
                     <input type="file" name="image" class="form-control">
                   </div>
                   

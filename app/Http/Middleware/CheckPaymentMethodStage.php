@@ -34,7 +34,28 @@ class CheckPaymentMethodStage
                     return $next($request);
                 }
                 else{
-                    return redirect('chalanMethod');
+                    $payment = $user->payment()->get();
+                    if($payment && count($payment)>0){
+                        $payment = $payment[0];
+                        if($payment->resident == 'pakistani'){
+                            if($payment->payment_method == 'online'){
+                                return redirect('onlineMethod');
+                            }
+                            else if($payment->payment_method == 'cod'){
+                                return redirect('codMethod');
+                            }
+                            else{
+                                return redirect('chalanMethod');
+                            }
+                        }
+                        else if($payment->resident == 'overseas'){
+                            return redirect('overseasMethod');
+                        }
+                    }
+                    $stage->is_residence_done=false;
+                    $stage->is_payment_method_done=false;
+                    $stage->save();
+                    return redirect('resident');
                 }
                 
             }

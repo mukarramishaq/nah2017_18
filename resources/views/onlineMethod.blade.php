@@ -8,7 +8,7 @@
             <div class="modal-content">
               <div class="modal-header bg-red">
                 
-                <h4 class="modal-title">Upload Your Picture</h4>
+                <h4 class="modal-title">Upload Receipt Copy/Screenshot</h4>
               </div>
               {!! Form::open(['route'=>'ajax.upload-chalan','files'=>'true']) !!}
               <div class="modal-body">
@@ -21,7 +21,7 @@
                     </div>
                   </div>
                   <div class="form-group input-picture">
-                    <label>Chalan Image:</label>
+                    <label>Receipt Image:</label>
                     <input type="file" name="image" class="form-control">
                   </div>
                   
@@ -206,7 +206,7 @@
             return true;
         }
         else{
-            $('.ajax-info').addClass('label-info').text('Upload your paid chalan picture please!');
+            $('.ajax-info').addClass('label-info').text('Upload copy of online payment receipt please!');
             $('.ajax-info').show();
             return false;
         }

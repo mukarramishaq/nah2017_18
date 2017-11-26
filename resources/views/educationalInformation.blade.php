@@ -36,33 +36,49 @@
                 <div class="form-group">
                 	<label for="">Degree Name</label>
                 	<br>
-                    <label class = "radioLable" style="margin-right: 20px;">
-                        @if($educationalI->degree == 'bachelor')
-                            <input type="radio" name="degreeName" value="bachelor" class="minimal-red" checked>
-                            Bachelor
-                        @else
-                            <input type="radio" name="degreeName" value="bachelor" class="minimal-red" >
-                            Bachelor
-                        @endif
-                    </label>
-                    <label class = "radioLable" style="margin-right: 20px;">
-                        @if($educationalI->degree == 'master')
-                            <input type="radio" name="degreeName" value="master" class="minimal-red" checked>
-                            Master
-                        @else
-                            <input type="radio" name="degreeName" value="master" class="minimal-red" >
-                            Master
-                        @endif
-                    </label>
-                    <label class = "radioLable">
-                        @if($educationalI->degree == 'phd')
-                            <input type="radio" name="degreeName" value="phd" class="minimal-red" checked>
-                            PhD
-                        @else
-                            <input type="radio" name="degreeName" value="phd" class="minimal-red" >
-                            PhD
-                        @endif
-                    </label>
+                    @if($educationalI->degree == 'phd')
+                        <label class = "radioLable" style="margin-right: 20px;">
+                                <input type="radio" name="degreeName" value="master" class="minimal-red">
+                                Master 
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                                <input type="radio" name="degreeName" value="phd" class="minimal-red" checked>
+                                PhD 
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                                <input type="radio" name="degreeName" value="bachelor" class="minimal-red" >
+                                Bachelor  
+                        </label>
+
+                    @elseif($educationalI->degree == 'master')
+                        <label class = "radioLable" style="margin-right: 20px;">
+                                <input type="radio" name="degreeName" value="master" class="minimal-red"  checked>
+                                Master 
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                                <input type="radio" name="degreeName" value="phd" class="minimal-red">
+                                PhD 
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                                <input type="radio" name="degreeName" value="bachelor" class="minimal-red" >
+                                Bachelor  
+                        </label>
+
+                    @else
+                        <label class = "radioLable" style="margin-right: 20px;">
+                                <input type="radio" name="degreeName" value="master" class="minimal-red" >
+                                Master 
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                                <input type="radio" name="degreeName" value="phd" class="minimal-red">
+                                PhD 
+                        </label>
+                        <label class = "radioLable" style="margin-right: 20px;">
+                                <input type="radio" name="degreeName" value="bachelor" class="minimal-red"  checked>
+                                Bachelor  
+                        </label>
+
+                    @endif
                 </div>
                 </div>
                 <div class="col-md-6">                

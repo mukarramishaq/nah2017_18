@@ -287,7 +287,7 @@ class ProfessionalController extends Controller
                         ));
                     }
 
-                    return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return redirect()->to('resident')->with('type','success')->with('msg','Professional Information saved successfully.');
                 }
                 else{
                     //otherwise create one
@@ -305,7 +305,7 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return redirect()->to('resident')->with('type','success')->with('msg','Professional Information saved successfully.');
                     
                 }
 
@@ -364,7 +364,7 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return redirect()->to('resident')->with('type','success')->with('msg','Professional Information saved successfully.');
                 }
                 else{
                     //otherwise create one
@@ -382,7 +382,7 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return redirect()->to('resident')->with('type','success')->with('msg','Professional Information saved successfully.');
                     
                 }
                 return redirect()->back()->with('type','error')->with('msg','Unknow error. Please try again.');
@@ -479,7 +479,7 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return redirect()->to('resident')->with('type','success')->with('msg','Professional Information saved successfully.');
                 }
                 else{
                     //otherwise create one
@@ -497,7 +497,7 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->to('home')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return redirect()->to('resident')->with('type','success')->with('msg','Professional Information saved successfully.');
                     
                 }
 
