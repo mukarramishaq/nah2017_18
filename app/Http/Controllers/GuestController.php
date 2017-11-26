@@ -42,7 +42,7 @@ class GuestController extends Controller
             );
             $data = (array) $data;
             $guest = Guest::create($data);
-            return redirect()->to('guests')->with('type','success')->with('msg','Guest Information saved successfully.');
+            return redirect()->route('guestsInfo')->with('type','success')->with('msg','Guest Information saved successfully.');
         }
         else
         {
@@ -61,11 +61,11 @@ class GuestController extends Controller
             if(count($guest)>0)
             {
                 $guest->delete();
-                return redirect()->to('guests')->with('type','success')->with('msg','Guest Information deleted successfully.');
+                return redirect()->route('guestsInfo')->with('type','success')->with('msg','Guest Information deleted successfully.');
     
             }
             else{
-                return redirect()->to('guests')->with('type','error')->with('msg','Could not  delete Guest Information.');
+                return redirect()->route('guestsInfo')->with('type','error')->with('msg','Could not  delete Guest Information.');
                 
             }
         }
