@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Jobs\SendEmail;
 use App\Mail\SignupConfirmation;
+use App\PersonalI;
 class RegisterController extends Controller
 {
     /*
@@ -55,6 +56,39 @@ class RegisterController extends Controller
         ]);
     }
 
+
+    public function resendVerificationEmail($userId,$email){
+        $user = User::where('email',$email)->where('id',$userId)->first();
+        if($user){
+            SendEmail::dispatch(new SignupConfirmation($user->email,$user));
+            return redirect()->route('login')->with('type','info')->with('msg','Confirmation email sent! Check Spam/Junk folders. If not received contact us');
+        }
+        else{
+            return redirect()->route('login')->with('type','danger')->with('msg','User not found!');
+        }
+    }
+
+   
+    public function verifyEmail($email,$verification_code){
+        //confirm the email
+        $user = User::where('email',$email)
+            ->where('verification_code',$verification_code)->first();
+        if($user){
+            
+            $user->is_verified = true;
+            $user->verification_token = NULL;
+            $user->save();
+            
+            return redirect()->route('login')->with('type','success')->with('msg','Email verified! Please login to proceed');
+        }
+        else{
+            //
+            return redirect()->route('NotFound');
+        }
+    }
+
+
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -69,6 +103,12 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'verification_token'=>str_random(30),
         ]);
+
+        $personalI = PersonalI::create(array(
+            'user_id'=>$user->id,
+            'name'=>$user->name,
+            'email'=>$user->email,
+        ));
 
         //SendEmail::dispatch(new SignupConfirmation($user->email,$user));
 

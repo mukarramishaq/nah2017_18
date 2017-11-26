@@ -106,7 +106,7 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label>Discipline</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="discipline"  id="discipline" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <!-- <select  required="true"  class="form-control select2 select2-hidden-accessible" name="discipline"  id="discipline" style="width: 100%;" tabindex="-1" aria-hidden="true">
                     @foreach($disciplines as $discipline)  
                         @if($educationalI->discipline == $discipline->name)  
                             <option value="{{$discipline->name}}" selected>{{$discipline->name}}</option>
@@ -114,7 +114,8 @@
                             <option value="{{$discipline->name}}">{{$discipline->name}}</option>
                         @endif
                     @endforeach
-                    </select>
+                    </select> -->
+                    <input type="text" value="{{$educationalI->discipline}}" class="form-control" name="discipline" id="discipline" required/>
                 </div>
                 </div>
                 </div>
@@ -197,9 +198,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <ul>
-                    <li>instruction1</li>
-                </ul>
+            <ul>
+                
+                <li>If you want to edit this page after some time then just click on save button. <b class="bg-red"><i>Once you clicked on Save and Next. Then you won't be able to access this section any more </i></b></li>
+            </ul>
             </div>
             <!-- /.box-body -->
           </div>

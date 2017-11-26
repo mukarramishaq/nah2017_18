@@ -98,7 +98,7 @@
                 </div>
                 <div class="form-group">
                   <label for="cNIC">CNIC</label>
-                  <input type="text" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="Enter CNIC" data-inputmask='"mask": "99999-9999999-9"' data-mask>
+                  <input type="text" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="12345-6789012-3" data-inputmask='"mask": "99999-9999999-9"' data-mask>
                 </div>  
                 </div>
                 </div>        
@@ -156,7 +156,7 @@
                 <div class="col-md-6">
                  <div class="form-group">
                   <label for="phoneNumber">Phone Number</label>
-                  <input type="text" value="{{$personalI->mobile_no}}" name="phoneNumber" required="true" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
+                  <input type="text" value="{{$personalI->mobile_no}}" name="phoneNumber" required="true" class="form-control" id="phoneNumber" placeholder="(092) 336-1234567" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
                 </div>
                 </div>                
                 </div>
@@ -164,7 +164,7 @@
                 <div class="col-md-6">
                 <div class="form-group">
                   <label for="emergencyPhoneNumber">Emergency Phone Number</label>
-                  <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="Enter Phone Number" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
+                  <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="(092) 336-1234567" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
                 </div>
                 </div>
                 <div class="col-md-6">
@@ -221,6 +221,9 @@
             <div class="box-body">
                <ul style="padding-left: 15px;">
                     <li>Name: Enter your full name. Use only alphabets.</li>
+                    <li>CNIC Format e.g 33303-3344555-6</li>
+                    <li>Phone number Format (country-code) company-code seven digit number e.g (092) 334-1122333</li>
+                    <li>If you want to edit this page after some time then just click on save button. <b class="bg-red"><i>Once you clicked on Save and Next. Then you won't be able to access this section any more </i></b></li>
                 </ul>
             </div>
             <!-- /.box-body -->
@@ -268,7 +271,7 @@
               $('.error-msg').css('display','none');
               d = new Date();
               $('.preview-uploaded-image').html('<img src="'+response.responseJSON.url+'?'+d.getTime()+'" height="100px" width="100px">');
-              $('#modal-pic .modal-footer .form-footer').html('<button class="btn bg-red upload-image" type="submit">Upload Image</button><button class="btn bg-red" data-dismiss="modal">Close</button>');
+              $('#modal-pic .modal-footer .form-footer').html('<button class="btn bg-red upload-image" type="submit">Change Image</button><button class="btn bg-red" data-dismiss="modal">Close</button>');
               $('.class-imgv-div').html('<img class="imgPicker" id="imgViewer" src="'+response.responseJSON.url+'?'+d.getTime()+'" alt="your image"  width="100%"/><input style="margin-top: 5px; width: inherit; font-size: 12px;" type="button" class="btn bg-red btn-flat"  data-toggle="modal" data-target="#modal-pic" onclick="" value="Upload Image"/> ');
               $('#id-is-picture-uploaded').val(response.responseJSON.url+"");
                       

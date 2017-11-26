@@ -188,9 +188,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-               <ul>
-                    <li>instruction1</li>
-                </ul>
+            <ul>
+                
+                <li>If you want to edit this page after some time then just click on save button. <b class="bg-red"><i>Once you clicked on Save and Next. Then you won't be able to access this section any more </i></b></li>
+            </ul>
             </div>
             <!-- /.box-body -->
            
