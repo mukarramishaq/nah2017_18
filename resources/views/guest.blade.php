@@ -28,8 +28,8 @@
                         </div>
                         <div class="col-md-6">                
                             <div class="form-group">
-                                <label for="guestContact">Guest Contact Number</label>
-                                <input type="text" required="true" class="form-control" name="guestContact" id="guestContact" placeholder="Enter Guest Contact Number">
+                                <label for="guestContact">Guest CNIC/B-form</label>
+                                <input type="text" required="true" class="form-control" name="guestContact" id="guestContact" placeholder="Enter Guest CNIC/B-from Number" data-inputmask='"mask": "12345-12345678"' data-mask>
                             </div>
                         </div>
                     </div>
@@ -41,8 +41,13 @@
                         <div class="col-md-6">               
                             <div class="form-group">
                 	            <label for="guestRelation">Relation</label>
-                                <input type="text" required="true" class="form-control" name="guestRelation" id="guestRelation" placeholder="Guest Relation">
-                            </div>
+                                <select  required="true" name="guestRelation"  class="form-control select2 select2-hidden-accessible"  id="gender" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                  
+                                    <option selected="selected" value="Spouse">Spouse</option>
+                                    <option value="child">Child</option>
+                 
+                </select>
+                </div>
                         </div>
                         
                     </div>
@@ -89,17 +94,19 @@
         </thead>
         <tbody>
          
-
+          
           @foreach($guests as $g) 
         <tr> 
               
               <td>{{$g->name}}</td>
               <td>{{$g->contact_no}}</td>              
               <td>{{$g->relation}}</td>
-              
-         
+              <th><button type="submit" class="btn btn-flat bg-red" onclick="removeButton('{{route('guestDelete',['id'=>$g->id])}}')">Remove Guest</button></th>
+          
         </tr>
          @endforeach
+         
+          
         
        </tbody>
         
@@ -109,6 +116,13 @@
     <!-- /.box-body -->
   </div>
 @endsection
+<script>
+  function removeButton(url){
+    
+  
+    window.location.replace(url);
+  }
+</script>
 
 @section('header-styles')
   <!-- DataTables -->

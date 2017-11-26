@@ -15,11 +15,11 @@ class GuestController extends Controller
         $user = Auth::user();
         if($user){
             $guests = $user->guest()->get();
-            if(!$guests || count($guests)<1){
-                $guests = (array) array(
-                    new Guest,
-                );  
-            }
+            // if(!$guests || count($guests)<1){
+            //     $guests = (array) array(
+            //         new Guest,
+            //     );  
+            // }
             \Log::info($guests);
             return view('guest')->with('guests',$guests);
 
@@ -50,6 +50,30 @@ class GuestController extends Controller
             
         }
 
+    }
+
+    public function removeGuest(Request $request, $id)
+    {
+        $user = Auth::user();
+        if($user)
+        {
+            $guest = Guest::find($id)->first();
+            if(count($guest)>0)
+            {
+                $guest->delete();
+                return redirect()->to('guests')->with('type','success')->with('msg','Guest Information deleted successfully.');
+    
+            }
+            else{
+                return redirect()->to('guests')->with('type','error')->with('msg','Could not  delete Guest Information.');
+                
+            }
+        }
+        else
+        {
+            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            
+        }
     }
 
 
