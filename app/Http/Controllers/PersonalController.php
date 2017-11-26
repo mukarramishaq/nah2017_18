@@ -36,7 +36,7 @@ class PersonalController extends Controller
             return view('personalInformation')->with('user',$user)->with('personalI',$personalI);
         }
         else{
-            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
         }
     }
 
@@ -139,7 +139,7 @@ class PersonalController extends Controller
                     ));
                 }
 
-                return redirect()->to('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
+                return redirect()->route('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
                 
             }
             else{
@@ -157,7 +157,7 @@ class PersonalController extends Controller
                         'is_personal_info_done'=>true,
                     ));
                 }
-                return redirect()->to('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
+                return redirect()->route('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
                 
             }
 
@@ -166,7 +166,7 @@ class PersonalController extends Controller
         }
         else{
             //session is expired
-            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
         }
 
     }

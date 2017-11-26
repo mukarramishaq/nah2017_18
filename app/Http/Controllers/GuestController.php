@@ -42,11 +42,11 @@ class GuestController extends Controller
             );
             $data = (array) $data;
             $guest = Guest::create($data);
-            return redirect()->to('guests')->with('type','success')->with('msg','Guest Information saved successfully.');
+            return redirect()->route('guestsInfo')->with('type','success')->with('msg','Guest Information saved successfully.');
         }
         else
         {
-            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return redirect()->route('login')->with('type','danger')->with('msg','Session expired. Login to continue');
             
         }
 
@@ -61,18 +61,38 @@ class GuestController extends Controller
             if(count($guest)>0)
             {
                 $guest->delete();
-                return redirect()->to('guests')->with('type','success')->with('msg','Guest Information deleted successfully.');
+                return redirect()->route('guestsInfo')->with('type','success')->with('msg','Guest Information deleted successfully.');
     
             }
             else{
-                return redirect()->to('guests')->with('type','error')->with('msg','Could not  delete Guest Information.');
+                return redirect()->route('guestsInfo')->with('type','danger')->with('msg','Could not  delete Guest Information.');
                 
             }
         }
         else
         {
-            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return redirect()->route('login')->with('type','danger')->with('msg','Session expired. Login to continue');
             
+        }
+    }
+
+    public function saveAndNext(Request $request){
+        $user = Auth::user();
+        if($user){
+            $stage = $user->stage()->get();
+            if($stage && count($stage)>0){
+                $stage = $stage[0];
+                $stage->is_guest_info_done = true;
+                $stage->save();
+
+                return redirect()->route('resident')->with('type','success')->with('msg','Guests data saved successfully');
+            }
+            else{
+                return redirect()->route('professionalInformation')->with('type','warning')->with('msg','Some fields missing');
+            }
+        }
+        else{
+            return redirect()->route('login')->with('type','danger')->with('msg','Session expired. Login to continue');
         }
     }
 

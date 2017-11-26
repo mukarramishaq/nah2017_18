@@ -182,6 +182,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 
         'Webpatser\Countries\CountriesServiceProvider',
+        Barryvdh\DomPDF\ServiceProvider::class,
+        
 
     ],
 
@@ -236,6 +238,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Countries' => 'Webpatser\Countries\CountriesFacade',
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

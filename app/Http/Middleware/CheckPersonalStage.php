@@ -22,7 +22,7 @@ class CheckPersonalStage
             if($stage && count($stage)>0){
                 $stage = $stage[0];
                 if($stage->is_personal_info_done){
-                    return redirect('educationalInformation');
+                    return redirect()->route('educationalInformation');
                 }
                 return $next($request);
             }
@@ -34,7 +34,7 @@ class CheckPersonalStage
             }
         }
         else{
-            return redirect('login')->with('type','warning')->with('msg','Session Expired. Login agian to proceed');
+            return redirect()->route('login')->with('type','warning')->with('msg','Session Expired. Login agian to proceed');
         }
         
     }

@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Closure;
 use App\Stage;
 use App\User;
-class CheckProfessionalStage
+
+class CheckGuestStage
 {
     /**
      * Handle an incoming request.
@@ -27,8 +28,11 @@ class CheckProfessionalStage
                 if(!$stage->is_educational_info_done){
                     return redirect()->route('educationalInformation');
                 }
-                if($stage->is_professional_info_done){
-                    return redirect()->route('guestsInfo');
+                if(!$stage->is_professional_info_done){
+                    return redirect()->route('professionalInformation');
+                }
+                if($stage->is_guest_info_done){
+                    return redirect()->route('resident');
                 }
                 return $next($request);
             }

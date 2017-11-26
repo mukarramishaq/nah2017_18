@@ -34,7 +34,7 @@ class EducationalController extends Controller
             return view('educationalInformation')->with('schools',$schools)->with('disciplines',$disciplines)->with('educationalI',$educationalI);
         }
         else{
-            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
         }
     }
 
@@ -135,7 +135,7 @@ class EducationalController extends Controller
                     ));
                 }
 
-                return redirect()->to('professionalInformation')->with('type','success')->with('msg','Educational Information saved successfully.');
+                return redirect()->route('professionalInformation')->with('type','success')->with('msg','Educational Information saved successfully.');
                 
             }
             else{
@@ -153,7 +153,7 @@ class EducationalController extends Controller
                         'is_educational_info_done'=>true,
                     ));
                 }
-                return redirect()->to('professionalInformation')->with('type','success')->with('msg','Educational Information saved successfully.');
+                return redirect()->route('professionalInformation')->with('type','success')->with('msg','Educational Information saved successfully.');
                 
             }
 
@@ -162,7 +162,7 @@ class EducationalController extends Controller
         }
         else{
             //session is expired
-            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
         }
 
     }

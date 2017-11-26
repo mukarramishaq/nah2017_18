@@ -15,15 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// guest route
-Route::get('/guests', ['as'=>'guestsInfo','uses'=>'GuestController@index']);
-Route::post('/guest/add', ['as'=>'guestAdd','uses'=>'GuestController@addGuest']);
-Route::get('/guest/delete/{id}', ['as'=> 'guestDelete', 'uses' => 'GuestController@removeGuest']);
 
 Auth::routes();
 Route::post('/auth/login',['as'=>'authLogin','uses'=>'Auth\LoginController@authenticateLogin']);
 
-
+Route::get('/getChalan',function(){return view('chalan');});
 
 Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/home', 'HomeController@index')->name('home');
@@ -59,7 +55,9 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/paymentMethod',['as'=>'paymentMethod','uses'=>'PaymentController@paymentMethodIndex'])->middleware('checkPaymentMethodStage');
     Route::post('/paymentMethodSubmit',['as'=>'paymentMethodSubmit','uses'=>'PaymentController@paymentMethodSubmit'])->middleware('checkPaymentMethodStage');
     Route::get('/chalanMethod',['as'=>'chalanMethod','uses'=>'PaymentController@chalanMethodIndex'])->middleware('checkChalanMethod');
+    Route::get('/downloadChalan',['as'=>'downloadChalan','uses'=>'PaymentController@downloadChalan'])->middleware('checkChalanMethod');;
     Route::post('/chalanMethodSubmit',['as'=>'chalanMethodSubmit','uses'=>'PaymentController@chalanMethodSubmit'])->middleware('checkChalanMethod');
+    
     
     Route::get('/afterPayment',['as'=>'afterPayment','uses'=>'PaymentController@afterPaymentIndex']);
 
@@ -69,4 +67,10 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/codMethod',['as'=>'codMethod','uses'=>'PaymentController@codMethodIndex'])->middleware('checkCODMethod');
 
     Route::get('/overseasMethod',['as'=>'overseasMethod','uses'=>'PaymentController@overseasMethodIndex'])->middleware('checkOverseasMethod');
+
+    // guest route
+    Route::get('/guests', ['as'=>'guestsInfo','uses'=>'GuestController@index'])->middleware('checkGuestStage');
+    Route::post('/guest/add', ['as'=>'guestAdd','uses'=>'GuestController@addGuest'])->middleware('checkGuestStage');
+    Route::get('/guest/delete/{id}', ['as'=> 'guestDelete', 'uses' => 'GuestController@removeGuest'])->middleware('checkGuestStage');
+    Route::get('/guests/saveAndNext',['as'=>'doneAndNext','uses'=>'GuestController@saveAndNext'])->middleware('checkGuestStage');
 });
