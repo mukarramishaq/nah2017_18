@@ -7,6 +7,12 @@
 @section('content')
 
 <div class="box">
+
+
+
+
+
+<div class="box">
     <div class="box-header">
         <h3 class="box-title">Guests Details</h3>
     </div>
@@ -46,8 +52,8 @@
                                     <option selected="selected" value="Spouse">Spouse</option>
                                     <option value="child">Child</option>
                  
-                </select>
-                </div>
+                                </select>
+                            </div>
                         </div>
                         
                     </div>
@@ -115,6 +121,12 @@
     </div>
     <!-- /.box-body -->
   </div>
+<div class="box-footer text-right">
+                <button type="submit" class="btn btn-flat bg-red">Done and Continue</button>
+              </div>
+
+</div>
+  
 @endsection
 <script>
   function removeButton(url){
