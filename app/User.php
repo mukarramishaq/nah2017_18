@@ -60,4 +60,7 @@ class User extends Authenticatable
     public function guest(){
         return $this->hasMany('App\Guest');
     }
+    public function chalan(){
+        return $this->hasOne('App\Chalan');
+    }
 }

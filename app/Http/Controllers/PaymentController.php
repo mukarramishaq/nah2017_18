@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 use App\Payment;
 use App\User;
 use App\Stage;
+use App\Chalan;
+use App\Price;
+use App\Guest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use PDF;
 
 class PaymentController extends Controller
 {
@@ -255,6 +260,90 @@ class PaymentController extends Controller
         else{
             return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
         } 
+    }
+
+    public function downloadChalan(Request $request){
+        $user = Auth::user();
+        if($user){
+            $chalan = $user->chalan()->get();
+            if($chalan && count($chalan)>0){
+                $chalan = $chalan[0];
+                $pdf = PDF::loadView('chalan',[
+                    'user_id'=>$chalan->chalan_id,
+                    'chalan_id'=>$chalan->chalan_id,
+                    'name'=>$chalan->name,
+                    'cnic'=>$chalan->cnic,
+                    'school'=>$chalan->school,
+                    'issue_date'=>$chalan->issue_date,
+                    'amount'=>$chalan->amount,
+                    'due_date'=>$chalan->due_date,
+                ]);
+                $pdf->setPaper('A4', 'landscape');
+                return $pdf->download('chalan.pdf');
+                
+            }
+            else{
+                $guests = $user->guest()->get();
+                $price = Price::where('id',1)->first();
+                if($guests && count($guests)>0){
+                    $noOfGuest = count($guests);
+                    $totalAmount = $noOfGuest*$price->guest_price;
+                    $totalAmount += $price->alumni_price;
+
+                    $personalI = $user->personalI()->get();
+                    $personalI = $personalI[0];
+
+                    $educationalI = $user->educationalI()->get();
+                    $educationalI = $educationalI[0];
+                    $chalan = Chalan::create(array(
+                        'user_id'=>$user->id,
+                        'chalan_id'=>time(),
+                        'name'=>$user->name,
+                        'cnic'=>$personalI->cnic,
+                        'school'=>$educationalI->school,
+                        'issue_date'=>time(),
+                        'amount'=>$totalAmount,
+                        'due_date'=>'19/12/2017',
+                    ));
+                    $pdf = PDF::loadView('chalan',['$chalan'=>$chalan,'uuid',$user->uuid]);
+                    $pdf->setPaper('A4', 'landscape');
+                    return $pdf->download('chalan.pdf');
+                }
+                else{
+
+                    $totalAmount = $price->alumni_price;
+                    
+                    $personalI = $user->personalI()->get();
+                    $personalI = $personalI[0];
+
+                    $educationalI = $user->educationalI()->get();
+                    $educationalI = $educationalI[0];
+                    $chalan = Chalan::create(array(
+                        'user_id'=>$user->id,
+                        'chalan_id'=>time(),
+                        'name'=>$user->name,
+                        'cnic'=>$personalI->cnic,
+                        'school'=>$educationalI->school,
+                        'issue_date'=>time(),
+                        'amount'=>$totalAmount,
+                        'due_date'=>'19/12/2017',
+                    ));
+
+                    $pdf = PDF::loadView('chalan',['$chalan'=>$chalan,'uuid',$user->uuid]);
+                    $pdf->setPaper('A4', 'landscape');
+                    return $pdf->download('chalan.pdf');
+    
+                }
+            }
+
+            
+            
+        }
+        else{
+            return redirect('login')->with('type','warning')->with('msg','Session expired. Login again to continue');
+        }
+        
+
     }
 
 

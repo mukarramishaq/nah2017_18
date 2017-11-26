@@ -67,10 +67,9 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-1">
-                                <button class="btn btn-flat bg-red">Download Chalan Form</button>
+                                <button class="btn btn-flat bg-red" onclick="downloadChalan('{{route('downloadChalan')}}');">Download Chalan Form</button>
                                 </div>
-                            </div>
-                                    
+                            </div>     
                         </div>
                        
                     </div>
@@ -210,6 +209,10 @@
             $('.ajax-info').show();
             return false;
         }
+    }
+    function downloadChalan(url){
+        d = new Date();
+        window.location.replace(url+"?"+d.getTime());
     }
 	
     $("body").on("click",".upload-image",function(e){
