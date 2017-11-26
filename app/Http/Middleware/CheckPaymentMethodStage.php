@@ -23,12 +23,12 @@ class CheckPaymentMethodStage
                 $stage = $stage[0];
                 
                 if(!$stage->is_professional_info_done){
-                    return redirect('professionalInformation');
+                    return redirect()->route('professionalInformation');
                 }
                 
                 if(!$stage->is_residence_done){
-                    // return redirect('chalanMethod');
-                    return redirect('resident');
+                    // return redirect()->route('chalanMethod');
+                    return redirect()->route('resident');
                 }
                 else if(!$stage->is_payment_method_done){
                     return $next($request);
@@ -39,34 +39,34 @@ class CheckPaymentMethodStage
                         $payment = $payment[0];
                         if($payment->resident == 'pakistani'){
                             if($payment->payment_method == 'online'){
-                                return redirect('onlineMethod');
+                                return redirect()->route('onlineMethod');
                             }
                             else if($payment->payment_method == 'cod'){
-                                return redirect('codMethod');
+                                return redirect()->route('codMethod');
                             }
                             else{
-                                return redirect('chalanMethod');
+                                return redirect()->route('chalanMethod');
                             }
                         }
                         else if($payment->resident == 'overseas'){
-                            return redirect('overseasMethod');
+                            return redirect()->route('overseasMethod');
                         }
                     }
                     $stage->is_residence_done=false;
                     $stage->is_payment_method_done=false;
                     $stage->save();
-                    return redirect('resident');
+                    return redirect()->route('resident');
                 }
                 
             }
             else{
                 Auth::logout();
                 //return $next($request);
-                return redirect('login')->with('type','warning')->with('msg','Your account was logged out due to your smartness :) Please login again to proceed');
+                return redirect()->route('login')->with('type','warning')->with('msg','Your account was logged out due to your smartness :) Please login again to proceed');
             }
         }
         else{
-            return redirect('login')->with('type','warning')->with('msg','Session Expired. Login agian to proceed');
+            return redirect()->route('login')->with('type','warning')->with('msg','Session Expired. Login agian to proceed');
         }
     }
 }

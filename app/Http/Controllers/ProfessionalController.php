@@ -45,7 +45,7 @@ class ProfessionalController extends Controller
             return view('professionalInformation')->with('professionalI',$professionalI)->with('entrepI',$entrepI)->with('countries',$countries);
         }
         else{
-            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
         }
     }
 
@@ -513,7 +513,7 @@ class ProfessionalController extends Controller
         }
         else{
             //session is expired
-            return redirect()->to('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
         }
 
 

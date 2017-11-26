@@ -22,28 +22,28 @@ class CheckChalanMethod
             if($payment && count($payment)>0){
                 $payment = $payment[0];
                 if($payment->resident == 'overseas'){
-                    return redirect('overseasMethod');
+                    return redirect()->route('overseasMethod');
                 }
                 if($payment->payment_method == 'chalan'){
                     return  $next($request);
                 }
                 else if($payment->payment_method == 'online'){
-                    return  redirect('onlineMethod');
+                    return  redirect()->route('onlineMethod');
                 }
                 else if($payment->payment_method == 'cod'){
-                    return  redirect('codMethod');
+                    return  redirect()->route('codMethod');
                 }
                 else{
                     if($payment->resident == 'overseas'){
-                        return redirect('overseasMethod');
+                        return redirect()->route('overseasMethod');
                     }
-                    return redirect('home');
+                    return redirect()->route('home');
                 }
                 
             }
 
             Auth::logout();
-            return redirect('login')->with('type','danger')->with('msg',"Don't try to be smart! Otherwise the consequences will not be light!");
+            return redirect()->route('login')->with('type','danger')->with('msg',"Don't try to be smart! Otherwise the consequences will not be light!");
 
         }
         return redirect()->route('login')->with('type','warning')->with('msg','Login first to proceed');

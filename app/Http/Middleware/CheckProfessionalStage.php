@@ -22,10 +22,10 @@ class CheckProfessionalStage
             if($stage && count($stage)>0){
                 $stage = $stage[0];
                 if(!$stage->is_personal_info_done){
-                    return redirect('personalInformation');
+                    return redirect()->route('personalInformation');
                 }
                 if(!$stage->is_educational_info_done){
-                    return redirect('educationalInformation');
+                    return redirect()->route('educationalInformation');
                 }
                 if($stage->is_professional_info_done){
                     return redirect()->route('guestsInfo');
@@ -37,11 +37,11 @@ class CheckProfessionalStage
                     'user_id'=>$user->id,
                 ));
                 Auth::logout();
-                return redirect('login')->with('type','danger')->with('msg',"Don't try to be smart! Otherwise the consequences will not be light!");
+                return redirect()->route('login')->with('type','danger')->with('msg',"Don't try to be smart! Otherwise the consequences will not be light!");
             }
         }
         else{
-            return redirect('login')->with('type','warning')->with('msg','Session Expired. Login agian to proceed');
+            return redirect()->route('login')->with('type','warning')->with('msg','Session Expired. Login agian to proceed');
         }
     }
 }
