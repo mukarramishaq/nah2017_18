@@ -306,7 +306,16 @@ class PaymentController extends Controller
                         'amount'=>$totalAmount,
                         'due_date'=>'19/12/2017',
                     ));
-                    $pdf = PDF::loadView('chalan',['$chalan'=>$chalan,'uuid',$user->uuid]);
+                    $pdf = PDF::loadView('chalan',[
+                        'user_id'=>$chalan->user_id,
+                        'chalan_id'=>$chalan->chalan_id,
+                        'name'=>$chalan->name,
+                        'cnic'=>$chalan->cnic,
+                        'school'=>$chalan->school,
+                        'issue_date'=>$chalan->issue_date,
+                        'amount'=>$chalan->amount,
+                        'due_date'=>$chalan->due_date,
+                    ]);
                     $pdf->setPaper('A4', 'landscape');
                     return $pdf->download('chalan.pdf');
                 }

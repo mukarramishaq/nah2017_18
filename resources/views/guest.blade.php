@@ -122,7 +122,7 @@
     <!-- /.box-body -->
   </div>
 <div class="box-footer text-right">
-                <button type="submit" class="btn btn-flat bg-red" onclick = " window.location.replace('route('doneAndNext')');">Done and Continue</button>
+                <button type="submit" class="btn btn-flat bg-red" onclick = " window.location.replace('{{route('doneAndNext')}}');">Done and Continue</button>
               </div>
 
 </div>

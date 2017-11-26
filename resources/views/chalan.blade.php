@@ -62,10 +62,12 @@ p.big {
   <div class="column">
       <div>
         <center>Bank Copy</center>
-            <img class = "image" src = "2.png" width=50px height=60px align=left>
-         <img class = "image" src="3.png"  width="50px" height="60px" align="right">
-         <br><br><br>
+        <br><br>
+            <img class = "image" src = "logos/logo_homecoming.jpg" width=50px height=60px align=left>
+         <img class = "image" src="logos/logo_nust3.jpeg"  width="50px" height="60px" align="right">
+         <br><br>
       </div>
+      <br><br>
       <div>
           <center><b>NUST ALUMNI HOMECOMING 2017<br>CHALLAN FORM</b></center>
       </div>
@@ -121,10 +123,12 @@ p.big {
   <div class="column">
   <div>
     <center>NUST Copy</center>
-        <img class = "image" src = "2.png" width=50px height=60px align=left>
-     <img class = "image" src="3.png"  width="50px" height="60px" align="right">
-     <br><br><br>
-  </div>
+    <br><br>
+    <img class = "image" src = "logos/logo_homecoming.jpg" width=50px height=60px align=left>
+ <img class = "image" src="logos/logo_nust3.jpeg"  width="50px" height="60px" align="right">
+ <br><br>
+</div>
+<br><br>
   <div>
       <center><b>NUST ALUMNI HOMECOMING 2017<br>CHALLAN FORM</b></center>
   </div>
@@ -179,10 +183,12 @@ p.big {
 <div class="column">
 <div>
   <center>Alumni Copy</center>
-      <img class = "image" src = "2.png" width=50px height=60px align=left>
-   <img class = "image" src="3.png"  width="50px" height="60px" align="right">
-   <br><br><br>
+  <br><br>
+  <img class = "image" src = "logos/logo_homecoming.jpg" width=50px height=60px align=left>
+<img class = "image" src="logos/logo_nust3.jpeg"  width="50px" height="60px" align="right">
+<br><br>
 </div>
+<br><br>
 <div>
     <center><b>NUST ALUMNI HOMECOMING 2017<br>CHALLAN FORM</b></center>
 </div>
