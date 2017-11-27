@@ -8,6 +8,7 @@ use App\Chalan;
 use App\Price;
 use App\Guest;
 use App\Bank;
+use NumberFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -270,6 +271,8 @@ class PaymentController extends Controller
         $user = Auth::user();
         if($user){
             $chalan = $user->chalan()->get();
+            $bank = Bank::where('id',1)->first();
+            $f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
             if($chalan && count($chalan)>0){
                 $chalan = $chalan[0];
                 $guests = $user->guest()->get();
@@ -290,11 +293,14 @@ class PaymentController extends Controller
                     'user_id'=>$chalan->user_id,
                     'chalan_id'=>$chalan->chalan_id,
                     'name'=>$chalan->name,
+                    'accountNo'=>$bank->bank_account_number,
+                    'accountTitle'=>$bank->bank_account_name,
                     'cnic'=>$chalan->cnic,
                     'school'=>$chalan->school,
                     'issue_date'=>$chalan->issue_date,
                     'amount'=>$chalan->amount,
                     'due_date'=>$chalan->due_date,
+                    'f'=>$f,
                 ]);
                 $pdf->setPaper('A4', 'landscape');
                 return $pdf->download('chalan.pdf');
@@ -303,6 +309,7 @@ class PaymentController extends Controller
             else{
                 $guests = $user->guest()->get();
                 $price = Price::where('id',1)->first();
+                
                 if($guests && count($guests)>0){
                     $noOfGuest = count($guests);
                     $totalAmount = 0;
@@ -322,17 +329,20 @@ class PaymentController extends Controller
                         'school'=>$educationalI->school,
                         'issue_date'=>time(),
                         'amount'=>$totalAmount,
-                        'due_date'=>'19/12/2017',
+                        'due_date'=>strtotime('19-12-2017'),
                     ));
                     $pdf = PDF::loadView('chalan',[
                         'user_id'=>$chalan->user_id,
                         'chalan_id'=>$chalan->chalan_id,
                         'name'=>$chalan->name,
+                        'accountNo'=>$bank->bank_account_number,
+                        'accountTitle'=>$bank->bank_account_name,
                         'cnic'=>$chalan->cnic,
                         'school'=>$chalan->school,
                         'issue_date'=>$chalan->issue_date,
                         'amount'=>$chalan->amount,
                         'due_date'=>$chalan->due_date,
+                        'f'=>$f,
                     ]);
                     $pdf->setPaper('A4', 'landscape');
                     return $pdf->download('chalan.pdf');
@@ -350,14 +360,27 @@ class PaymentController extends Controller
                         'user_id'=>$user->id,
                         'chalan_id'=>time(),
                         'name'=>$user->name,
+                        'accountNo'=>$bank->bank_account_number,
+                        'accountTitle'=>$bank->bank_account_name,
                         'cnic'=>$personalI->cnic,
                         'school'=>$educationalI->school,
                         'issue_date'=>time(),
                         'amount'=>$totalAmount,
-                        'due_date'=>'19/12/2017',
+                        'due_date'=>strtotime('19-12-2017'),
                     ));
 
-                    $pdf = PDF::loadView('chalan',['$chalan'=>$chalan,'uuid',$user->uuid]);
+                    $pdf = PDF::loadView('chalan',['user_id'=>$chalan->user_id,
+                    'chalan_id'=>$chalan->chalan_id,
+                    'name'=>$chalan->name,
+                    'accountNo'=>$bank->bank_account_number,
+                    'accountTitle'=>$bank->bank_account_name,
+                    'cnic'=>$chalan->cnic,
+                    'school'=>$chalan->school,
+                    'issue_date'=>$chalan->issue_date,
+                    'amount'=>$chalan->amount,
+                    'due_date'=>$chalan->due_date,
+                    'f'=>$f,
+                ]);
                     $pdf->setPaper('A4', 'landscape');
                     return $pdf->download('chalan.pdf');
     
