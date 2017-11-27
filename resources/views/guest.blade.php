@@ -39,7 +39,7 @@
                         <div class="col-md-6">                
                             <div class="form-group">
                                 <label for="guestContact">Guest CNIC/B-form</label>
-                                <input type="text" required="true" class="form-control" name="guestContact" id="guestContact" placeholder="Enter Guest CNIC/B-from Number" data-inputmask='"mask": "12345-12345678"' data-mask>
+                                <input type="text" required="true" class="form-control" name="guestContact" id="guestContact" placeholder="Enter Guest CNIC/B-from Number" data-inputmask='"mask": "99999-9999999-9"' data-mask>
                             </div>
                         </div>
                     </div>
@@ -166,13 +166,7 @@
   </section>
 </div>
 @endsection
-<script>
-  function removeButton(url){
-    
-  
-    window.location.replace(url);
-  }
-</script>
+
 
 @section('header-styles')
   <!-- DataTables -->
@@ -185,4 +179,20 @@
   </style>
 @endsection
 @section('footer-scripts')
+<script>
+  function removeButton(url){
+    
+  
+    window.location.replace(url);
+  }
+</script>
+<script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.js')}}"></script>
+<script>
+  $(function () {
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+  
+  })
+</script>
  @endsection
