@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Seeded the prices!'); 
         $this->call('SchoolsSeeder');
         $this->command->info('Seeded the schools!'); 
+        $this->call('BankSeeder');
+        $this->command->info('Seeded the Bank!'); 
     }
 }

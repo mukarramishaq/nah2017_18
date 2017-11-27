@@ -66,8 +66,30 @@
                         
                         <div class="box-body">
                             <div class="row">
-                                <div class="col-md-4 col-md-offset-1">
-                                <!-- <button class="btn btn-flat bg-red">Download Chalan Form</button> -->
+                                <div class="col-md-10 col-md-offset-1">
+                                    <table class="table">
+                                        <tr>
+                                            <th>Your Dues</th>
+                                            <td><span class="label label-danger" style="font-size:15px;">Rs. {{count($guests)*$price->guest_price+$price->alumni_price}}/-</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bank Name</th>
+                                            <td>{{$bank->bank_name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bank Account Name</th>
+                                            <td>{{$bank->bank_account_name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bank Account Number</th>
+                                            <td><span class="label label-success" style="font-size:15px;">{{$bank->bank_account_number}}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bank Branch</th>
+                                            <td>{{$bank->bank_branch}}</td>
+                                        </tr>
+                                    </table>
+                                    
                                 </div>
                             </div>
                                     
@@ -147,12 +169,13 @@
         <div class="col-md-3">
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Instructions</h3>
+              <h3 class="box-title">Instructions/Info</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <ul>
-                    <li>instruction1</li>
+                    <li><b>Why {{count($guests)*$price->guest_price+$price->alumni_price}}?</b> Because You are bringing {{count($guests)}} guest{{count($guests)>1 ? "s" : ''}} with you. Your registration fee is {{$price->alumni_price}} and each guest's registration fee is {{$price->guest_price}}. So total is {{count($guests)*$price->guest_price+$price->alumni_price}}</li>
+                    <li>After payment fill out the "After Online Payment" form and sumbit it</li>
                 </ul>
             </div>
             <!-- /.box-body -->
@@ -222,7 +245,7 @@
               $('.error-msg').css('display','none');
               d = new Date();
               $('.preview-uploaded-image').html('<img src="'+response.responseJSON.url+'?'+d.getTime()+'" height="100px" width="100px">');
-              $('#modal-pic .modal-footer .form-footer').html('<button class="btn bg-red upload-image" type="submit">Upload Image</button><button class="btn bg-red" data-dismiss="modal">Close</button>');
+              $('#modal-chalan .modal-footer .form-footer').html('<button class="btn bg-red upload-image" type="submit">Change Image</button><button class="btn bg-red" data-dismiss="modal">Close</button>');
               $('.class-preview').html('<img class="imgPicker" id="imgViewer" src="'+response.responseJSON.url+'?'+d.getTime()+'" alt="your image"  width="100%"/>');
               $('#id-is-chalan-uploaded').val(response.responseJSON.url+"");
                       

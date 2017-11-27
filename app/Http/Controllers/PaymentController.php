@@ -7,6 +7,7 @@ use App\Stage;
 use App\Chalan;
 use App\Price;
 use App\Guest;
+use App\Bank;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -73,13 +74,16 @@ class PaymentController extends Controller
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
+            $price = Price::where('id',1)->first();
+            $guests = $user->guest()->get();
+            $bank = Bank::where('id',1)->first();
             if($payment && count($payment)>0){
                 $payment = $payment[0];
             }
             else{
                 $payment = new Payment;
             }
-            return view('onlineMethod')->with('payment',$payment);
+            return view('onlineMethod')->with('payment',$payment)->with('bank',$bank)->with('price',$price)->with('guests',$guests);
         }
         else{
             return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
