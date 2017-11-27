@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{route('home')}}" >NUST Alumni <b>Homecoming</b> 2017-18</a>
+    <a href="{{route('home')}}" >NUST Alumni <b>Homecoming</b>' 17</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

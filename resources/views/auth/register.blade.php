@@ -30,7 +30,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="{{route('home')}}">NUST Alumni <b>Homecoming</b> 2017-18</a>
+    <a href="{{route('home')}}">NUST Alumni <b>Homecoming</b>' 17</a>
   </div>
 
   <div class="register-box-body">

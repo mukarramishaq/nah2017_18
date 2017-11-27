@@ -8,21 +8,41 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>Homecoming'17 | NUST Alumni</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('welcome/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="{{asset('welcome/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'> -->
 
     <!-- Plugin CSS -->
     <link href="{{asset('welcome/vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{asset('welcome/css/creative.min.css')}}" rel="stylesheet">
+    <link href="{{asset('welcome/css/creative.css')}}" rel="stylesheet">
+    <style>
+        .gir{
+        font-family: 'GlacialIndifferenceRegular';
+        }
+        .gib{
+        font-family: 'GlacialIndifferenceBold';
+        }
+        .lr{
+        font-family: 'LatoRegular';
+        }
+        .lb{
+        font-family: 'LatoBlack';
+        }
+        .lmr{
+        font-family: 'LemonMilkRegular';
+        }
+        .lmb{
+        font-family: 'LemonMilkBold';
+        }
+    </style>
 
   </head>
 
@@ -31,23 +51,23 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <!-- <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a> -->
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger lmr" href="#about" style="font-family:LemonMilkRegular">About US</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+              <a class="nav-link js-scroll-trigger lmr" href="#services">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+              <a class="nav-link js-scroll-trigger lmr" href="#portfolio">Portfolio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger lmr" href="#contact">CONTACT US</a>
             </li>
           </ul>
         </div>
@@ -58,15 +78,17 @@
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-10 mx-auto">
-            <h1 class="text-uppercase">
-              <strong>Your Favorite Source of Free Bootstrap Themes</strong>
-            </h1>
-            <hr>
+            <h3 class="text-uppercase gir" >
+              NUST ALUMNI
+            </h3>
+            <h1 class="text-uppercase gib">Homecoming' 17</h1>
+            
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
-          </div>
+            
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('register')}}" style="opacity:0.7;">Register Now.</a>
+            <p>Already have an account? <a href="{{route('login')}}" style="font-family:LatoBlack;color:white;">Login</a>  
+        </div>
         </div>
       </div>
     </header>
@@ -127,7 +149,7 @@
       </div>
     </section>
 
-    <section class="p-0" id="portfolio">
+    <!-- <section class="p-0" id="portfolio">
       <div class="container-fluid p-0">
         <div class="row no-gutters popup-gallery">
           <div class="col-lg-4 col-sm-6">
@@ -222,12 +244,12 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="bg-dark text-white">
       <div class="container text-center">
-        <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a>
+        <h2 class="mb-4">Registrations Are Open!</h2>
+        <a class="btn btn-light btn-xl sr-button" href="{{route('register')}}">Register Now!</a>
       </div>
     </section>
 
@@ -254,6 +276,7 @@
         </div>
       </div>
     </section>
+    
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{asset('welcome/vendor/jquery/jquery.min.js')}}"></script>
@@ -267,25 +290,43 @@
     <!-- Custom scripts for this template -->
     <script src="{{asset('welcome/js/creative.min.js')}}"></script>
     <script>
-    var ii = -1;
-    function chB(){
-    		data = {
-					'1':'img/1.jpeg',
-					'2':'img/header.jpg',
-				};
-			size = 2;
+    // function preloadImages(srcs) {
+    //         if (!preloadImages.cache) {
+    //             preloadImages.cache = [];
+    //         }
+    //         var img;
+    //         for (var i = 0; i < srcs.length; i++) {
+    //             img = new Image();
+    //             img.src = srcs[i];
+    //             preloadImages.cache.push(img);
+    //         }
+    //     }
+    var data = ["/background_jpgs/jpgs-1920x1280/2.jpg","/background_jpgs/jpgs-1920x1280/3.jpg","/background_jpgs/jpgs-1920x1280/4.jpg","/background_jpgs/jpgs-1920x1280/5.jpg","/background_jpgs/jpgs-1900x1267/1.jpg"];
+    // preloadImages(data);
+    $(document).ready(function(){
+        
+        var ii = -1;
+        
+        function chB(){
+    		
+			size = data.length;
 				//console.log(size(data));
-			imgURL = data[''+(1+ii%size)];
+			imgURL = data[(ii%size)];
 			console.log(imgURL);
 			$("header.masthead")
-				.fadeTo(2000,0.50, function() {
-			  		$("header.masthead").css('background-image',"url("+imgURL+")");
+				.fadeTo(2000,0.5, function() {
+                    
+                    $("header.masthead").css('background-image',"url("+imgURL+")");
+			  		
 		  		})
 		  		.fadeTo(2000,1.0);
 		  		//setTimeout(function(){chB('img/header.jpg');},20000);
-		  	}
-    	setInterval(function(){chB(ii++);},8000);
+		}
+    	setInterval(function(){chB(ii++);},10000);
     	//setInterval(function(){chB('img/header.jpg');},20000);
+        
+    });
+    
     </script>
 
   </body>
