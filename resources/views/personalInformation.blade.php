@@ -213,7 +213,7 @@
           <!-- /.box -->
         </div>
         <div class="col-md-3">
-        <div class="box box-danger">
+          <div class="box box-danger">
             <div class="box-header with-border">
               <h3 class="box-title">Instructions</h3>
             </div>
@@ -227,8 +227,8 @@
                 </ul>
             </div>
             <!-- /.box-body -->
+          </div>
         </div>
-    </div>
   </div>
 @endsection
 

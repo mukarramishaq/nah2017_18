@@ -268,6 +268,20 @@ class PaymentController extends Controller
             $chalan = $user->chalan()->get();
             if($chalan && count($chalan)>0){
                 $chalan = $chalan[0];
+                $guests = $user->guest()->get();
+                $price = Price::where('id',1)->first();
+                $totalAmount = 0;
+                $totalAmount += $price->alumni_price;
+                if($guests && count($guests)>0){
+                    $noOfGuest = count($guests);
+                    $totalAmount += $noOfGuest*$price->guest_price;
+                }
+
+                if($totalAmount != $chalan->amount){
+                    $chalan->amount = $totalAmount;
+                    $chalan->save();
+                }
+
                 $pdf = PDF::loadView('chalan',[
                     'user_id'=>$chalan->user_id,
                     'chalan_id'=>$chalan->chalan_id,

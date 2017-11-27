@@ -8,13 +8,16 @@
 
 <div class="box">
 
+<div class="box-header">
+        <h3 class="box-title">Guests Info | Registration Fee</h3>
+    </div>
 
+    <div class="box-body">
+                    <div class="row">
 
-
-
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title">Guests Details</h3>
+<div class="box box-danger col-md-5 col-xs-10 col-xs-offset-1 col-md-offset-1">
+    <div class="box-header with-border">
+        <h3 class="box-title">Add Guests</h3>
     </div>
     
     
@@ -79,13 +82,28 @@
 
 
 
-
 </div>
+<div class="col-md-3 col-md-pull-right col-xs-10 col-xs-offset-1">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h4>Total:</h4> <h3>Rs.{{(count($guests)*$price->guest_price)+$price->alumni_price}}/-</h3>
+
+              
+            </div>
+            
+            <div class="small-box-footer"><p>Alumni Fee: Rs.1500/- per alumni</p><p>Guest Fee: Rs.1000/- per guest</p></div>
+          </div>
+        </div>
+        <!-- ./col -->
+</div>
+<!-- /.row -->
+
 
   <!-- ends here  -->
-<div class="box">
-    <div class="box-header">
-      <h3 class="box-title">Guest Information</h3>
+<div class="box box-danger">
+    <div class="box-header with-border">
+      <h3 class="box-title">Added Guests</h3>
     </div>
   <!-- /.box-header -->
     <div class="box-body">

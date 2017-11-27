@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Guest;
 use App\Payment;
+use App\Price;
 
 class GuestController extends Controller
 {
@@ -15,13 +16,14 @@ class GuestController extends Controller
         $user = Auth::user();
         if($user){
             $guests = $user->guest()->get();
+            $price = Price::where('id',1)->first();
             // if(!$guests || count($guests)<1){
             //     $guests = (array) array(
             //         new Guest,
             //     );  
             // }
             \Log::info($guests);
-            return view('guest')->with('guests',$guests);
+            return view('guest')->with('guests',$guests)->with('price',$price);
 
         }
         else{
@@ -42,7 +44,7 @@ class GuestController extends Controller
             );
             $data = (array) $data;
             $guest = Guest::create($data);
-            return redirect()->route('guestsInfo')->with('type','success')->with('msg','Guest Information saved successfully.');
+            return redirect()->route('guestsInfo');
         }
         else
         {
@@ -61,7 +63,7 @@ class GuestController extends Controller
             if(count($guest)>0)
             {
                 $guest->delete();
-                return redirect()->route('guestsInfo')->with('type','success')->with('msg','Guest Information deleted successfully.');
+                return redirect()->route('guestsInfo');
     
             }
             else{
