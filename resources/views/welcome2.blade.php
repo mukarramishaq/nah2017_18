@@ -301,7 +301,7 @@
     //             preloadImages.cache.push(img);
     //         }
     //     }
-    var data = ["/background_jpgs/jpgs-1920x1280/2.jpg","/background_jpgs/jpgs-1920x1280/3.jpg","/background_jpgs/jpgs-1920x1280/4.jpg","/background_jpgs/jpgs-1920x1280/5.jpg","/background_jpgs/jpgs-1900x1267/1.jpg"];
+    var data = ["/background_jpgs/jpgs-1920x1280/2.jpg","/background_jpgs/jpgs-1920x1280/3.jpg","/background_jpgs/jpgs-1920x1280/4.jpg","/background_jpgs/jpgs-1920x1280/5.jpg","/background_jpgs/jpgs-1920x1280/1.jpg"];
     // preloadImages(data);
     $(document).ready(function(){
         

@@ -93,7 +93,7 @@
               
             </div>
             
-            <div class="small-box-footer"><p>Alumni Fee: Rs.1500/- per alumni</p><p>Guest Fee: Rs.1000/- per guest</p></div>
+            <div class="small-box-footer"><p>Alumni Fee: Rs.1500/- per alumnus</p><p>Guest Fee: Rs.1000/- per guest</p></div>
           </div>
         </div>
         <!-- ./col -->
