@@ -180,7 +180,7 @@ class PaymentController extends Controller
 
     public function paymentMethodSubmit(Request $request){
         $this->validate($request,[
-            'resident'=>'required|alpha',
+            'payment-method'=>'required|alpha',
         ]);
         $user = Auth::user();
         if($user){
