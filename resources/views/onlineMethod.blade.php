@@ -190,8 +190,6 @@
 @section('footer-scripts')
 <!-- jQuery 3 -->
 <script src="{{asset('theme/lte/bower_components/jquery/dist/jquery.min.js')}}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{asset('theme/lte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- iCheck 1.0.1 -->
 <script src="{{asset('theme/lte/plugins/iCheck/icheck.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js"></script>
