@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Routing\Controller;
+
 use App\PersonalI;
 use App\User;
 use App\Stage;
@@ -43,6 +43,15 @@ class PersonalController extends Controller
 
     public function save(Request $request)
     {
+        //validation logic
+        $this->validate($request, [
+            'name' => 'regex:/^[a-zA-Z ]*$/',
+            'cNIC'=>'nullable|regex:(^\d{5}\-\d{7}\-\d{1})',
+            'phoneNumber'=>'nullable|regex:(^\(\d{3}\)\s\d{3}\-\d{7})',
+            'emergencyPhoneNumber'=>'nullable|regex:(^\(\d{3}\)\s\d{3}\-\d{7})',
+            'dob'=>'nullable|regex:(^\d{2}\/\d{2}\/\d{4})',
+        ]);
+
         $user = Auth::user();
         //if session is active
     	if($user){
@@ -93,6 +102,17 @@ class PersonalController extends Controller
     }
 
     public function saveAndNext(Request $request){
+        //validation logic
+        $this->validate($request, [
+            'name' => 'required|regex:/^[a-zA-Z ]*$/',
+            'cNIC'=>'required|regex:(^\d{5}\-\d{7}\-\d{1})',
+            'phoneNumber'=>'required|regex:(^\(\d{3}\)\s\d{3}\-\d{7})',
+            'emergencyPhoneNumber'=>'required|regex:(^\(\d{3}\)\s\d{3}\-\d{7})',
+            'dob'=>'required|regex:(^\d{2}\/\d{2}\/\d{4})',
+            'gender'=>'required',
+            'email'=>'required|email',
+            'disability'=>'required|boolean',
+        ]);
         $user = Auth::user();
         //if session is still active
         if($user){
