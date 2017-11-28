@@ -140,6 +140,9 @@ class PaymentController extends Controller
 
 
     public function residentSubmit(Request $request){
+        $this->validate($request,[
+            'resident'=>'required|alpha',
+        ]);
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
@@ -176,6 +179,9 @@ class PaymentController extends Controller
     }
 
     public function paymentMethodSubmit(Request $request){
+        $this->validate($request,[
+            'resident'=>'required|alpha',
+        ]);
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
@@ -221,6 +227,10 @@ class PaymentController extends Controller
     }
 
     public function chalanMethodSubmit(Request $request){
+        $this->validate($request,[
+            'amount'=>'required|numeric',
+            'branch-address'=>'required|string',
+        ]);
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
@@ -245,6 +255,10 @@ class PaymentController extends Controller
 
 
     public function onlineMethodSubmit(Request $request){
+        $this->validate($request,[
+            'amount'=>'required|numeric',
+            'account-no'=>'required|numeric',
+        ]);
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();

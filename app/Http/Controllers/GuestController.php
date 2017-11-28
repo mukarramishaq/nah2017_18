@@ -33,6 +33,11 @@ class GuestController extends Controller
 
     public function addGuest(Request $request)
     {
+        $this->validate($request,[
+            'guestName'=>'required|regex:/^[a-zA-Z ]*$/',
+            'guestContact'=>'required|regex:(^\d{5}\-\d{7}\-\d{1})',
+            'guestRelation'=>'required|alpha',
+        ]);
         $user = Auth::user();
         if($user)
         {
