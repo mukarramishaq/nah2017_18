@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('sidebar-menu')
-        <ul class="sidebar-menu" data-widget="tree">
+        <!-- <ul class="sidebar-menu" data-widget="tree">
             <li class="header"></li>
-            <!-- Optionally, you can add icons to the links -->
+            <!-- Optionally, you can add icons to the links 
             <li ><a href="{{route('home')}}"><i class="fa fa-home"></i> <span>Home</span></a></li>
             
             <li class="active"><a href="{{route('personalInformation')}}"><i class="fa fa-user"></i> <span>Personal Information</span></a></li>
             <li ><a href="{{route('educationalInformation')}}"><i class="fa fa-mortar-board"></i> <span>Educational Information</span></a></li>
             <li ><a href="{{route('professionalInformation')}}"><i class="fa fa-black-tie"></i> <span>Professional Information</span></a></li>
             <li ><a href="#"><i class="fa fa-handshake-o"></i> <span>Support</span></a></li>
-        </ul>
+        </ul> -->
 @endsection
 
 @section('content')

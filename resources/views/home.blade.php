@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('sidebar-menu')
-        <ul class="sidebar-menu" data-widget="tree">
+        <!-- <ul class="sidebar-menu" data-widget="tree">
             <li class="header"></li>
-            <!-- Optionally, you can add icons to the links -->
+            <!-- Optionally, you can add icons to the links 
             <li class="active"><a href="{{route('home')}}"><i class="fa fa-home"></i> <span>Home</span></a></li>
             
             <li ><a href="{{route('personalInformation')}}"><i class="fa fa-user"></i> <span>Personal Information</span></a></li>
             <li ><a href="{{route('educationalInformation')}}"><i class="fa fa-mortar-board"></i> <span>Educational Information</span></a></li>
             <li ><a href="{{route('professionalInformation')}}"><i class="fa fa-black-tie"></i> <span>Professional Information</span></a></li>
             <li ><a href="#"><i class="fa fa-handshake-o"></i> <span>Support</span></a></li>
-        </ul>
+        </ul> -->
 @endsection
 
 @section('content')
@@ -38,8 +38,8 @@
                   <ul>
                     <li>For successful registration, you'll have to complete the application</li>
                     <li>Fill out any stage of application carefully. Once you move to next then you will not be able to access/edit that stage later</li>
-                    <li>If you have not completed any stage of application then just click <button type="button" class="btn bg-red btn-flat">Save</button>. Your incomplete stage will be saved and you can access that stage later.</li>
-                    <li><span class="fa fa-warning fa-2x fa-red"></span> But Once you click on <button type="button" class="btn btn-flat bg-red">Save and Next</button> your stage will be submitted and you'll be redirected to next stage and you will no longer be able to access that stage in future.</li>
+                    <li>If you have not completed any stage of application then just click <span class="label bg-red btn-flat">Save</span>. Your incomplete stage will be saved and you can access that stage later.</li>
+                    <li><span class="fa fa-warning fa-2x fa-red"></span> But Once you click on <span class="label btn-flat bg-red">Save and Next</span> your stage will be submitted and you'll be redirected to next stage and you will no longer be able to access that stage in future.</li>
                   </ul>
                 <div>
              
@@ -48,7 +48,7 @@
           <!-- /.box-body -->
           <br><br><br>
           <div class="box-footer text-right">
-            <button type="button" class="btn btn-flat bg-red text-right">Continue Application</button>
+            <a href="{{route('personalInformation')}}" class="btn btn-flat bg-red text-right">Continue Application</a>
           </div>
         
         
