@@ -49,7 +49,7 @@ class PersonalController extends Controller
             'cNIC'=>'nullable|regex:(^\d{5}\-\d{7}\-\d{1})',
             'phoneNumber'=>'nullable|regex:(^\(\d{3}\)\s\d{3}\-\d{7})',
             'emergencyPhoneNumber'=>'nullable|regex:(^\(\d{3}\)\s\d{3}\-\d{7})',
-            'dob'=>'nullable|regex:(^\d{2}\/\d{2}\/\d{4})',
+            'dob'=>'nullable|regex:(^\d{2}\/\d{2}\/\d{4}$)',
         ]);
 
         $user = Auth::user();
@@ -108,7 +108,7 @@ class PersonalController extends Controller
             'cNIC'=>'required|regex:(^\d{5}\-\d{7}\-\d{1})',
             'phoneNumber'=>'required|regex:(^\(\d{3}\)\s\d{3}\-\d{7})',
             'emergencyPhoneNumber'=>'required|regex:(^\(\d{3}\)\s\d{3}\-\d{7})',
-            'dob'=>'required|regex:(^\d{2}\/\d{2}\/\d{4})',
+            'dob'=>'required|regex:(^\d{2}\/\d{2}\/\d{4}$)',
             'gender'=>'required',
             'email'=>'required|email',
             'disability'=>'required|boolean',

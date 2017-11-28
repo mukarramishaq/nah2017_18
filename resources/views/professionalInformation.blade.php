@@ -108,8 +108,8 @@
                 </div>
                 <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
-                    <label for="eCompanyLogo">Company Logo</label>
-                    <input type="file" name="seCompanyLogo" id="seCompanyLogo">
+                    <!-- <label for="eCompanyLogo">Company Logo</label>
+                    <input type="file" name="seCompanyLogo" id="seCompanyLogo"> -->
                 </div>
                 </div>
                 </div>

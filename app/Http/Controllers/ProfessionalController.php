@@ -50,11 +50,21 @@ class ProfessionalController extends Controller
     }
 
     public function save(Request $request){
+        $this->validate($request,[
+            'employed'=>'required|alpha',
+        ]);
         $user = Auth::user();
         if($user){
             //if applicant is unemployed
 
+
             if($request->input('employed') == 'unemployed'){
+                $this->validate($request,[
+                    'country'=>'present|nullable|alpha|size:2',
+                    'city'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
+                    'address'=>'present|nullable|string',
+                ]);
+
                 
                 $data = (object) array(
                     'user_id'=>$user->id,
@@ -87,6 +97,14 @@ class ProfessionalController extends Controller
             }
 
             else if($request->input('employed') == 'employed'){
+                $this->validate($request,[
+                    'country'=>'present|nullable|alpha|size:2',
+                    'city'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
+                    'address'=>'present|nullable|string',
+                    'industry'=>'present|nullable|string',
+                    'organization'=>'present|nullable|alpha_dash',
+                    'designation'=>'present|nullable|alpha_dash',
+                ]);
                 
                 $data = (object) array(
                     
@@ -144,6 +162,19 @@ class ProfessionalController extends Controller
             }
             // selfemplyed
             else if($request->input('employed') == 'selfemployed'){
+                $this->validate($request,[
+                    'country'=>'present|nullable|alpha|size:2',
+                    'city'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
+                    'address'=>'present|nullable|string',
+                    'selfIndustry'=>'present|nullable|string',
+                    'ecompany'=>'present|nullable|alpha_dash',
+                    'selfDesignation'=>'present|nullable|alpha_dash',
+                    'totalEmployes'=>'present|nullable|numeric',
+                    'nustians'=>'present|nullable|numeric',
+                    'link'=>'present|nullable|url',
+                    'date'=>'present|nullable|regex:(^\d{2}\/\d{2}\/\d{4}$)',
+                ]);
+                
                 $data = (object) array(
                     'user_id'=>$user->id,
                     'employed'=>$request->input('employed'),
@@ -167,9 +198,6 @@ class ProfessionalController extends Controller
                     'total_employees'=>$request->input('totalEmployes'),
                     'total_nustian_employees'=>$request->input('nustians'),
                     'website_link'=>$request->input('link'),
-
-
-
                 );
                 // if($request->input('eIndustry') == 'other')
                 // {
@@ -252,11 +280,19 @@ class ProfessionalController extends Controller
 
 
     public function saveAndNext(Request $request){
+        $this->validate($request,[
+            'employed'=>'present|required|alpha',
+        ]);
         $user = Auth::user();
         if($user){
             //if applicant is unemployed
             if($request->input('employed') == 'unemployed')
             {
+                $this->validate($request,[
+                    'currentCountry'=>'present|nullable|alpha|size:2',
+                    'currentCity'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
+                    'currentAddress'=>'present|nullable|string',
+                ]);
                 $data = (object) array(
                     'user_id'=>$user->id,
                     'employed'=>$request->input('employed'),
@@ -316,6 +352,14 @@ class ProfessionalController extends Controller
 
             // 2nd
             else if($request->input('employed') == 'employed'){
+                $this->validate($request,[
+                    'currentCountry'=>'present|nullable|alpha|size:2',
+                    'currentCity'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
+                    'currentAddress'=>'present|nullable|string',
+                    'eIndustry'=>'present|nullable|string',
+                    'eOrganization'=>'present|nullable|alpha_dash',
+                    'eDesignation'=>'present|nullable|alpha_dash',
+                ]);
                 $data = (object) array(
                     'user_id'=>$user->id,
                     'employed'=>$request->input('employed'),
@@ -394,6 +438,18 @@ class ProfessionalController extends Controller
 
             // 3rd
             else if($request->input('employed') == 'selfemployed'){
+                $this->validate($request,[
+                    'currentCountry'=>'present|nullable|alpha|size:2',
+                    'currentCity'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
+                    'currentAddress'=>'present|nullable|string',
+                    'seIndustry'=>'present|nullable|string',
+                    'seCompany'=>'present|nullable|alpha_dash',
+                    'seDesignation'=>'present|nullable|alpha_dash',
+                    'seTotalEmployes'=>'present|nullable|numeric',
+                    'seTotalNustEmployes'=>'present|nullable|numeric',
+                    'eWebsite'=>'present|nullable|url',
+                    'seEstablishedDate'=>'present|nullable|regex:(^\d{2}\/\d{2}\/\d{4}$)',
+                ]);
                 $data = (object) array(
                     'user_id'=>$user->id,
                     'employed'=>$request->input('employed'),
