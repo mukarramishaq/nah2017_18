@@ -59,6 +59,7 @@ class ProfessionalController extends Controller
 
 
             if($request->input('employed') == 'unemployed'){
+                
                 $this->validate($request,[
                     'country'=>'present|nullable|alpha|size:2',
                     'city'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
@@ -289,9 +290,9 @@ class ProfessionalController extends Controller
             if($request->input('employed') == 'unemployed')
             {
                 $this->validate($request,[
-                    'currentCountry'=>'present|nullable|alpha|size:2',
-                    'currentCity'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
-                    'currentAddress'=>'present|nullable|string',
+                    'currentCountry'=>'present|required|alpha|size:2',
+                    'currentCity'=>'present|required|regex:/^[a-zA-Z ]*$/',
+                    'currentAddress'=>'present|required|string',
                 ]);
                 $data = (object) array(
                     'user_id'=>$user->id,
@@ -353,12 +354,12 @@ class ProfessionalController extends Controller
             // 2nd
             else if($request->input('employed') == 'employed'){
                 $this->validate($request,[
-                    'currentCountry'=>'present|nullable|alpha|size:2',
-                    'currentCity'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
-                    'currentAddress'=>'present|nullable|string',
-                    'eIndustry'=>'present|nullable|string',
-                    'eOrganization'=>'present|nullable|alpha_dash',
-                    'eDesignation'=>'present|nullable|alpha_dash',
+                    'currentCountry'=>'present|required|alpha|size:2',
+                    'currentCity'=>'present|required|regex:/^[a-zA-Z ]*$/',
+                    'currentAddress'=>'present|required|string',
+                    'eIndustry'=>'present|required|string',
+                    'eOrganization'=>'present|required|alpha_dash',
+                    'eDesignation'=>'present|required|alpha_dash',
                 ]);
                 $data = (object) array(
                     'user_id'=>$user->id,
@@ -439,16 +440,16 @@ class ProfessionalController extends Controller
             // 3rd
             else if($request->input('employed') == 'selfemployed'){
                 $this->validate($request,[
-                    'currentCountry'=>'present|nullable|alpha|size:2',
-                    'currentCity'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
-                    'currentAddress'=>'present|nullable|string',
-                    'seIndustry'=>'present|nullable|string',
-                    'seCompany'=>'present|nullable|alpha_dash',
-                    'seDesignation'=>'present|nullable|alpha_dash',
-                    'seTotalEmployes'=>'present|nullable|numeric',
-                    'seTotalNustEmployes'=>'present|nullable|numeric',
-                    'eWebsite'=>'present|nullable|url',
-                    'seEstablishedDate'=>'present|nullable|regex:(^\d{2}\/\d{2}\/\d{4}$)',
+                    'currentCountry'=>'present|required|alpha|size:2',
+                    'currentCity'=>'present|required|regex:/^[a-zA-Z ]*$/',
+                    'currentAddress'=>'present|required|string',
+                    'seIndustry'=>'present|required|string',
+                    'seCompany'=>'present|required|alpha_dash',
+                    'seDesignation'=>'present|required|alpha_dash',
+                    'seTotalEmployes'=>'present|required|numeric',
+                    'seTotalNustEmployes'=>'present|required|numeric',
+                    'eWebsite'=>'present|required|url',
+                    'seEstablishedDate'=>'present|required|regex:(^\d{2}\/\d{2}\/\d{4}$)',
                 ]);
                 $data = (object) array(
                     'user_id'=>$user->id,
