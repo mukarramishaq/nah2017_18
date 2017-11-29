@@ -146,18 +146,14 @@
                 <div class="row">
                 <div class="col-md-6 collapse Higher-education">
                 <div class="form-group">
-                    <label>University Name</label>
-                    <input type="name" required="true" value="test" class="form-control" name="heUniversityName" id="heUniversityName" placeholder="Enter your university name">
-                    {{--
-                    <input type="name" required="true" value="{{$higherE->university_name}}" class="form-control" name="heUniversityName" id="heUniversityName" placeholder="Enter your university name"> --}}
+                    <label>University Name</label>                    
+                    <input type="name" required="true" value="{{$higherE->university_name}}" class="form-control" name="heUniversityName" id="heUniversityName" placeholder="Enter your university name">
                 </div>
                 </div>
                 <div class="col-md-6 collapse Higher-education">
                 <div class="form-group">
-                  <label>Degree Title</label>
-                   <input type="name" required="true" value="test" class="form-control" name="heDegreeName" id="heDegreeName" placeholder="Enter your degree title">
-                  {{--
-                  <input type="name" required="true" value="{{$higherE->degree_name}}" class="form-control" name="heDegreeName" id="heDegreeName" placeholder="Enter your university name"> --}}
+                  <label>Degree Title</label>                   
+                  <input type="name" required="true" value="{{$higherE->degree_name}}" class="form-control" name="heDegreeName" id="heDegreeName" placeholder="Enter your university name"> 
                 </div> 
                 </div>
                 </div>
