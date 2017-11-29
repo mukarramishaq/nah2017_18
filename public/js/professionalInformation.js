@@ -34,6 +34,7 @@ function ChangeForm()
 			$('.Self-employed-industry').addClass('collapse');
 			$('.Employed-designation').addClass('collapse');
 			$('.Employed-industry').addClass('collapse');
+			$('.Higher-education').addClass('collapse');
 
 
        		$(".Employed").prop('required', true);
@@ -42,6 +43,7 @@ function ChangeForm()
        		$(".Self-employed-industry").prop('required',false);
        		$('.Employed-designation').prop('required',false);
 			$('.Employed-industry').prop('required',false);
+			$('.Higher-education').prop('required' ,false);
 
        		if($("#designation").val() === 'other')
 			{
@@ -63,6 +65,7 @@ function ChangeForm()
 			$('.Self-employed-industry').addClass('collapse');
 			$('.Employed-designation').addClass('collapse');
 			$('.Employed-industry').addClass('collapse');
+			$('.Higher-education').addClass('collapse');
 
 
        		$(".Employed").prop('required', false);
@@ -71,6 +74,28 @@ function ChangeForm()
        		$(".Self-employed-industry").prop('required',false);
        		$('.Employed-designation').prop('required',false);
 			$('.Employed-industry').prop('required',false);
+			$('.Higher-education').prop('required' ,false);
+
+       		
+   		}
+   		else if($("#employed").val() === 'highereducation'){
+			
+			$('.Employed').addClass('collapse');
+       		$('.Self-employed').addClass('collapse');       		
+       		$('.Self-employed-designation').addClass('collapse');
+			$('.Self-employed-industry').addClass('collapse');
+			$('.Employed-designation').addClass('collapse');
+			$('.Employed-industry').addClass('collapse');
+			$('.Higher-education').removeClass('collapse');
+
+
+       		$(".Employed").prop('required', false);
+       		$(".Self-employed").prop('required',false);
+       		$(".Self-employed-designation").prop('required',false);
+       		$(".Self-employed-industry").prop('required',false);
+       		$('.Employed-designation').prop('required',false);
+			$('.Employed-industry').prop('required',false);
+			$('.Higher-education').prop('required' ,true);
 
        		
    		}
@@ -82,6 +107,7 @@ function ChangeForm()
 			$('.Self-employed-industry').addClass('collapse');
 			$('.Employed-designation').addClass('collapse');
 			$('.Employed-industry').addClass('collapse');
+			$('.Higher-education').addClass('collapse');
 
 		
 
@@ -91,6 +117,7 @@ function ChangeForm()
        		$(".Self-employed-industry").prop('required',false);
        		$('.Employed-designation').prop('required',false);
 			$('.Employed-industry').prop('required',false);
+			$('.Higher-education').prop('required' ,false);
 
        		if($("#eDesignation").val() === 'other')
 			{

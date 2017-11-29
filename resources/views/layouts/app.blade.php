@@ -56,10 +56,6 @@
         <!-- /.content-wrapper -->
         <!-- Main Footer -->
         <footer class="main-footer">
-            <!-- To the right -->
-            <div class="pull-right hidden-xs">
-               <a href="mailto:mukarramishaq189@gmail.com">Developers</a>
-            </div>
             <!-- Default to the left -->
             <strong>Copyright &copy; 2017-18 <a href="{{url('/')}}">NUST Alumni Homecoming</a>.</strong> All rights reserved.
         </footer>
