@@ -42,7 +42,7 @@ class User extends Authenticatable
     }
     //wit personal_infromations table
     public function personalI(){
-        return $this->hasOne('App\PersonalI');
+        return $this->hasOne('App\PersonalI'); 
     }
     //with entreprenuer_informations table
     public function entrepI(){
@@ -62,5 +62,8 @@ class User extends Authenticatable
     }
     public function chalan(){
         return $this->hasOne('App\Chalan');
+    }
+    public function higherEducation(){
+        return $this->hasOne('App\HigherEducation');
     }
 }
