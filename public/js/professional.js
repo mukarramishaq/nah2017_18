@@ -53,7 +53,7 @@ function save() {
             'country': $('#currentCountry').val(),
             'city': $('#currentCity').val(),
             'address': $('#currentAddress').val(),
-            'unversityName': $('#heUniversityName').val(),
+            'universityName': $('#heUniversityName').val(),
             'degreeName': $('#heDegreeName').val(),
 
 

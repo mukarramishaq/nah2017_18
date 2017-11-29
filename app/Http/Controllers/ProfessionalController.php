@@ -311,6 +311,7 @@ class ProfessionalController extends Controller
                     $professionalI->country = $data->country;
                     $professionalI->city = $data->city;
                     $professionalI->address = $data->address;
+                    $professionalI->employed = $request->input('employed');
                     
                     $professionalI->save(); //save to database
                     return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
@@ -685,7 +686,8 @@ class ProfessionalController extends Controller
                     $professionalI->user_id = $data->user_id;
                     $professionalI->country = $data->country;
                     $professionalI->city = $data->city;
-                    $professionalI->address = $data->address;
+                    $professionalI->address = $data->address;                    
+                    $professionalI->employed = $request->input('employed');
                     
                     $professionalI->save(); //save to database
                     $stage = $user->stage()->get();
