@@ -26,11 +26,12 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="{{route('home')}}">NUST Alumni <b>Homecoming</b> 2017-18</a>
+    <a href="{{route('home')}}">NUST Alumni <b>Homecoming</b>' 17</a>
   </div>
 
   <div class="register-box-body">
@@ -42,7 +43,7 @@
         </center>
       </div>
     @endif
-    @if ($errors->has('email') || $errors->has('password') ||$errors->has('name'))
+    @if ($errors->has('email') || $errors->has('password') || $errors->has('name')|| $errors->has('g-recaptcha-response'))
         <div class="alert alert-error">
             @if($errors->has('email'))
                 {{ $errors->first('email') }}
@@ -52,6 +53,9 @@
             @endif
             @if($errors->has('name'))
                 {{ $errors->first('name') }}
+            @endif
+            @if($errors->has('g-recaptcha-response'))
+                {{ $errors->first('g-recaptcha-response') }}
             @endif
         </div>
     @endif
@@ -74,6 +78,7 @@
         <input type="password" class="form-control" placeholder="Retype password" name="password_confirmation">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
+      <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
       <div class="row">
         <div class="col-xs-12">
           <p>By clicking Sign Up button means you agree to <a>terms</a> and <a>condition</a></p>
@@ -84,6 +89,7 @@
         </div>
         <!-- /.col -->
       </div>
+
     </form>
     <br>
     <div class="row ">

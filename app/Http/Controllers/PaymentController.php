@@ -7,6 +7,8 @@ use App\Stage;
 use App\Chalan;
 use App\Price;
 use App\Guest;
+use App\Bank;
+use NumberFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -73,13 +75,16 @@ class PaymentController extends Controller
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
+            $price = Price::where('id',1)->first();
+            $guests = $user->guest()->get();
+            $bank = Bank::where('id',1)->first();
             if($payment && count($payment)>0){
                 $payment = $payment[0];
             }
             else{
                 $payment = new Payment;
             }
-            return view('onlineMethod')->with('payment',$payment);
+            return view('onlineMethod')->with('payment',$payment)->with('bank',$bank)->with('price',$price)->with('guests',$guests);
         }
         else{
             return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
@@ -135,6 +140,9 @@ class PaymentController extends Controller
 
 
     public function residentSubmit(Request $request){
+        $this->validate($request,[
+            'resident'=>'required|alpha',
+        ]);
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
@@ -171,6 +179,9 @@ class PaymentController extends Controller
     }
 
     public function paymentMethodSubmit(Request $request){
+        $this->validate($request,[
+            'payment-method'=>'required|alpha',
+        ]);
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
@@ -216,6 +227,10 @@ class PaymentController extends Controller
     }
 
     public function chalanMethodSubmit(Request $request){
+        $this->validate($request,[
+            'amount'=>'required|numeric',
+            'branch-address'=>'required|string',
+        ]);
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
@@ -240,6 +255,10 @@ class PaymentController extends Controller
 
 
     public function onlineMethodSubmit(Request $request){
+        $this->validate($request,[
+            'amount'=>'required|numeric',
+            'account-no'=>'required|numeric',
+        ]);
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
@@ -266,17 +285,36 @@ class PaymentController extends Controller
         $user = Auth::user();
         if($user){
             $chalan = $user->chalan()->get();
+            $bank = Bank::where('id',1)->first();
+            $f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
             if($chalan && count($chalan)>0){
                 $chalan = $chalan[0];
+                $guests = $user->guest()->get();
+                $price = Price::where('id',1)->first();
+                $totalAmount = 0;
+                $totalAmount += $price->alumni_price;
+                if($guests && count($guests)>0){
+                    $noOfGuest = count($guests);
+                    $totalAmount += $noOfGuest*$price->guest_price;
+                }
+
+                if($totalAmount != $chalan->amount){
+                    $chalan->amount = $totalAmount;
+                    $chalan->save();
+                }
+
                 $pdf = PDF::loadView('chalan',[
                     'user_id'=>$chalan->user_id,
                     'chalan_id'=>$chalan->chalan_id,
                     'name'=>$chalan->name,
+                    'accountNo'=>$bank->bank_account_number,
+                    'accountTitle'=>$bank->bank_account_name,
                     'cnic'=>$chalan->cnic,
                     'school'=>$chalan->school,
                     'issue_date'=>$chalan->issue_date,
                     'amount'=>$chalan->amount,
                     'due_date'=>$chalan->due_date,
+                    'f'=>$f,
                 ]);
                 $pdf->setPaper('A4', 'landscape');
                 return $pdf->download('chalan.pdf');
@@ -285,6 +323,7 @@ class PaymentController extends Controller
             else{
                 $guests = $user->guest()->get();
                 $price = Price::where('id',1)->first();
+                
                 if($guests && count($guests)>0){
                     $noOfGuest = count($guests);
                     $totalAmount = 0;
@@ -304,17 +343,20 @@ class PaymentController extends Controller
                         'school'=>$educationalI->school,
                         'issue_date'=>time(),
                         'amount'=>$totalAmount,
-                        'due_date'=>'19/12/2017',
+                        'due_date'=>strtotime('19-12-2017'),
                     ));
                     $pdf = PDF::loadView('chalan',[
                         'user_id'=>$chalan->user_id,
                         'chalan_id'=>$chalan->chalan_id,
                         'name'=>$chalan->name,
+                        'accountNo'=>$bank->bank_account_number,
+                        'accountTitle'=>$bank->bank_account_name,
                         'cnic'=>$chalan->cnic,
                         'school'=>$chalan->school,
                         'issue_date'=>$chalan->issue_date,
                         'amount'=>$chalan->amount,
                         'due_date'=>$chalan->due_date,
+                        'f'=>$f,
                     ]);
                     $pdf->setPaper('A4', 'landscape');
                     return $pdf->download('chalan.pdf');
@@ -332,14 +374,27 @@ class PaymentController extends Controller
                         'user_id'=>$user->id,
                         'chalan_id'=>time(),
                         'name'=>$user->name,
+                        'accountNo'=>$bank->bank_account_number,
+                        'accountTitle'=>$bank->bank_account_name,
                         'cnic'=>$personalI->cnic,
                         'school'=>$educationalI->school,
                         'issue_date'=>time(),
                         'amount'=>$totalAmount,
-                        'due_date'=>'19/12/2017',
+                        'due_date'=>strtotime('19-12-2017'),
                     ));
 
-                    $pdf = PDF::loadView('chalan',['$chalan'=>$chalan,'uuid',$user->uuid]);
+                    $pdf = PDF::loadView('chalan',['user_id'=>$chalan->user_id,
+                    'chalan_id'=>$chalan->chalan_id,
+                    'name'=>$chalan->name,
+                    'accountNo'=>$bank->bank_account_number,
+                    'accountTitle'=>$bank->bank_account_name,
+                    'cnic'=>$chalan->cnic,
+                    'school'=>$chalan->school,
+                    'issue_date'=>$chalan->issue_date,
+                    'amount'=>$chalan->amount,
+                    'due_date'=>$chalan->due_date,
+                    'f'=>$f,
+                ]);
                     $pdf->setPaper('A4', 'landscape');
                     return $pdf->download('chalan.pdf');
     

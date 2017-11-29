@@ -12,12 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome2');
 });
 
 
 Auth::routes();
+
+
 Route::post('/auth/login',['as'=>'authLogin','uses'=>'Auth\LoginController@authenticateLogin']);
+Route::get('/register/verify/{email}/{verification_code}','Auth\RegisterController@verifyEmail');
+//route for resending confirmation email
+Route::get('/resend/email/verification/{userId}/{email}',['as'=>'resendVerificationEmail','uses'=>'Auth\RegisterController@resendVerificationEmail']);
+
+//not found 
+Route::get('/notFound',function(){return view('notFound');})->name('NotFound');
 
 Route::get('/getChalan',function(){return view('chalan');});
 
@@ -73,4 +81,7 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::post('/guest/add', ['as'=>'guestAdd','uses'=>'GuestController@addGuest'])->middleware('checkGuestStage');
     Route::get('/guest/delete/{id}', ['as'=> 'guestDelete', 'uses' => 'GuestController@removeGuest'])->middleware('checkGuestStage');
     Route::get('/guests/saveAndNext',['as'=>'doneAndNext','uses'=>'GuestController@saveAndNext'])->middleware('checkGuestStage');
+
+
+
 });

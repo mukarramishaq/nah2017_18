@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\EducationalI;
 use App\School;
 use App\Discipline;
+
 class EducationalController extends Controller
 {
     //
@@ -41,6 +42,17 @@ class EducationalController extends Controller
 
     public function save(Request $request)
     {
+        //validation logic
+        $this->validate($request, [
+            'nustRegistrationNumber' => 'nullable|alpha_num',
+            'degreeName'=>'nullable|alpha_dash',
+            'school'=>'nullable|alpha',
+            'discipline'=>'nullable|alpha_dash',
+            'enrollmentYear'=>'nullable|min:1948|max:2013|numeric',
+            'graduationYear'=>'nullable|min:1948|max:2017|numeric',
+            'alumniCard'=>'nullable|boolean',
+        ]);
+        
         $user = Auth::user();
         //if session is active
     	if($user){
@@ -91,6 +103,15 @@ class EducationalController extends Controller
 
 
     public function saveAndNext(Request $request){
+        $this->validate($request, [
+            'nustRegistrationNumber' => 'required|alpha_num',
+            'degreeName'=>'required|alpha_dash',
+            'school'=>'required|alpha',
+            'discipline'=>'required|alpha_dash',
+            'enrollmentYear'=>'required|min:1948|max:2013|numeric',
+            'graduationYear'=>'required|min:1948|max:2017|numeric',
+            'alumniCard'=>'required|boolean',
+        ]);
         $user = Auth::user();
         //if session is still active
         if($user){
@@ -139,6 +160,7 @@ class EducationalController extends Controller
                 
             }
             else{
+
                 //otherwise create one
                 $personal = EducationalI::create((array)$data);
                 $stage = $user->stage()->get();

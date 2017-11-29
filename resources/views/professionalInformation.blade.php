@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('sidebar-menu')
-        <ul class="sidebar-menu" data-widget="tree">
+        <!-- <ul class="sidebar-menu" data-widget="tree">
             <li class="header"></li>
-            <!-- Optionally, you can add icons to the links -->
+            <!-- Optionally, you can add icons to the links 
             <li ><a href="{{route('home')}}"><i class="fa fa-home"></i> <span>Home</span></a></li>
             
             <li ><a href="{{route('personalInformation')}}"><i class="fa fa-user"></i> <span>Personal Information</span></a></li>
             <li ><a href="{{route('educationalInformation')}}"><i class="fa fa-mortar-board"></i> <span>Educational Information</span></a></li>
             <li class="active"><a href="{{route('professionalInformation')}}"><i class="fa fa-black-tie"></i> <span>Professional Information</span></a></li>
             <li ><a href="#"><i class="fa fa-handshake-o"></i> <span>Support</span></a></li>
-        </ul>
+        </ul> -->
 @endsection
 
 @section('content')
@@ -108,8 +108,8 @@
                 </div>
                 <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
-                    <label for="eCompanyLogo">Company Logo</label>
-                    <input type="file" name="seCompanyLogo" id="seCompanyLogo">
+                    <!-- <label for="eCompanyLogo">Company Logo</label>
+                    <input type="file" name="seCompanyLogo" id="seCompanyLogo"> -->
                 </div>
                 </div>
                 </div>
@@ -188,9 +188,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-               <ul>
-                    <li>instruction1</li>
-                </ul>
+            <ul>
+                
+                <li>If you want to edit this page after some time then just click on save button. <b class="bg-red"><i>Once you clicked on Save and Next. Then you won't be able to access this section any more </i></b></li>
+            </ul>
             </div>
             <!-- /.box-body -->
            

@@ -67,7 +67,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-1">
-                                <button class="btn btn-flat bg-red" onclick="downloadChalan('{{route('downloadChalan')}}');">Download Chalan Form</button>
+                                <button class="btn btn-flat bg-red" onclick="downloadChalan('{{route('downloadChalan')}}');"><span class="fa fa-cloud-download"></span> Download Chalan Form</button>
                                 </div>
                             </div>     
                         </div>
@@ -151,7 +151,9 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <ul>
-                    <li>instruction1</li>
+                    <li>Download chalan form from Get Chalan Box using Download button</li>
+                    <li>Pay the chalan in any HBL Branch and upload paid chalan image in Paid Chalan Details box using upload button</li>
+                    <li>Enter amount and branch address and submit it</li>
                 </ul>
             </div>
             <!-- /.box-body -->
@@ -166,8 +168,6 @@
 @section('footer-scripts')
 <!-- jQuery 3 -->
 <script src="{{asset('theme/lte/bower_components/jquery/dist/jquery.min.js')}}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{asset('theme/lte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- iCheck 1.0.1 -->
 <script src="{{asset('theme/lte/plugins/iCheck/icheck.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js"></script>

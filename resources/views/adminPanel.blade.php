@@ -45,7 +45,7 @@
           <td>Internet
             Explorer 5.0
           </td>
-          <td>Win 95+</td>
+          <td>1</td>
           <td>5</td>
           <td>C</td>
           <td>X</td>
@@ -54,12 +54,34 @@
         <tr>
           <td>Trident</td>
           <td>Internet
+            Explorer 5.0
+          </td>
+          <td>1</td>
+          <td>5</td>
+          <td>C</td>
+          <td>X</td>
+          <td>X</td>
+        </tr>
+        <tr>
+          <td>Trident2</td>
+          <td>Internet
+            Explorer 4.0
+          </td>
+          <td>1</td>
+          <td>9</td>
+          <td>C</td>
+          <td>E</td>
+          <td>C</td>
+        </tr>
+        <tr>
+          <td>Trident</td>
+          <td>Internet
             Explorer 5.5
           </td>
-          <td>Win 95+</td>
-          <td>5.5</td>
-          <td>A</td>
-          <td>X</td>
+          <td>Win 96+</td>
+          <td>5.6</td>
+          <td>B</td>
+          <td>Y</td>
           <td>X</td>
         </tr>
         </tfoot>

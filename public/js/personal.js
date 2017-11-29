@@ -77,12 +77,39 @@ function save()
 					}, 3000);
 			}
 		},
-		error: function(request, error){
+		// error: function(request, error){
+		// 	$('.overlay').hide();
+		// 	$('.ajax-info').removeClass('label-info').addClass('label-danger').text(JSON.parse(request).message);
+		// 	setTimeout(function() {
+		// 			$('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
+		// 	}, 5000);
+		// },
+		error: function( jqXhr ) {
 			$('.overlay').hide();
-			$('.ajax-info').removeClass('label-info').addClass('label-danger').text('Error: Unknown error. Make sure you have working internet connection!');
-			setTimeout(function() {
-					$('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
-			}, 5000);
+			console.log(jqXhr);
+			if( jqXhr.status === 401 ) //redirect if not authenticated user.
+				$( location ).prop( '', '/login' );
+			if( jqXhr.status === 422 ) {
+			//process validation errors here.
+			$errors = jqXhr.responseJSON; //this will get the errors response data.
+			//show them somewhere in the markup
+			//e.g
+			errorsHtml = '<ul>';
+	
+			$.each( $errors, function( key, value ) {
+				errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
+			});
+			errorsHtml += '</ul>';
+				
+			//$( '#form-errors' ).html( errorsHtml ); //appending to a <div id="form-errors"></div> inside form
+			$('.ajax-info').removeClass('label-info').addClass('label-danger').html(errorsHtml);
+			} else {
+				/// do some thing else
+				$('.ajax-info').removeClass('label-info').addClass('label-danger').text('Error: somethig else went wrong. Make sure you have a valid internet connection');
+				 	setTimeout(function() {
+				 			$('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
+				 	}, 5000);
+			}
 		},
 
 	});

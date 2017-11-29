@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('sidebar-menu')
-        <ul class="sidebar-menu" data-widget="tree">
+        <!-- <ul class="sidebar-menu" data-widget="tree">
             <li class="header"></li>
-            <!-- Optionally, you can add icons to the links -->
+            <!-- Optionally, you can add icons to the links 
             <li ><a href="{{route('home')}}"><i class="fa fa-home"></i> <span>Home</span></a></li>
             
             <li ><a href="{{route('personalInformation')}}"><i class="fa fa-user"></i> <span>Personal Information</span></a></li>
             <li class="active"><a href="{{route('educationalInformation')}}"><i class="fa fa-mortar-board"></i> <span>Educational Information</span></a></li>
             <li ><a href="{{route('professionalInformation')}}"><i class="fa fa-black-tie"></i> <span>Professional Information</span></a></li>
             <li ><a href="#"><i class="fa fa-handshake-o"></i> <span>Support</span></a></li>
-        </ul>
+        </ul> -->
 @endsection
 
 @section('content')
@@ -106,7 +106,7 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label>Discipline</label>
-                    <select  required="true"  class="form-control select2 select2-hidden-accessible" name="discipline"  id="discipline" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <!-- <select  required="true"  class="form-control select2 select2-hidden-accessible" name="discipline"  id="discipline" style="width: 100%;" tabindex="-1" aria-hidden="true">
                     @foreach($disciplines as $discipline)  
                         @if($educationalI->discipline == $discipline->name)  
                             <option value="{{$discipline->name}}" selected>{{$discipline->name}}</option>
@@ -114,7 +114,8 @@
                             <option value="{{$discipline->name}}">{{$discipline->name}}</option>
                         @endif
                     @endforeach
-                    </select>
+                    </select> -->
+                    <input type="text" value="{{$educationalI->discipline}}" class="form-control" name="discipline" id="discipline" required/>
                 </div>
                 </div>
                 </div>
@@ -197,9 +198,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <ul>
-                    <li>instruction1</li>
-                </ul>
+            <ul>
+                
+                <li>If you want to edit this page after some time then just click on save button. <b class="bg-red"><i>Once you clicked on Save and Next. Then you won't be able to access this section any more </i></b></li>
+            </ul>
             </div>
             <!-- /.box-body -->
           </div>
@@ -294,12 +296,32 @@
                     
                 
                 },
-                error: function(request, error){
+                error: function( jqXhr ) {
                     $('.overlay').hide();
-                    $('.ajax-info').removeClass('label-info').addClass('label-danger').text('Error: Unknown error. Make sure you have working internet connection!');
-                    setTimeout(function() {
-                        $('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
-                    }, 5000);
+                    console.log(jqXhr);
+                    if( jqXhr.status === 401 ) //redirect if not authenticated user.
+                        $( location ).prop( '', '/login' );
+                    if( jqXhr.status === 422 ) {
+                    //process validation errors here.
+                    $errors = jqXhr.responseJSON; //this will get the errors response data.
+                    //show them somewhere in the markup
+                    //e.g
+                    errorsHtml = '<ul>';
+            
+                    $.each( $errors, function( key, value ) {
+                        errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
+                    });
+                    errorsHtml += '</ul>';
+                        
+                    //$( '#form-errors' ).html( errorsHtml ); //appending to a <div id="form-errors"></div> inside form
+                    $('.ajax-info').removeClass('label-info').addClass('label-danger').html(errorsHtml);
+                    } else {
+                        /// do some thing else
+                        $('.ajax-info').removeClass('label-info').addClass('label-danger').text('Error: somethig else went wrong. Make sure you have a valid internet connection');
+                             setTimeout(function() {
+                                     $('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
+                             }, 5000);
+                    }
                 },
 
             });

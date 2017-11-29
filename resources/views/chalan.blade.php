@@ -62,10 +62,10 @@ p.big {
   <div class="column">
       <div>
         <center>Bank Copy</center>
-        <br><br>
+        <br>
             <img class = "image" src = "logos/logo_homecoming.jpg" width=50px height=60px align=left>
          <img class = "image" src="logos/logo_nust3.jpeg"  width="50px" height="60px" align="right">
-         <br><br>
+         <br>
       </div>
       <br><br>
       <div>
@@ -75,17 +75,17 @@ p.big {
 
       <!--<p class="big" align="justify">-->
       <table>
-        <tr>
-        <td>HBL ACCOUNT NO.</td> <td><u>123456789</u><br></td>
-        </tr>
-         <tr>
-        <td>Account Title</td> <td><u>Title</u><br></td>
-        </tr>
+      <tr>
+      <td>HBL ACCOUNT NO.</td> <td><u>{{$accountNo}}</u><br></td>
+      </tr>
+       <tr>
+      <td>Account Title</td> <td><u>{{$accountTitle}}</u><br></td>
+      </tr>
         <tr>
         <td>INVOICE NO.</td><td> <U>{{$chalan_id}}</U><br></td>
         </tr>
         <tr>
-        <td>ISSUE DATE</td><td> <U>{{$issue_date}}</U><br></td>
+        <td>ISSUE DATE</td><td> <U>{{date('d M, Y',$issue_date)}}</U><br></td>
         </tr>
         <tr>
         <td>NAME</td> <td><U>{{$name}}</U><br></td>
@@ -100,12 +100,12 @@ p.big {
         <td>AMOUNT</td><td> <b><u>{{$amount}} Rs/-</u><br></td></b>
         </tr>
         <tr>
-        <td>AMOUNT (IN WORDS)</td><td> <u> Rupees only /-</u><br></td>
+        <td>AMOUNT (IN WORDS)</td><td> <u> {{$f->format($amount)}} Rupees Only/-</u><br></td>
         </tr>
       </table>
 
         <hr>
-        DUE DATE: {{$due_date}}<br>
+        DUE DATE: {{date('d M, Y',$due_date)}}<br>
       </p>
       <p class="small">
         <b><u>NOTE FOR BANK:</u><br><br>KINDLY PUNCH THE INVOICE NUMBER IN THE TRASACTION.<br><br></b>
@@ -123,10 +123,10 @@ p.big {
   <div class="column">
   <div>
     <center>NUST Copy</center>
-    <br><br>
+    <br>
     <img class = "image" src = "logos/logo_homecoming.jpg" width=50px height=60px align=left>
  <img class = "image" src="logos/logo_nust3.jpeg"  width="50px" height="60px" align="right">
- <br><br>
+ <br>
 </div>
 <br><br>
   <div>
@@ -136,17 +136,17 @@ p.big {
 
   <!--<p class="big" align="justify">-->
   <table>
-    <tr>
-    <td>HBL ACCOUNT NO.</td> <td><u>123456789</u><br></td>
-    </tr>
-     <tr>
-    <td>Account Title</td> <td><u>Title</u><br></td>
-    </tr>
+  <tr>
+  <td>HBL ACCOUNT NO.</td> <td><u>{{$accountNo}}</u><br></td>
+  </tr>
+   <tr>
+  <td>Account Title</td> <td><u>{{$accountTitle}}</u><br></td>
+  </tr>
     <tr>
     <td>INVOICE NO.</td><td> <U>{{$chalan_id}}</U><br></td>
     </tr>
     <tr>
-    <td>ISSUE DATE</td><td> <U>{{$issue_date}}</U><br></td>
+    <td>ISSUE DATE</td><td> <U>{{date('d M, Y',$issue_date)}}</U><br></td>
     </tr>
     <tr>
     <td>NAME</td> <td><U>{{$name}}</U><br></td>
@@ -161,12 +161,12 @@ p.big {
     <td>AMOUNT</td><td> <b><u>{{$amount}} Rs/-</u><br></td></b>
     </tr>
     <tr>
-    <td>AMOUNT (IN WORDS)</td><td> <u>-</u><br></td>
+    <td>AMOUNT (IN WORDS)</td><td> <u> {{$f->format($amount)}} Rupees Only/-</u><br></td>
     </tr>
   </table>
 
     <hr>
-    DUE DATE: {{$due_date}}<br>
+    DUE DATE: {{date('d M, Y',$due_date)}}<br>
   </p>
   <p class="small">
     <b><u>NOTE FOR BANK:</u><br><br>KINDLY PUNCH THE INVOICE NUMBER IN THE TRASACTION.<br><br></b>
@@ -183,10 +183,10 @@ p.big {
 <div class="column">
 <div>
   <center>Alumni Copy</center>
-  <br><br>
+  <br>
   <img class = "image" src = "logos/logo_homecoming.jpg" width=50px height=60px align=left>
 <img class = "image" src="logos/logo_nust3.jpeg"  width="50px" height="60px" align="right">
-<br><br>
+<br>
 </div>
 <br><br>
 <div>
@@ -197,16 +197,16 @@ p.big {
 <!--<p class="big" align="justify">-->
 <table>
   <tr>
-  <td>HBL ACCOUNT NO.</td> <td><u>123456789</u><br></td>
+  <td>HBL ACCOUNT NO.</td> <td><u>{{$accountNo}}</u><br></td>
   </tr>
    <tr>
-  <td>Account Title</td> <td><u>Title</u><br></td>
+  <td>Account Title</td> <td><u>{{$accountTitle}}</u><br></td>
   </tr>
   <tr>
   <td>INVOICE NO.</td><td> <U>{{$chalan_id}}</U><br></td>
   </tr>
   <tr>
-  <td>ISSUE DATE</td><td> <U>{{$issue_date}}</U><br></td>
+  <td>ISSUE DATE</td><td> <U>{{date('d M, Y',$issue_date)}}</U><br></td>
   </tr>
   <tr>
   <td>NAME</td> <td><U>{{$name}}</U><br></td>
@@ -221,12 +221,12 @@ p.big {
   <td>AMOUNT</td><td> <b><u>{{$amount}} Rs/-</u><br></td></b>
   </tr>
   <tr>
-  <td>AMOUNT (IN WORDS)</td><td> <u>  -</u><br></td>
+  <td>AMOUNT (IN WORDS)</td><td> <u> {{$f->format($amount)}} Rupees Only/-</u><br></td>
   </tr>
 </table>
 
   <hr>
-  DUE DATE: {{$due_date}}<br>
+  DUE DATE: {{date('d M, Y',$due_date)}}<br>
 </p>
 <p class="small">
   <b><u>NOTE FOR BANK:</u><br><br>KINDLY PUNCH THE INVOICE NUMBER IN THE TRASACTION.<br><br></b>

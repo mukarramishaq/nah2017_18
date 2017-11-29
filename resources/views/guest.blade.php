@@ -5,16 +5,20 @@
 @endsection
 
 @section('content')
-
+<div class="row">
+<section class="col-md-9">
 <div class="box">
 
+<div class="box-header">
+        <h3 class="box-title">Guests Info | Registration Fee</h3>
+    </div>
 
+    <div class="box-body">
+                    <div class="row">
 
-
-
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title">Guests Details</h3>
+<div class="box box-danger col-md-6 col-xs-10 col-xs-offset-1 col-md-offset-1">
+    <div class="box-header with-border">
+        <h3 class="box-title">Add Guests</h3>
     </div>
     
     
@@ -35,7 +39,7 @@
                         <div class="col-md-6">                
                             <div class="form-group">
                                 <label for="guestContact">Guest CNIC/B-form</label>
-                                <input type="text" required="true" class="form-control" name="guestContact" id="guestContact" placeholder="Enter Guest CNIC/B-from Number" data-inputmask='"mask": "12345-12345678"' data-mask>
+                                <input type="text" required="true" class="form-control" name="guestContact" id="guestContact" placeholder="Enter Guest CNIC/B-from Number" data-inputmask='"mask": "99999-9999999-9"' data-mask>
                             </div>
                         </div>
                     </div>
@@ -79,13 +83,28 @@
 
 
 
-
 </div>
+<div class="col-md-4 col-xs-10 col-xs-offset-1">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h4>Total:</h4> <h3>Rs.{{(count($guests)*$price->guest_price)+$price->alumni_price}}/-</h3>
+
+              
+            </div>
+            
+            <div class="small-box-footer"><p>Alumni Fee: Rs.1500/- per alumnus</p><p>Guest Fee: Rs.1000/- per guest</p></div>
+          </div>
+        </div>
+        <!-- ./col -->
+</div>
+<!-- /.row -->
+
 
   <!-- ends here  -->
-<div class="box">
-    <div class="box-header">
-      <h3 class="box-title">Guest Information</h3>
+<div class="box box-danger">
+    <div class="box-header with-border">
+      <h3 class="box-title">Added Guests</h3>
     </div>
   <!-- /.box-header -->
     <div class="box-body">
@@ -126,15 +145,28 @@
               </div>
 
 </div>
-  
+  </section>
+  <section class="col-md-3">
+  <div class="col-md-12">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Instructions</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+               <ul style="padding-left: 15px;">
+                    <li>If you want to bring your spouse or children with you then you'll have to add their information here</li>
+                    <li><b class="bg-red"><u>Note:</u></b> You'll have to pay for every guest. Your registration fee is {{$price->alumni_price}} whereas registration fee of each guest is {{$price->guest_price}}.</li>
+                    <li>You can see your total registration fee that you'll have to pay in All Red Box</li>
+                </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+  </section>
+</div>
 @endsection
-<script>
-  function removeButton(url){
-    
-  
-    window.location.replace(url);
-  }
-</script>
+
 
 @section('header-styles')
   <!-- DataTables -->
@@ -147,4 +179,20 @@
   </style>
 @endsection
 @section('footer-scripts')
+<script>
+  function removeButton(url){
+    
+  
+    window.location.replace(url);
+  }
+</script>
+<script src="{{asset('theme/lte/plugins/input-mask/jquery.inputmask.js')}}"></script>
+<script>
+  $(function () {
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+  
+  })
+</script>
  @endsection
