@@ -118,19 +118,12 @@
                   @if($personalI->gender == 'male')
                     <option selected="selected" value="male">Male</option>
                     <option value="female">Female</option>
-                    <option value="other">Other</option>
                   @elseif($personalI->gender == 'female')
                     <option value="male">Male</option>
                     <option value="female" selected="selected">Female</option>
-                    <option value="other">Other</option>
-                  @elseif($personalI->gender == 'other')
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other" selected="selected">Other</option>
                   @else
                     <option value="male" selected="selected">Male</option>
                     <option value="female">Female</option>
-                    <option value="other" >Other</option>
                   @endif
                 </select>
                 </div>

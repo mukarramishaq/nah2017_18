@@ -39,14 +39,22 @@
                             <option value="unemployed" >Un-employed</option>
                             <option value="employed">Employed</option>
                             <option value="selfemployed" selected>Self-employed</option>
+                            <option value="highereducation">Higher Education</option>
                         @elseif($professionalI->employed == "employed")
                             <option value="unemployed" >Un-employed</option>
                             <option value="employed" selected>Employed</option>
                             <option value="selfemployed">Self-employed</option>
+                            <option value="highereducation">Higher Education</option>
+                        @elseif($professionalI->employed == "highereducation")
+                            <option value="unemployed" >Un-employed</option>
+                            <option value="employed">Employed</option>
+                            <option value="selfemployed">Self-employed</option>
+                            <option value="highereducation" selected>Higher Education</option>
                         @else
                             <option value="unemployed" selected>Un-employed</option>
                             <option value="employed">Employed</option>
                             <option value="selfemployed">Self-employed</option>
+                            <option value="highereducation">Higher Education</option>
                         @endif
                     </select>
                 </div> 
@@ -136,6 +144,24 @@
                 </div>
                 </div>
                 <div class="row">
+                <div class="col-md-6 collapse Higher-education">
+                <div class="form-group">
+                    <label>University Name</label>
+                    <input type="name" required="true" value="test" class="form-control" name="heUniversityName" id="heUniversityName" placeholder="Enter your university name">
+                    {{--
+                    <input type="name" required="true" value="{{$higherE->university_name}}" class="form-control" name="heUniversityName" id="heUniversityName" placeholder="Enter your university name"> --}}
+                </div>
+                </div>
+                <div class="col-md-6 collapse Higher-education">
+                <div class="form-group">
+                  <label>Degree Title</label>
+                   <input type="name" required="true" value="test" class="form-control" name="heDegreeName" id="heDegreeName" placeholder="Enter your degree title">
+                  {{--
+                  <input type="name" required="true" value="{{$higherE->degree_name}}" class="form-control" name="heDegreeName" id="heDegreeName" placeholder="Enter your university name"> --}}
+                </div> 
+                </div>
+                </div>
+                <div class="row">
                 <div class="col-md-6">
                 <div class="form-group">
                     <label>Current Country</label>
@@ -182,6 +208,8 @@
           <!-- /.box -->
         </div>
         <div class="col-md-3">
+        <div class="row">
+        <div class="col-md-12">
         <div class="box box-danger">
             <div class="box-header with-border">
               <h3 class="box-title">Instructions</h3>
@@ -195,7 +223,28 @@
             </div>
             <!-- /.box-body -->
            
-          </div>
+        </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Contact Us</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <p>In case of any issue you may contact us</p>
+            <p>Email:</p>
+            <p><b> registration@homecoming.nust.edu.pk </b></p>
+            <p>Phone Number:</p>
+            <p><b>03006005060</b></p>
+            </div>
+            <!-- /.box-body -->
+           
+        </div>
+        </div>
+        </div>
         </div>
     </div>
 @endsection

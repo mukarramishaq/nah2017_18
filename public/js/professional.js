@@ -47,6 +47,18 @@ function save() {
             'link': document.getElementById("eWebsite").value,
 
         };
+    } else if ($('#employed').val() == 'highereducation') {
+        data = {
+            'employed': $('#employed').val(),
+            'country': $('#currentCountry').val(),
+            'city': $('#currentCity').val(),
+            'address': $('#currentAddress').val(),
+            'unversityName': $('#heUniversityName').val(),
+            'degreeName': $('#heDegreeName').val(),
+
+
+
+        };
     }
 
 
