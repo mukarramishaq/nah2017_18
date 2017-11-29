@@ -374,8 +374,6 @@ class PaymentController extends Controller
                         'user_id'=>$user->id,
                         'chalan_id'=>time(),
                         'name'=>$user->name,
-                        'accountNo'=>$bank->bank_account_number,
-                        'accountTitle'=>$bank->bank_account_name,
                         'cnic'=>$personalI->cnic,
                         'school'=>$educationalI->school,
                         'issue_date'=>time(),
