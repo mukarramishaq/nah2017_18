@@ -8,6 +8,7 @@ use App\User;
 use App\ProfessionalI;
 use App\EntrepI;
 use App\Country;
+use App\HigherEducation;
 class ProfessionalController extends Controller
 {
     //
@@ -26,6 +27,7 @@ class ProfessionalController extends Controller
         $professionalI = $user->professionalI()->get();
         $entrepI = $user->entrepI()->get();
         $countries = Country::all();
+        $higherE = $user->higherEducation()->get();
 
         if($professionalI && count($professionalI)>0){
             $professionalI = $professionalI[0];
@@ -40,9 +42,16 @@ class ProfessionalController extends Controller
         else{
             $entrepI = new EntrepI;
         }
+        
+        if($higherE && count($higherE)>0){
+            $higherE = $higherE[0];
+        }
+        else{
+            $higherE = new HigherEducation;
+        }
 
         if($user){
-            return view('professionalInformation')->with('professionalI',$professionalI)->with('entrepI',$entrepI)->with('countries',$countries);
+            return view('professionalInformation')->with('higherE',$higherE)->with('professionalI',$professionalI)->with('entrepI',$entrepI)->with('countries',$countries);
         }
         else{
             return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
@@ -200,19 +209,7 @@ class ProfessionalController extends Controller
                     'total_nustian_employees'=>$request->input('nustians'),
                     'website_link'=>$request->input('link'),
                 );
-                // if($request->input('eIndustry') == 'other')
-                // {
-                //     $data->industry = $request->input('selfOtherIndustry');
-                //     $data1->industry = $request->input('selfOtherIndustry');
-                    
-                // }
-
-                // if($request->input('eDesignation') == 'other')
-                // {
-                //     $data->designation = $request->input('selfOtherDesignation');
-                //     $data1->designation = $request->input('selfOtherDesignation');
-                    
-                // }
+              
 
                 
                 $professionalI = $user->professionalI()->get();
@@ -262,6 +259,80 @@ class ProfessionalController extends Controller
 
 
             }
+
+            // higher Education...
+
+            else if($request->input('employed') == 'highereducation'){
+                $this->validate($request,[
+                    'country'=>'present|nullable|alpha|size:2',
+                    'city'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
+                    'address'=>'present|nullable|string',
+                    'degreeName'=>'present|nullable|string',
+                    'universityName'=>'present|nullable|string',
+                    
+                ]);
+                
+                $data = (object) array(
+                    'user_id'=>$user->id,
+                    'country'=>$request->input('country'),
+                    'city'=>$request->input('city'),
+                    'address'=>$request->input('address')
+                );
+
+                $data1 = (object) array(
+                    'user_id'=>$user->id,
+                    'degree_name'=>$request->input('degreeName'),
+                    'university_name'=>$request->input('universityName'),
+                );
+                
+
+                
+                $professionalI = $user->professionalI()->get();
+                $high_edu = $user->higherEducation()->get();
+                if($high_edu && count($high_edu)>0)
+                {
+                    $high_edu = $high_edu[0];
+                    $high_edu->user_id = $data1->user_id;
+                    $high_edu->university_name = $data1->university_name;
+                    $high_edu->degree_name = $data1->degree_name;
+                    
+                    
+                    $high_edu->save(); // save to database...    
+                }
+                else{
+                    $data1 = (array) $data1;
+                    $high_edu = HigherEducation::create((array)$data1);
+                    
+                }
+
+                if($professionalI && count($professionalI)>0){
+                    $professionalI = $professionalI[0];
+                    $professionalI->user_id = $data->user_id;
+                    $professionalI->country = $data->country;
+                    $professionalI->city = $data->city;
+                    $professionalI->address = $data->address;
+                    
+                    $professionalI->save(); //save to database
+                    return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
+                }
+                else{
+                    //create entry
+                    $data = (array) $data;
+                    $professionalI = ProfessionalI::create((array)$data);
+                    return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
+                }
+
+                return \Response::json(['type'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
+
+
+
+            }
+            
+
+
+
+
+            // higher Education ends here ...
 
 
         }
@@ -565,6 +636,101 @@ class ProfessionalController extends Controller
 
 
             }
+
+            // 4th...
+            else if($request->input('employed') == 'highereducation'){
+                
+                $this->validate($request,[
+                    'currentCountry'=>'present|nullable|alpha|size:2',
+                    'currentCity'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
+                    'currentAddress'=>'present|nullable|string',
+                    'heDegreeName'=>'present|nullable|string',
+                    'heUniversityName'=>'present|nullable|string',
+                    
+                ]);
+                $data = (object) array(
+                    'user_id'=>$user->id,
+                    'country'=>$request->input('currentCountry'),
+                    'city'=>$request->input('currentCity'),
+                    'address'=>$request->input('currentAddress')
+                );
+
+                $data1 = (object) array(
+                    'user_id'=>$user->id,
+                    'degree_name'=>$request->input('heDegreeName'),
+                    'university_name'=>$request->input('heUniversityName'),
+                );
+                
+                
+
+                $professionalI = $user->professionalI()->get();
+                $high_edu = $user->higherEducation()->get();
+                if($high_edu && count($high_edu)>0)
+                {
+                    $high_edu = $high_edu[0];
+                    $high_edu->user_id = $data1->user_id;
+                    $high_edu->degree_name = $data1->degree_name;
+                    $high_edu->university_name = $data1->university_name;
+                    
+                    
+                    $high_edu->save(); // save to database...    
+                }
+                else{
+                    $data1 = (array) $data1;
+                    $entrepI = HigherEducation::create((array)$data1);
+                    
+                }
+                if($professionalI && count($professionalI)>0){
+                    $professionalI = $professionalI[0];
+                    $professionalI->user_id = $data->user_id;
+                    $professionalI->country = $data->country;
+                    $professionalI->city = $data->city;
+                    $professionalI->address = $data->address;
+                    
+                    $professionalI->save(); //save to database
+                    $stage = $user->stage()->get();
+                    if($stage && count($stage)>0){
+                        $stage = $stage[0];
+                        $stage->is_professional_info_done = true;
+                        $stage->save();
+                    }
+                    else{
+                        $stage = Stage::create(array(
+                            'user_id'=>$user_id,
+                            'is_professional_info_done'=>true,
+                        ));
+                    }
+                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                }
+                else{
+                    //otherwise create one
+                    $data = (array) $data;
+                    $professional = ProfessionalI::create($data);
+                    $stage = $user->stage()->get();
+                    if($stage && count($stage)>0){
+                        $stage = $stage[0];
+                        $stage->is_professional_info_done = true;
+                        $stage->save();
+                    }
+                    else{
+                        $stage = Stage::create(array(
+                            'user_id'=>$user_id,
+                            'is_professional_info_done'=>true,
+                        ));
+                    }
+                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    
+                }
+
+                return redirect()->back()->with('type','error')->with('msg','Unknow error. Please try again.');
+                
+
+
+
+
+            }
+
+            // 4th ends here ...
 
             
         }
