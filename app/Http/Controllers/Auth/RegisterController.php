@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:8|confirmed',
+            'g-recaptcha-response'=>'required|recaptcha'
         ]);
     }
 
@@ -103,6 +104,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'verification_token'=>str_random(30),
         ]);
+        \Log::info(\Request::ip());
 
         $personalI = PersonalI::create(array(
             'user_id'=>$user->id,

@@ -32,6 +32,9 @@
                   <div class="row">
                     <div class="preview-uploaded-image col-md-4 col-md-offset-4" >
                     </div>
+                    <div class="overlay">
+                <i class="fa fa-refresh fa-spin fa-5x"></i>
+              </div>
                   </div>
                   <div class="form-group input-picture">
                     <label>Image:</label>
@@ -263,9 +266,11 @@
 <script type="text/javascript">
       $("body").on("click",".upload-image",function(e){
         $.ajaxSetup({ cache: false });
+        $('.overlay').show();
         $(this).parents("form").ajaxForm({ 
           complete: function(response) 
           {
+          $('.overlay').hide();
             
             if($.isEmptyObject(response.responseJSON.image)){
               $('.error-msg').css('display','none');
@@ -277,6 +282,7 @@
                       
             }else{
               var msg=response.responseJSON.image;
+              $('#modal-pic .modal-footer .form-footer').html('<button class="btn bg-red upload-image" type="submit">Change Image</button><button class="btn bg-red" data-dismiss="modal">Close</button>');
               $(".error-msg").find("ul").html('');
               $(".error-msg").css('display','block');
               $.each( msg, function( key, value ) {
