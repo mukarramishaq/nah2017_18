@@ -58,13 +58,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger lmr" href="#about" style="font-family:LemonMilkRegular">About US</a>
+              <a class="nav-link js-scroll-trigger lmr" href="#about" style="font-family:LemonMilkRegular">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger lmr" href="#services">Services</a>
+              <a class="nav-link js-scroll-trigger lmr" href="#statistics">Statistics</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger lmr" href="#portfolio">Portfolio</a>
+              <a class="nav-link js-scroll-trigger lmr" href="#registration">Registration</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger lmr" href="#contact">CONTACT US</a>
@@ -97,59 +97,86 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">We've got what you need!</h2>
+            <h2 class="section-heading text-white">NUST ALUMNI HOMECOMING</h2>
             <hr class="light my-4">
-            <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+            <p class="mb-4" style="color:white;">Homecoming gives the opportunity to reinforce the relationship shared
+between the alumni and their Alma mater, along with providing numerous
+networking opportunities for entrepreneurs and enthusiasts to promote
+their aims. It also encourages alumni to participate actively in the
+NUST community, to attend events, to volunteer, to create new ways for
+alumni to stay connected to NUST and to contribute to the greatness of
+NUST University.
+
+!</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services">
+    <section id="statistics">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading">At Your Service</h2>
+            <h2 class="section-heading">2015 Alumni Homecoming Statistics</h2>
             <hr class="my-4">
           </div>
         </div>
       </div>
+      
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-6 text-center">
+          <div class="col-lg-4 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Sturdy Templates</h3>
-              <p class="text-muted mb-0">Our templates are updated regularly so they don't break.</p>
+              <i class="fa fa-4x fa-users text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Attendees</h3>
+              <p class="text-muted mb-0">1975 guests attended the event.</p>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 text-center">
+          
+          <div class="col-lg-4 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Ready to Ship</h3>
-              <p class="text-muted mb-0">You can use this theme as is, or you can make changes!</p>
+              <i class="fa fa-4x fa-globe text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">17 Countries Reached</h3>
+              <p class="text-muted mb-0">People from 17 countries attended the event</p>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 text-center">
+          
+          <div class="col-lg-4 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Up to Date</h3>
-              <p class="text-muted mb-0">We update dependencies to keep things fresh.</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Made with Love</h3>
-              <p class="text-muted mb-0">You have to make your websites with love these days!</p>
+              <i class="fa fa-4x fa-music text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Artist</h3>
+              <p class="text-muted mb-0">Roxen and QB Performance.</p>
             </div>
           </div>
         </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Guests</h3>
+              <p class="text-muted mb-0">80 industrial Guests</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-thumbs-up text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">250,000+</h3>
+              <p class="text-muted mb-0">Social Media Reach</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-thumbs-up text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Pioneer Reach Celebration</h3>
+              <p class="text-muted mb-0">Celebration</p>
+            </div>
+          </div>
+
       </div>
+    
     </section>
 
-    <!-- <section class="p-0" id="portfolio">
+    <section class="p-0" id="registration">
       <div class="container-fluid p-0">
         <div class="row no-gutters popup-gallery">
           <div class="col-lg-4 col-sm-6">
@@ -244,7 +271,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section> 
 
     <section class="bg-dark text-white">
       <div class="container text-center">
