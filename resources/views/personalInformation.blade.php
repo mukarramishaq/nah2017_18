@@ -97,11 +97,11 @@
                 <div class="col-md-9">            
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="name" required="true" name="name" value="{{$personalI->name != '' ? $personalI->name : @Request['name']}}" class="form-control" id="name" placeholder="Enter name">
+                  <input type="name" required="true" name="name" value="{{$personalI->name}}" class="form-control" id="name" placeholder="Enter name">
                 </div>
                 <div class="form-group">
                   <label for="cNIC">CNIC</label>
-                  <input type="text" value="{{$personalI->cnic != '' ? $personalI->cnic : @Request['cNIC']}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="12345-6789012-3" data-inputmask='"mask": "99999-9999999-9"' data-mask>
+                  <input type="text" value="{{$personalI->cnic" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="12345-6789012-3" data-inputmask='"mask": "99999-9999999-9"' data-mask>
                 </div>  
                 </div>
                 </div>        

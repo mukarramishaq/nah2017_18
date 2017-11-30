@@ -27,7 +27,7 @@
             <div>
                 <span class=" ajax-info label col-md-12"></span>
             </div>
-            <form role="form" id="educationalInformationForm" action="{{route('educationalSaveAndNext')}}" method="POST" onsubmit="return confirm('Once submitted, you cannot access this section anymore!. Do you want to submit?');">
+            <form role="form" id="educationalInformationForm">
                 {{csrf_field()}}
               <div class="box-body">
                 <div class="row">
@@ -182,7 +182,7 @@
               <!-- /.box-body -->
               <div class="box-footer text-right">
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
-                <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
+                <button type="submit" class="btn btn-flat bg-red" onclick="saveAndNext();">Save & Next</button>
               </div>
               <div class="overlay">
               <i class="fa fa-refresh fa-spin"></i>
@@ -350,7 +350,83 @@
             });
         }
 
-       
+       function saveAndNext()
+        {
+            $('.overlay').show();
+            $('.ajax-info').addClass('label-info').text('Sending data ...');
+            $('.ajax-info').show(500);
+            
+            
+            var data = {
+
+                    'nustRegistrationNumber': $('#nustRegistrationNumber').val(),
+                    'degreeName':$('input[name=degreeName]:checked').val(),
+                    'school':$('#school').val(),
+                    'discipline':$('#discipline').val(),
+                    'enrollmentYear':$('#enrollmentYear').val(),
+                    'graduationYear': $('#graduationYear').val(),
+                    'alumniCard': $('input[name=alumniCard]:checked').val(),
+                };
+                
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url:'/educationalInformation/saveAndNext',
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function(data){
+                    
+                    $('.overlay').hide();
+                    if(data.type == 'success'){
+                        $('.ajax-info').removeClass('label-info').addClass('label-success').text(data.msg);
+                        setTimeout(function() {
+                            $('.ajax-info').hide().removeClass('label-success').addClass('label-info');
+                        }, 3000);
+                    }
+                    else{
+                        $('.ajax-info').removeClass('label-info').addClass('label-danger').text(data.msg);
+                        setTimeout(function() {
+                            $('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
+                        }, 3000);
+                    }
+
+                    
+                
+                },
+                error: function( jqXhr ) {
+                    $('.overlay').hide();
+                    console.log(jqXhr);
+                    if( jqXhr.status === 401 ) //redirect if not authenticated user.
+                        $( location ).prop( '', '/login' );
+                    if( jqXhr.status === 422 ) {
+                    //process validation errors here.
+                    $errors = jqXhr.responseJSON; //this will get the errors response data.
+                    //show them somewhere in the markup
+                    //e.g
+                    errorsHtml = '<ul>';
+            
+                    $.each( $errors, function( key, value ) {
+                        errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error.
+                    });
+                    errorsHtml += '</ul>';
+                        
+                    //$( '#form-errors' ).html( errorsHtml ); //appending to a <div id="form-errors"></div> inside form
+                    $('.ajax-info').removeClass('label-info').addClass('label-danger').html(errorsHtml);
+                    } else {
+                        /// do some thing else
+                        $('.ajax-info').removeClass('label-info').addClass('label-danger').text('Error: somethig else went wrong. Make sure you have a valid internet connection');
+                             setTimeout(function() {
+                                     $('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
+                             }, 5000);
+                    }
+                },
+
+            });
+        }
     </script>
     <script>
         $(document).ready(function(){$('.overlay').hide();});
