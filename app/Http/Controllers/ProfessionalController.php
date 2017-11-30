@@ -179,10 +179,10 @@ class ProfessionalController extends Controller
                     'selfIndustry'=>'present|nullable|string',
                     'ecompany'=>'present|nullable|alpha_dash',
                     'selfDesignation'=>'present|nullable|alpha_dash',
-                    'totalEmployes'=>'present|nullable|numeric',
-                    'nustians'=>'present|nullable|numeric',
-                    'link'=>'present|nullable|url',
-                    'date'=>'present|nullable|regex:(^\d{2}\/\d{2}\/\d{4}$)',
+                    // 'totalEmployes'=>'present|nullable|numeric',
+                    // 'nustians'=>'present|nullable|numeric',
+                    // 'link'=>'present|nullable|url',
+                    // 'date'=>'present|nullable|regex:(^\d{2}\/\d{2}\/\d{4}$)',
                 ]);
                 
                 $data = (object) array(
@@ -203,11 +203,11 @@ class ProfessionalController extends Controller
                     'user_id'=>$user->id,
                     'industry'=>$request->input('selfIndustry'),
                     'company_name'=>$request->input('ecompany'),
-                    'established_date'=>$request->input('date'),
+                    // 'established_date'=>$request->input('date'),
                     'designation'=>$request->input('selfDesignation'),
-                    'total_employees'=>$request->input('totalEmployes'),
-                    'total_nustian_employees'=>$request->input('nustians'),
-                    'website_link'=>$request->input('link'),
+                    // 'total_employees'=>$request->input('totalEmployes'),
+                    // 'total_nustian_employees'=>$request->input('nustians'),
+                    // 'website_link'=>$request->input('link'),
                 );
               
 
@@ -219,12 +219,12 @@ class ProfessionalController extends Controller
                     $entrepI = $entrepI[0];
                     $entrepI->industry = $data1->industry;
                     $entrepI->company_name = $data1->company_name;
-                    $entrepI->established_date = $data1->established_date;
+                    // $entrepI->established_date = $data1->established_date;
                     $entrepI->designation = $data1->designation;
                     // $entrepI->company_logo_path = $data->logo;
-                    $entrepI->total_employees = $data1->total_employees;
-                    $entrepI->total_nustian_employees = $data1->total_nustian_employees;
-                    $entrepI->website_link = $data1->website_link;
+                    // $entrepI->total_employees = $data1->total_employees;
+                    // $entrepI->total_nustian_employees = $data1->total_nustian_employees;
+                    // $entrepI->website_link = $data1->website_link;
                     
                     $entrepI->save(); // save to database...    
                 }
@@ -518,10 +518,10 @@ class ProfessionalController extends Controller
                     'seIndustry'=>'present|required|string',
                     'seCompany'=>'present|required|alpha_dash',
                     'seDesignation'=>'present|required|alpha_dash',
-                    'seTotalEmployes'=>'present|required|numeric',
-                    'seTotalNustEmployes'=>'present|required|numeric',
-                    'eWebsite'=>'present|required|url',
-                    'seEstablishedDate'=>'present|required|regex:(^\d{2}\/\d{2}\/\d{4}$)',
+                    // 'seTotalEmployes'=>'present|required|numeric',
+                    // 'seTotalNustEmployes'=>'present|required|numeric',
+                    // 'eWebsite'=>'present|required|url',
+                    // 'seEstablishedDate'=>'present|required|regex:(^\d{2}\/\d{2}\/\d{4}$)',
                 ]);
                 $data = (object) array(
                     'user_id'=>$user->id,
@@ -541,11 +541,11 @@ class ProfessionalController extends Controller
                     'user_id'=>$user->id,
                     'industry'=>$request->input('seIndustry'),
                     'company_name'=>$request->input('seCompany'),
-                    'established_date'=>$request->input('seEstablishedDate'),
+                    // 'established_date'=>$request->input('seEstablishedDate'),
                     'designation'=>$request->input('seDesignation'),
-                    'total_employees'=>$request->input('seTotalEmployes'),
-                    'total_nustian_employees'=>$request->input('seTotalNustEmployes'),
-                    'website_link'=>$request->input('eWebsite'),
+                    // 'total_employees'=>$request->input('seTotalEmployes'),
+                    // 'total_nustian_employees'=>$request->input('seTotalNustEmployes'),
+                    // 'website_link'=>$request->input('eWebsite'),
 
 
 
@@ -571,12 +571,12 @@ class ProfessionalController extends Controller
                     $entrepI = $entrepI[0];
                     $entrepI->industry = $data1->industry;
                     $entrepI->company_name = $data1->company_name;
-                    $entrepI->established_date = $data1->established_date;
+                    // $entrepI->established_date = $data1->established_date;
                     $entrepI->designation = $data1->designation;
                     // $entrepI->company_logo_path = $data->logo;
-                    $entrepI->total_employees = $data1->total_employees;
-                    $entrepI->total_nustian_employees = $data1->total_nustian_employees;
-                    $entrepI->website_link = $data1->website_link;
+                    // $entrepI->total_employees = $data1->total_employees;
+                    // $entrepI->total_nustian_employees = $data1->total_nustian_employees;
+                    // $entrepI->website_link = $data1->website_link;
                     
                     $entrepI->save(); // save to database...    
                 }
