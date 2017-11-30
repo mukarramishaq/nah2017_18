@@ -89,7 +89,7 @@
                 <div class="row">
                 <div class="col-md-6">            
                 <div class="form-group collapse Self-employed">
-                  <label for="eCompany">Startup Name</label>
+                  <label for="eCompany">Startup/Company Name</label>
                   <input type="name" required="true" class="form-control" value="{{$entrepI->company_name}}" name="seCompany" id="seCompany" placeholder="Enter your startup name">
                 </div> 
                 </div>
@@ -151,7 +151,7 @@
               <!-- /.box-body -->
               <div class="box-footer text-right">
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
-                <button type="submit" class="btn btn-flat bg-red">Save & Next</button>
+                <button type="button" class="btn btn-flat bg-red" onclick="saveAndNext();">Save & Next</button>
               </div>
               <div class="overlay">
               <i class="fa fa-refresh fa-spin"></i>

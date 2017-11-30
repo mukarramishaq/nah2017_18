@@ -177,8 +177,8 @@ class ProfessionalController extends Controller
                     'city'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
                     'address'=>'present|nullable|string',
                     'selfIndustry'=>'present|nullable|string',
-                    'ecompany'=>'present|nullable|alpha_dash',
-                    'selfDesignation'=>'present|nullable|alpha_dash',
+                    'ecompany'=>'present|nullable|string',
+                    'selfDesignation'=>'present|nullable|string',
                     // 'totalEmployes'=>'present|nullable|numeric',
                     // 'nustians'=>'present|nullable|numeric',
                     // 'link'=>'present|nullable|url',
@@ -396,7 +396,7 @@ class ProfessionalController extends Controller
                         ));
                     }
 
-                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
                 }
                 else{
                     //otherwise create one
@@ -414,12 +414,12 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
                     
                 }
 
-                return redirect()->back()->with('type','error')->with('msg','Unknow error. Please try again.');
-
+                return response()->json(['type'=>'danger','msg'=>'Unknown Error. Please try again']);
+                
             }
 
 
@@ -443,18 +443,7 @@ class ProfessionalController extends Controller
                     'city'=>$request->input('currentCity'),
                     'address'=>$request->input('currentAddress')
                 );
-                // if($request->input('industry') == 'other')
-                // {
-                //     $data->industry = $request->input('otherIndustry');
-                // }
-
-                // if($request->input('designation') == 'other')
-                // {
-                //     // $data['designation'] = $request->input('otherDesignation');
-                //     $data->designation = $request->input('otherDesignation');
-                    
-
-                // }
+                
 
                 \Log::info((array) $data);
                 $professionalI = $user->professionalI()->get();
@@ -481,7 +470,7 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
                 }
                 else{
                     //otherwise create one
@@ -499,10 +488,10 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
                     
                 }
-                return redirect()->back()->with('type','error')->with('msg','Unknow error. Please try again.');
+                return response()->json(['type'=>'danger','msg'=>'Unknown Error. Please try again']);
                 
 
 
@@ -516,8 +505,8 @@ class ProfessionalController extends Controller
                     'currentCity'=>'present|required|regex:/^[a-zA-Z ]*$/',
                     'currentAddress'=>'present|required|string',
                     'seIndustry'=>'present|required|string',
-                    'seCompany'=>'present|required|alpha_dash',
-                    'seDesignation'=>'present|required|alpha_dash',
+                    'seCompany'=>'present|required|string',
+                    'seDesignation'=>'present|required|string',
                     // 'seTotalEmployes'=>'present|required|numeric',
                     // 'seTotalNustEmployes'=>'present|required|numeric',
                     // 'eWebsite'=>'present|required|url',
@@ -608,7 +597,7 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
                 }
                 else{
                     //otherwise create one
@@ -626,11 +615,11 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
                     
                 }
 
-                return redirect()->back()->with('type','error')->with('msg','Unknow error. Please try again.');
+                return response()->json(['type'=>'danger','msg'=>'Unknown Error. Please try again']);
                 
 
 
@@ -642,11 +631,11 @@ class ProfessionalController extends Controller
             else if($request->input('employed') == 'highereducation'){
                 
                 $this->validate($request,[
-                    'currentCountry'=>'present|nullable|alpha|size:2',
-                    'currentCity'=>'present|nullable|regex:/^[a-zA-Z ]*$/',
-                    'currentAddress'=>'present|nullable|string',
-                    'heDegreeName'=>'present|nullable|string',
-                    'heUniversityName'=>'present|nullable|string',
+                    'currentCountry'=>'present|required|alpha|size:2',
+                    'currentCity'=>'present|required|regex:/^[a-zA-Z ]*$/',
+                    'currentAddress'=>'present|required|string',
+                    'degreeName'=>'present|required|string',
+                    'universityName'=>'present|required|string',
                     
                 ]);
                 $data = (object) array(
@@ -702,7 +691,7 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
                 }
                 else{
                     //otherwise create one
@@ -720,11 +709,11 @@ class ProfessionalController extends Controller
                             'is_professional_info_done'=>true,
                         ));
                     }
-                    return redirect()->route('guestsInfo')->with('type','success')->with('msg','Professional Information saved successfully.');
+                    return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
                     
                 }
 
-                return redirect()->back()->with('type','error')->with('msg','Unknow error. Please try again.');
+                return response()->json(['type'=>'danger','msg'=>'Unknown Error. Please try again']);
                 
 
 
@@ -738,7 +727,7 @@ class ProfessionalController extends Controller
         }
         else{
             //session is expired
-            return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return response()->json(['type'=>'danger','msg'=>'Session expired. Please login again']);
         }
 
 
