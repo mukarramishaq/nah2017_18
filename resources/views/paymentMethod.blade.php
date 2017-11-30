@@ -63,14 +63,13 @@
         <div class="col-md-3">
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Instructions</h3>
+              <h3 class="box-title">Guidelines</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <ul>
-                    <li><sup><span class="label label-success">Recommended</span></sup> Chalan: in this method a chalan will be generated and you'll have to pay that chalan in any HBL Branch.</li>
-                    <li>Online: in this method we will give you our account details and your due amount. You'll have to pay your dues in that account and upload/email the receipt of transfer</li>
-                    <li>Cash on Delivery: Our courier agent will approach you with ticket and you'll have to pay your dues to that agent. </li>
+                    <li><sup><span class="label label-success">Recommended</span></sup> Chalan: Upon selecting this method of payment, a challan form will be generated and forwarded to you. You may, then, pay this challan at any HBL branch across Pakistan.</li>
+                    <li>Online: Upon choosing this method of payment, you will be provided with our account details and your total registration dues. You may, then, proceed to pay your dues online and forward us a proof of your receipt.</li>
                 </ul>
             </div>
             <!-- /.box-body -->

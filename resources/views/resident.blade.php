@@ -61,14 +61,15 @@
         <div class="col-md-3">
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Instructions</h3>
+              <h3 class="box-title">Guidelines</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <ul>
-                    <li>If you are residing in Pakistan then click "In Pakistan"</li>
-                    <li>Or If you are residing abroad and any your relative or friend can pay dues for you in Pakistan then click "In Pakistan"</li>
-                    <li>But If you are residing abroad and no one from your relatives or friends are able to pay your dues in Pakistan then click "Overseas Alumni"</li>
+                    <li>If you are currently residing inside Pakistan, select “In Pakistan”.</li>
+                    <li>Alternately, if you are currently residing outside Pakistan but your relative/acquaintance can pay your dues in Pakistan on your behalf, click “In Pakistan”.</li>
+                    <li>However, if you are residing abroad and are unable to access the second option, simply click “Overseas Alumni”.</li>
+                    <li><b>RESPECTED OVERSEAS ALUMNI: </b>Your payment will be received once you have reached Pakistan.</li>
 
                 </ul>
             </div>
