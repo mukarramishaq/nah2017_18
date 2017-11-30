@@ -298,19 +298,20 @@ NUST University.
           </div>
         </div>
         <div class="row">
+        <div class="col-lg-4 ml-auto text-center">
+        <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
+        <p><b>Director Registrations<br>Jahangeer Ahmed:</b>+92 335 3591055<br>
+        </p></p>
+      </div>
           <div class="col-lg-4 ml-auto text-center">
             <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p><b>Shiraz:</b>+092 324 5707181<br>shiraz@gmail.com</p>
-          </div>
-          <div class="col-lg-4 ml-auto text-center">
-            <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p><b>Director Marketing and Sponorship<br>Senam Khan:</b>+092 324 5707181<br><a href="mailto:your-email@your-domain.com">senamkhan2@gmail.com</a>
+            <p><b>Director Marketing and Sponsorship<br>Senam Khan:</b>+92 324 5707181<br>
             </p></p>
           </div>
           <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-              <a href="mailto:your-email@your-domain.com">registrations@homecoming.com</a>
+              <a href="mailto:your-email@your-domain.com">registrations@homecoming.nust.edu.pk</a>
             </p>
           </div>
         </div>
