@@ -24,6 +24,9 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('welcome/css/creative.css')}}" rel="stylesheet">
     <style>
+      
+    </style>
+    <style>
         .gir{
         font-family: 'GlacialIndifferenceRegular';
         }
@@ -63,18 +66,23 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger lmr" href="#statistics">Statistics</a>
             </li>
+            
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger lmr" href="#registration">Registration</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger lmr" href="#contact">CONTACT US</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger lmr" href="{{route('login')}}">Login</a>
+            </li>
+            
           </ul>
         </div>
       </div>
     </nav>
-
-    <header class="masthead text-center text-white d-flex">
+        {{srand(time())}}
+    <header class="masthead text-center text-white d-flex" style="background-image: url('/background_jpgs/jpgs-1920x1280/{{rand(1,5)}}.jpg');">
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-10 mx-auto">
@@ -176,7 +184,7 @@ NUST University.
     
     </section>
 
-    <section class="p-0" id="registration">
+    <!-- <section class="p-0" id="registration">
       <div class="container-fluid p-0">
         <div class="row no-gutters popup-gallery">
           <div class="col-lg-4 col-sm-6">
@@ -271,7 +279,7 @@ NUST University.
           </div>
         </div>
       </div>
-    </section> 
+    </section>  -->
 
     <section class="bg-dark text-white">
       <div class="container text-center">
@@ -333,9 +341,9 @@ NUST University.
     //             preloadImages.cache.push(img);
     //         }
     //     }
-    var data = ["/background_jpgs/jpgs-1920x1280/2.jpg","/background_jpgs/jpgs-1920x1280/3.jpg","/background_jpgs/jpgs-1920x1280/4.jpg","/background_jpgs/jpgs-1920x1280/5.jpg","/background_jpgs/jpgs-1920x1280/1.jpg"];
+    //var data = ["/background_jpgs/jpgs-1920x1280/2.jpg","/background_jpgs/jpgs-1920x1280/3.jpg","/background_jpgs/jpgs-1920x1280/4.jpg","/background_jpgs/jpgs-1920x1280/5.jpg","/background_jpgs/jpgs-1920x1280/1.jpg"];
     // preloadImages(data);
-    $(document).ready(function(){
+    /*$(document).ready(function(){
         
         var ii = -1;
         
@@ -357,7 +365,7 @@ NUST University.
     	setInterval(function(){chB(ii++);},10000);
     	//setInterval(function(){chB('img/header.jpg');},20000);
         
-    });
+    });*/
     
     </script>
 

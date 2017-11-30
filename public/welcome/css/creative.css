@@ -183,7 +183,7 @@ body {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
-  background-image: url("../../background_jpgs/jpgs-1920x1280/1.jpg");
+  
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
