@@ -159,8 +159,8 @@ class PersonalController extends Controller
                     ));
                 }
 
-                return redirect()->route('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
-                
+                // return redirect()->route('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
+                return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
             }
             else{
                 //otherwise create one
@@ -177,16 +177,18 @@ class PersonalController extends Controller
                         'is_personal_info_done'=>true,
                     ));
                 }
-                return redirect()->route('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
-                
+                // return redirect()->route('educationalInformation')->with('type','success')->with('msg','Personal Information saved successfully.');
+                return response()->json(['type'=>'success','msg'=>'Stage Completed!']);
             }
 
-            return redirect()->back()->with('type','error')->with('msg','Unknow error. Please try again.');
+            // return redirect()->back()->with('type','error')->with('msg','Unknow error. Please try again.');
+            return response()->json(['type'=>'danger','msg'=>'Unknown Error. Please try again']);
 
         }
         else{
             //session is expired
-            return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            // return redirect()->route('login')->with('type','error')->with('msg','Session expired. Login to continue');
+            return response()->json(['type'=>'danger','msg'=>'Session expired. Please login again']);
         }
 
     }
