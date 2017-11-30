@@ -31,6 +31,7 @@
               
                 <div class="form-group form-footer">
                 <button class="btn bg-red upload-image" type="submit">Upload Chalan Image</button>
+                <button class="btn bg-red" data-toggle="modal" data-target="#modal-chalan" type="button">Close</button>
                 </div>
               </div>
               {!! Form::close() !!}
