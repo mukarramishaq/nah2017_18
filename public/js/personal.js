@@ -81,13 +81,7 @@ function saveAndNext() {
                 }, 3000);
             }
         },
-        // error: function(request, error){
-        // 	$('.overlay').hide();
-        // 	$('.ajax-info').removeClass('label-info').addClass('label-danger').text(JSON.parse(request).message);
-        // 	setTimeout(function() {
-        // 			$('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
-        // 	}, 5000);
-        // },
+
         error: function(jqXhr) {
             $('.overlay').hide();
             console.log(jqXhr);
@@ -155,13 +149,7 @@ function save() {
                 }, 3000);
             }
         },
-        // error: function(request, error){
-        // 	$('.overlay').hide();
-        // 	$('.ajax-info').removeClass('label-info').addClass('label-danger').text(JSON.parse(request).message);
-        // 	setTimeout(function() {
-        // 			$('.ajax-info').hide().removeClass('label-danger').addClass('label-info');
-        // 	}, 5000);
-        // },
+
         error: function(jqXhr) {
             $('.overlay').hide();
             console.log(jqXhr);
