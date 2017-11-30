@@ -90,12 +90,12 @@ class EducationalController extends Controller
                 return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
             }
 
-            return \Response::json(['type'=>'error','msg'=>'Unknown error while saving data. Please try again.']);
+            return \Response::json(['type'=>'danger','msg'=>'Unknown error while saving data. Please try again.']);
             
         }
         else{
             //either session is expired or page is directly being accessed so stop it
-            return \Response::json(['type'=>'error','msg'=>'Your session is expired. Please login to continue']);
+            return \Response::json(['type'=>'danger','msg'=>'Your session is expired. Please login to continue']);
         }
     	
 
@@ -106,8 +106,8 @@ class EducationalController extends Controller
         $this->validate($request, [
             'nustRegistrationNumber' => 'required|alpha_num',
             'degreeName'=>'required|alpha_dash',
-            'school'=>'required|alpha',
-            'discipline'=>'required|alpha_dash',
+            'school'=>'required|alpha_num',
+            'discipline'=>'required|string',
             'enrollmentYear'=>'required|min:1948|max:2013|numeric',
             'graduationYear'=>'required|min:1948|max:2017|numeric',
             'alumniCard'=>'required|boolean',

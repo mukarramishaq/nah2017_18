@@ -182,7 +182,7 @@
               <!-- /.box-body -->
               <div class="box-footer text-right">
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
-                <button type="submit" class="btn btn-flat bg-red" onclick="saveAndNext();">Save & Next</button>
+                <button type="button" class="btn btn-flat bg-red" onclick="saveAndNextEdu();">Save & Next</button>
               </div>
               <div class="overlay">
               <i class="fa fa-refresh fa-spin"></i>
@@ -350,7 +350,7 @@
             });
         }
 
-       function saveAndNext()
+       function saveAndNextEdu()
         {
             $('.overlay').show();
             $('.ajax-info').addClass('label-info').text('Sending data ...');
@@ -383,6 +383,7 @@
                     $('.overlay').hide();
                     if(data.type == 'success'){
                         $('.ajax-info').removeClass('label-info').addClass('label-success').text(data.msg);
+                        window.location.reload();
                         setTimeout(function() {
                             $('.ajax-info').hide().removeClass('label-success').addClass('label-info');
                         }, 3000);
