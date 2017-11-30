@@ -31,6 +31,7 @@
               
                 <div class="form-group form-footer">
                 <button class="btn bg-red upload-image" type="submit">Upload Chalan Image</button>
+                <button class="btn bg-red" type="button">Close</button>
                 </div>
               </div>
               {!! Form::close() !!}
@@ -167,11 +168,13 @@
             <!-- /.box-header -->
             <div class="box-body">
             <div class="row"><div class="col-md-12">
-            <p>In case of any issue you may contact us through</p>
-            <p>Email:</p>
-            <p><span class="label label-info">registration@homecoming.nust.edu.pk</span></p>
-            <p>Phone Number:</p>
-            <p><span class="label label-info">03006005060</span></p>
+            <p>In case of any query contact us on</p>
+            <p><b>Email:</b></p>
+            <p><span class="label label-info" style="font-size: 14px;">registrations@homecoming.nust.edu.pk</span></p>
+            <p><span class="label label-info" style="font-size: 14px;">support@alumni.nust.edu.pk</span></p>
+            <p><b>Phone Number:</b></p>
+            <p><span class="label label-info" style="font-size: 14px;">+923343631447</span></p>
+            <p><span class="label label-info" style="font-size: 14px;">051-90856838</span></p>
             </div></div>
             </div>
             <!-- /.box-body -->

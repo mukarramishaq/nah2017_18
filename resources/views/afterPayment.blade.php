@@ -25,6 +25,31 @@
             </div>
             <!-- /.box -->
         </div>
+        <div class="col-md-3">
+            <div class="row">
+        <div class="col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Contact Us</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <div class="row"><div class="col-md-12">
+            <p>In case of any query contact us on</p>
+            <p><b>Email:</b></p>
+            <p><span class="label label-info" style="font-size: 14px;">registrations@homecoming.nust.edu.pk</span></p>
+            <p><span class="label label-info" style="font-size: 14px;">support@alumni.nust.edu.pk</span></p>
+            <p><b>Phone Number:</b></p>
+            <p><span class="label label-info" style="font-size: 14px;">+923343631447</span></p>
+            <p><span class="label label-info" style="font-size: 14px;">051-90856838</span></p>
+            </div></div>
+            </div>
+            <!-- /.box-body -->
+           
+        </div>
+        </div>
+        </div>
+    </div>
         
 </div>
 @endsection

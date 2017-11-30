@@ -19,22 +19,23 @@
       <!-- general form elements -->
       <div class="box box-danger">
           <div class="box-header with-border">
-          @if(!$user->is_verfied)
-            <h3 class="box-title"> {{strtoupper('Hello '.$user->name)}},</h3>
-          @endif
+         
 
           </div>
           <!-- /.box-header -->
           <!-- form start -->
       
       
-          <div class="box-body">
+          <div class="box-body ">
               
                 <div class="col-md-10 col-md-offset-1">
                   @if(!$user->is_verified)
-                  <h3>Welcome to NUST Alumni Homecoming' 17</h3>
+                  <h1>Welcome to NUST Alumni Homecoming' 17</h1>
                   @else
-                    <h3>Welcome back {{strtoupper($user->name)}}</h3>
+                    <h1>Welcome back {{strtoupper($user->name)}}</h1>
+                  @endif
+                   @if(!$user->is_verfied)
+                    <h3 class="box-title"> {{strtoupper('Hello '.$user->name)}},</h3>
                   @endif
                   <p>Homecoming gives the opportunity to reinforce the relationship shared
 between the alumni and their Alma mater, along with providing numerous
@@ -70,5 +71,13 @@ NUST University.</p>
 @endsection
 
 @section('header-styles')
+
+<style type="text/css">
+  .vertical-align {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+</style>
 
 @endsection
