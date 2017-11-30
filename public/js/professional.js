@@ -38,13 +38,13 @@ function save() {
             'selfIndustry': document.getElementById("seIndustry").value,
             // 'selfOtherIndustry': document.getElementById("eOtherIndustry").value,
             'ecompany': document.getElementById("seCompany").value,
-            'date': document.getElementById("datepicker").value,
+           // 'date': document.getElementById("datepicker").value,
             'selfDesignation': document.getElementById("seDesignation").value,
             // 'selfOtherDesignation': document.getElementById("eOtherDesignation").value,
             // 'logo': document.getElementById("seCompanyLogo").value,
-            'totalEmployes': document.getElementById("eTotalEmployes").value,
-            'nustians': document.getElementById("eTotalNustEmployes").value,
-            'link': document.getElementById("eWebsite").value,
+            //'totalEmployes': document.getElementById("eTotalEmployes").value,
+            //'nustians': document.getElementById("eTotalNustEmployes").value,
+            //'link': document.getElementById("eWebsite").value,
 
         };
     } else if ($('#employed').val() == 'highereducation') {

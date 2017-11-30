@@ -82,65 +82,22 @@
                 <div class="col-md-6"> 
                 <div class="form-group collapse Employed">
                   <label>Your Designation</label>                    
-                  <input type="name" required="true" value="{{$professionalI->designation}}" class="form-control" name="eDesignation" id="eDesignation" placeholder="Enter your industry name">
+                  <input type="name" required="true" value="{{$professionalI->designation}}" class="form-control" name="eDesignation" id="eDesignation" placeholder="Enter your designation">
                 </div>  
                 </div>
                 </div>  
                 <div class="row">
                 <div class="col-md-6">            
                 <div class="form-group collapse Self-employed">
-                  <label for="eCompany">Company</label>
-                  <input type="name" required="true" class="form-control" value="{{$entrepI->company_name}}" name="seCompany" id="seCompany" placeholder="Enter your company name">
+                  <label for="eCompany">Startup Name</label>
+                  <input type="name" required="true" class="form-control" value="{{$entrepI->company_name}}" name="seCompany" id="seCompany" placeholder="Enter your startup name">
                 </div> 
                 </div>
                 <div class="col-md-6">
                 <div class="form-group collapse Self-employed">
-	                <label>Established Date</label>
-
-	                <div class="input-group date">
-		                <div class="input-group-addon">
-		            	    <i class="fa fa-calendar"></i>
-		                </div>
-		                <input type="text" value="{{$entrepI->established_date}}" class="form-control pull-right" name="seEstablishedDate" id="datepicker">
-		              </div>
-	                <!-- /.input group -->
-	              </div>
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-md-6">
-	              <div class="form-group collapse Self-employed">
                     <label>Your Designation</label>                    
-                    <input type="name" required="true" value="{{$entrepI->designation}}" class="form-control" name="seDesignation" id="seDesignation" placeholder="Enter your industry name">
+                    <input type="name" required="true" value="{{$entrepI->designation}}" class="form-control" name="seDesignation" id="seDesignation" placeholder="Enter your designation">
                 </div>
-                </div>
-                <div class="col-md-6">
-                <div class="form-group collapse Self-employed">
-                    <!-- <label for="eCompanyLogo">Company Logo</label>
-                    <input type="file" name="seCompanyLogo" id="seCompanyLogo"> -->
-                </div>
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-md-6">
-                <div class="form-group collapse Self-employed">
-                  <label for="eTotalEmployes">Total Employees</label>
-                  <input type="name" required="true" value="{{$entrepI->total_employees}}" class="form-control" name="seTotalEmployes" id="eTotalEmployes" placeholder="Enter number of employees">
-                </div>
-                </div>
-                <div class="col-md-6">
-                <div class="form-group collapse Self-employed">
-                  <label for="eTotalNustEmployes">Total NUSTians (Employees)</label>
-                  <input type="name" required="true" value="{{$entrepI->total_nustian_employees}}" class="form-control" name="seTotalNustEmployes" id="eTotalNustEmployes" placeholder="Enter number of NUSTians employees">
-                </div>
-                </div> 
-                </div>
-                <div class="row">
-                <div class="col-md-12">
-                <div class="form-group collapse Self-employed">
-                  <label for="eWebsite">Website/Social Media Link</label>
-                  <input type="url" required="true" value="{{$entrepI->website_link}}" class="form-control" name="eWebsite" id="eWebsite" placeholder="Enter website link">
-                </div> 
                 </div>
                 </div>
                 <div class="row">

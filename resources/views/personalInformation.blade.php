@@ -97,11 +97,11 @@
                 <div class="col-md-9">            
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="name" required="true" name="name" value="{{$personalI->name}}" class="form-control" id="name" placeholder="Enter name">
+                  <input type="name" required="true" name="name" value="{{$personalI->name != '' ? $personalI->name : @Request['name']}}" class="form-control" id="name" placeholder="Enter name">
                 </div>
                 <div class="form-group">
                   <label for="cNIC">CNIC</label>
-                  <input type="text" value="{{$personalI->cnic" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="12345-6789012-3" data-inputmask='"mask": "99999-9999999-9"' data-mask>
+                  <input type="text" value="{{$personalI->cnic != '' ? $personalI->cnic : @Request['cNIC']}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="12345-6789012-3" data-inputmask='"mask": "99999-9999999-9"' data-mask>
                 </div>  
                 </div>
                 </div>        
@@ -163,33 +163,7 @@
                   <input type="text" value="{{$personalI->emergency_no}}" name="emergencyPhoneNumber" required="true" class="form-control" id="emergencyPhoneNumber" placeholder="(092) 336-1234567" data-inputmask='"mask": "(999) 999-9999999"' data-mask>
                 </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Any Disability?</label>
-                    <br>
-                    @if($personalI->disability)
-                      <label class = "radioLable" style="margin-right: 20px;">
-                      <input type="radio" name="disability" class="minimal-red" value="1" checked>
-                      Yes
-                      </label>
-                      <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="disability" class="minimal-red" value="0" >
-                        No
-                      </label> 
-                    @else
-                      <label class = "radioLable" style="margin-right: 20px;">
-                      <input type="radio" name="disability" class="minimal-red" value="1">
-                      Yes
-                      </label>
-                      <label class = "radioLable" style="margin-right: 20px;">
-                        <input type="radio" name="disability" class="minimal-red" value="0" checked>
-                        No
-                      </label> 
-                    @endif
-                    
-                  </div>    
-
-                </div>
+                
                 </div>       
               </div>
               <!-- /.box-body -->
