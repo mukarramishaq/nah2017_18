@@ -127,7 +127,7 @@ function save() {
         'email': $('#email').val(),
         'phoneNumber': $('#phoneNumber').val(),
         'emergencyPhoneNumber': $('#emergencyPhoneNumber').val(),
-        'disability': $('input[name=disability]:checked').val(),
+        //'disability': $('input[name=disability]:checked').val(),
     };
 
     $.ajax({
