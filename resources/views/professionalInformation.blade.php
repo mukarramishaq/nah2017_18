@@ -110,7 +110,7 @@
                 <div class="col-md-6 collapse Higher-education">
                 <div class="form-group">
                   <label>Degree Title</label>                   
-                  <input type="name" required="true" value="{{$higherE->degree_name}}" class="form-control" name="heDegreeName" id="heDegreeName" placeholder="Enter your university name"> 
+                  <input type="name" required="true" value="{{$higherE->degree_name}}" class="form-control" name="heDegreeName" id="heDegreeName" placeholder="Enter your degree name"> 
                 </div> 
                 </div>
                 </div>
@@ -165,12 +165,12 @@
         <div class="col-md-12">
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Instructions</h3>
+              <h3 class="box-title">Guidelines</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
             <ul>
-                
+                <li>In case a section under employment details does not apply to you, fill it with either the number “0” or the abbreviation “NA”.</li>
                 <li>If you want to edit this page after some time then just click on save button. <b class="bg-red"><i>Once you clicked on Save and Next. Then you won't be able to access this section any more </i></b></li>
             </ul>
             </div>

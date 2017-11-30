@@ -185,13 +185,13 @@
         <div class="col-md-3">
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Instructions</h3>
+              <h3 class="box-title">Guidelines</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                <ul style="padding-left: 15px;">
-                    <li>Name: Enter your full name. Use only alphabets.</li>
-                    <li>CNIC Format e.g 33303-3344555-6</li>
+                    <li>Name: Please enter your full name as it appears on your CNIC/Passport.</li>
+                    <li>CNIC: For official and security purposes, kindly enter your CNIC with careful precision.</li>
                     <li>Phone number Format (country-code) company-code seven digit number e.g (092) 334-1122333</li>
                     <li>If you want to edit this page after some time then just click on save button. <b class="bg-red"><i>Once you clicked on Save and Next. Then you won't be able to access this section any more </i></b></li>
                 </ul>
