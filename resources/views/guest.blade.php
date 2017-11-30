@@ -163,6 +163,27 @@
             </div>
             <!-- /.box-body -->
           </div>
+          <div class="row">
+        <div class="col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Contact Us</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <div class="row"><div class="col-md-12">
+            <p>In case of any issue you may contact us through</p>
+            <p>Email:</p>
+            <p><span class="label label-info">registration@homecoming.nust.edu.pk</span></p>
+            <p>Phone Number:</p>
+            <p><span class="label label-info">03006005060</span></p>
+            </div></div>
+            </div>
+            <!-- /.box-body -->
+           
+        </div>
+        </div>
+        </div>
         </div>
   </section>
 </div>

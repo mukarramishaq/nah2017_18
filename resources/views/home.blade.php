@@ -19,7 +19,10 @@
       <!-- general form elements -->
       <div class="box box-danger">
           <div class="box-header with-border">
-          <h3 class="box-title">Welcome to NUST Homecoming' 17</h3>
+          @if(!$user->is_verfied)
+            <h3 class="box-title"> {{strtoupper('Hello '.$user->name)}},</h3>
+          @endif
+
           </div>
           <!-- /.box-header -->
           <!-- form start -->
@@ -28,19 +31,18 @@
           <div class="box-body">
               
                 <div class="col-md-10 col-md-offset-1">
-                  <h3>Information regarding Fee Structure</h3>
-                  <ul>
-                    <li>Registration Fee per Alumnus is PKR {{$price->alumni_price}}/-</li>
-                    <li>Alumnus can bring with him his close relatives (i.e spouse, child) as guests</li>
-                    <li>Guests will be charged too. Per guest,  the alumnus has to pay PKR {{$price->guest_price}}/-</li>
-                  </ul>
-                  <h3>Information regarding Application</h3>
-                  <ul>
-                    <li>For successful registration, you'll have to complete the application</li>
-                    <li>Fill out any stage of application carefully. Once you move to next then you will not be able to access/edit that stage later</li>
-                    <li>If you have not completed any stage of application then just click <span class="label bg-red btn-flat">Save</span>. Your incomplete stage will be saved and you can access that stage later.</li>
-                    <li><span class="fa fa-warning fa-2x fa-red"></span> But Once you click on <span class="label btn-flat bg-red">Save and Next</span> your stage will be submitted and you'll be redirected to next stage and you will no longer be able to access that stage in future.</li>
-                  </ul>
+                  @if(!$user->is_verified)
+                  <h3>Welcome to NUST Alumni Homecoming' 17</h3>
+                  @else
+                    <h3>Welcome back {{strtoupper($user->name)}}</h3>
+                  @endif
+                  <p>Homecoming gives the opportunity to reinforce the relationship shared
+between the alumni and their Alma mater, along with providing numerous
+networking opportunities for entrepreneurs and enthusiasts to promote
+their aims. It also encourages alumni to participate actively in the
+NUST community, to attend events, to volunteer, to create new ways for
+alumni to stay connected to NUST and to contribute to the greatness of
+NUST University.</p>
                 <div>
              
                       
@@ -48,7 +50,7 @@
           <!-- /.box-body -->
           <br><br><br>
           <div class="box-footer text-right">
-            <a href="{{route('personalInformation')}}" class="btn btn-flat bg-red text-right">Continue Application</a>
+            <a href="{{route('personalInformation')}}" class="btn btn-flat bg-red text-right">Continue</a>
           </div>
         
         

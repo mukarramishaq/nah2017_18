@@ -230,11 +230,13 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-            <p>In case of any issue you may contact us</p>
+            <div class="row"><div class="col-md-12">
+            <p>In case of any issue you may contact us through</p>
             <p>Email:</p>
-            <p><b> registration@homecoming.nust.edu.pk </b></p>
+            <p><span class="label label-info">registration@homecoming.nust.edu.pk</span></p>
             <p>Phone Number:</p>
-            <p><b>03006005060</b></p>
+            <p><span class="label label-info">03006005060</span></p>
+            </div></div>
             </div>
             <!-- /.box-body -->
            
