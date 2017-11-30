@@ -46,7 +46,7 @@ class EducationalController extends Controller
         $this->validate($request, [
             'nustRegistrationNumber' => 'nullable|alpha_num',
             'degreeName'=>'nullable|alpha_dash',
-            'school'=>'nullable|alpha',
+            'school'=>'nullable|alpha_num',
             'discipline'=>'nullable|alpha_dash',
             'enrollmentYear'=>'nullable|min:1948|max:2013|numeric',
             'graduationYear'=>'nullable|min:1948|max:2017|numeric',
