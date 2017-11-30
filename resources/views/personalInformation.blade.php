@@ -70,7 +70,7 @@
                 <span class=" ajax-info label col-md-12"></span>
             </div>
             <!-- form start -->
-            <form role="form" id="personalInformationForm" action="{{route('personalSaveAndNext')}}" method="POST" onsubmit="return confirm('Once submitted, you cannot access this section anymore! Do you want to submit?');">
+            <form role="form" id="personalInformationForm">
               {{ csrf_field() }}
               <div class="box-body">
                 
@@ -97,11 +97,11 @@
                 <div class="col-md-9">            
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="name" required="true" name="name" value="{{$personalI->name}}" class="form-control" id="name" placeholder="Enter name">
+                  <input type="name" required="true" name="name" value="{{$personalI->name != '' ? $personalI->name : @Request['name']}}" class="form-control" id="name" placeholder="Enter name">
                 </div>
                 <div class="form-group">
                   <label for="cNIC">CNIC</label>
-                  <input type="text" value="{{$personalI->cnic}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="12345-6789012-3" data-inputmask='"mask": "99999-9999999-9"' data-mask>
+                  <input type="text" value="{{$personalI->cnic != '' ? $personalI->cnic : @Request['cNIC']}}" name="cNIC"  required="true" size="13" class="form-control" id="cNIC" placeholder="12345-6789012-3" data-inputmask='"mask": "99999-9999999-9"' data-mask>
                 </div>  
                 </div>
                 </div>        
@@ -200,7 +200,7 @@
               <div class="col-md-12">
               <div class="box-footer text-right">
                 <button type="button" class="btn btn-flat bg-red"  onclick="save();">Save</button>
-                <button type="submit" class="btn btn-flat bg-red" onclick="pivf();">Save & Next</button>
+                <button type="button" class="btn btn-flat bg-red" onclick="saveAndNext();">Save & Next</button>
               </div>
               </div>
               </div>
