@@ -142,6 +142,8 @@
     <!-- /.box-body -->
   </div>
 <div class="box-footer text-right">
+
+  <form method="POST" action="{{route('doneAndNext')}}">
   <div class="row">
     <div class="col-md-9" style="text-align: left;">
       <label for="">Do you need any disability support?</label>
@@ -154,10 +156,12 @@
                 No 
         </label>
     </div>
+
     <div class="col-md-3">
-    <button type="submit" class="btn btn-flat bg-red" onclick = " window.location.replace('{{route('doneAndNext')}}');">Done and Continue</button>
+    <button type="submit" class="btn btn-flat bg-red">Done and Continue</button>
     </div>
   </div>
+  </form>
 </div>
 
 </div>
