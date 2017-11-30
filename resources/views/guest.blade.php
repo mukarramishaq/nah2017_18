@@ -113,7 +113,7 @@
         <thead>
         <tr>
           <th>Name</th>
-          <th>Contact Number</th>
+          <th>CNIC</th>
           <th>Relation</th>
           
         </tr>
@@ -142,8 +142,27 @@
     <!-- /.box-body -->
   </div>
 <div class="box-footer text-right">
-                <button type="submit" class="btn btn-flat bg-red" onclick = " window.location.replace('{{route('doneAndNext')}}');">Done and Continue</button>
-              </div>
+
+  <form method="POST" action="{{route('doneAndNext')}}">
+  <div class="row">
+    <div class="col-md-9" style="text-align: left;">
+      <label for="">Do you need any disability support?</label>
+        <label class = "radioLable" style="margin-right: 20px;">
+                <input type="radio" name="disability" value="master" class="minimal-red">
+                Yes 
+        </label>
+        <label class = "radioLable" style="margin-right: 20px;">
+                <input type="radio" name="disability" value="phd" class="minimal-red" checked>
+                No 
+        </label>
+    </div>
+
+    <div class="col-md-3">
+    <button type="submit" class="btn btn-flat bg-red">Done and Continue</button>
+    </div>
+  </div>
+  </form>
+</div>
 
 </div>
   </section>
