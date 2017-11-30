@@ -31,7 +31,7 @@ class PersonalController extends Controller
             }
             else{
                $personalI = new PersonalI;
-               $personalI->name = 'Mukarram Is' ;
+            //    $personalI->name = 'Mukarram Is' ;
             }
             return view('personalInformation')->with('user',$user)->with('personalI',$personalI);
         }

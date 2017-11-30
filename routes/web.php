@@ -80,7 +80,7 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/guests', ['as'=>'guestsInfo','uses'=>'GuestController@index'])->middleware('checkGuestStage');
     Route::post('/guest/add', ['as'=>'guestAdd','uses'=>'GuestController@addGuest'])->middleware('checkGuestStage');
     Route::get('/guest/delete/{id}', ['as'=> 'guestDelete', 'uses' => 'GuestController@removeGuest'])->middleware('checkGuestStage');
-    Route::get('/guests/saveAndNext',['as'=>'doneAndNext','uses'=>'GuestController@saveAndNext'])->middleware('checkGuestStage');
+    Route::post('/guests/saveAndNext',['as'=>'doneAndNext','uses'=>'GuestController@saveAndNext'])->middleware('checkGuestStage');
 
 
 
