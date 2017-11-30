@@ -64,7 +64,7 @@ class PersonalController extends Controller
                 'email'=> $request->input('email'),
                 'mobile_no'=> $request->input('phoneNumber'),
                 'emergency_no'=> $request->input('emergencyPhoneNumber'),
-                'disability'=>$request->input('disability'),
+                // 'disability'=>$request->input('disability'),
             );
             //check if user has an entry of personal information in database
             //if yes
@@ -78,7 +78,7 @@ class PersonalController extends Controller
                 $personalI->email = $data->email;
                 $personalI->mobile_no = $data->mobile_no;
                 $personalI->emergency_no = $data->emergency_no;
-                $personalI->disability = $data->disability;
+                // $personalI->disability = $data->disability;
                 //save to database
                 $personalI->save();
 
@@ -111,7 +111,7 @@ class PersonalController extends Controller
             'dob'=>'required|regex:(^\d{2}\/\d{2}\/\d{4}$)',
             'gender'=>'required',
             'email'=>'required|email',
-            'disability'=>'required|boolean',
+            // 'disability'=>'required|boolean',
         ]);
         $user = Auth::user();
         //if session is still active
@@ -126,7 +126,7 @@ class PersonalController extends Controller
                 'email'=> $request->input('email'),
                 'mobile_no'=> $request->input('phoneNumber'),
                 'emergency_no'=> $request->input('emergencyPhoneNumber'),
-                'disability'=>$request->input('disability'),
+                // 'disability'=>$request->input('disability'),
             );
             // \Log::info((array) $data);
             \Log::info(gettype($data));
@@ -142,7 +142,7 @@ class PersonalController extends Controller
                 $personalI->email = $data->email;
                 $personalI->mobile_no = $data->mobile_no;
                 $personalI->emergency_no = $data->emergency_no;
-                $personalI->disability = $data->disability;
+                // $personalI->disability = $data->disability;
                 //save to database
                 $personalI->save();
 
