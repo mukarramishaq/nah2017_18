@@ -84,9 +84,29 @@ class GuestController extends Controller
     }
 
     public function saveAndNext(Request $request){
+        $this->validate($request, [
+            'disability'=> 'present|required|boolean'
+        ]);
         $user = Auth::user();
         if($user){
             $stage = $user->stage()->get();
+
+            
+            $data = (object) array(
+                
+                'disability'=> $request->input('disability'),
+                
+            );
+
+
+            $personal = $user->personalI()->get();
+            if($personal && count($personal)>0)
+            {
+                $personal = $personal[0];
+                $personal->disability = $data->disability;
+                $personal->save();
+            }
+
             if($stage && count($stage)>0){
                 $stage = $stage[0];
                 $stage->is_guest_info_done = true;

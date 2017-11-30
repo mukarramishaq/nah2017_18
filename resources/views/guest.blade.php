@@ -144,15 +144,16 @@
 <div class="box-footer text-right">
 
   <form method="POST" action="{{route('doneAndNext')}}">
+  {{csrf_field()}}
   <div class="row">
     <div class="col-md-9" style="text-align: left;">
       <label for="">Do you need any disability support?</label>
         <label class = "radioLable" style="margin-right: 20px;">
-                <input type="radio" name="disability" value="master" class="minimal-red">
+                <input type="radio" name="disability" value="1" class="minimal-red">
                 Yes 
         </label>
         <label class = "radioLable" style="margin-right: 20px;">
-                <input type="radio" name="disability" value="phd" class="minimal-red" checked>
+                <input type="radio" name="disability" value="0" class="minimal-red" checked>
                 No 
         </label>
     </div>
