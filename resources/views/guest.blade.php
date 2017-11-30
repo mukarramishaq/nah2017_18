@@ -88,12 +88,13 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
+              <h4>{{$price->registration_type == 'earlybird' ? 'Early Bird Registration' : ''}}</h4>
               <h4>Total:</h4> <h3>Rs.{{(count($guests)*$price->guest_price)+$price->alumni_price}}/-</h3>
 
               
             </div>
             
-            <div class="small-box-footer"><p>Alumni Fee: Rs.1500/- per alumnus</p><p>Guest Fee: Rs.1000/- per guest</p></div>
+            <div class="small-box-footer"><p>Alumni Fee: Rs.{{$price->alumni_price}}/- per alumnus</p><p>Guest Fee: Rs.{{$price->guest_price}}/- per guest</p></div>
           </div>
         </div>
         <!-- ./col -->

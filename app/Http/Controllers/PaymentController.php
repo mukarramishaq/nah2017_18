@@ -290,7 +290,7 @@ class PaymentController extends Controller
             if($chalan && count($chalan)>0){
                 $chalan = $chalan[0];
                 $guests = $user->guest()->get();
-                $price = Price::where('id',1)->first();
+                $price = Price::where('registration_type',$chalan->registration_type)->first();
                 $totalAmount = 0;
                 $totalAmount += $price->alumni_price;
                 if($guests && count($guests)>0){
@@ -322,7 +322,7 @@ class PaymentController extends Controller
             }
             else{
                 $guests = $user->guest()->get();
-                $price = Price::where('id',1)->first();
+                $price = Price::where('default',1)->first();
                 
                 if($guests && count($guests)>0){
                     $noOfGuest = count($guests);
@@ -335,15 +335,26 @@ class PaymentController extends Controller
 
                     $educationalI = $user->educationalI()->get();
                     $educationalI = $educationalI[0];
+                    
+                    //chalan id [1=>'registraion_type',2=>'disability',3,4=>'noOfGuest',5,6,7,8=>'user_id']
+                    $regType = 1; //one for early bird
+                    if($price->registration_type == 'earlybird'){
+                        $regType = 1;
+                    }
+                    else{
+                        $regType = 2;
+                    }
+                    $chalan_id = $regType.''.str_pad($user->disability, 1, '0', STR_PAD_LEFT).''.str_pad($noOfGuest, 2, '0', STR_PAD_LEFT).''.str_pad($user->id, 4, '0', STR_PAD_LEFT);
                     $chalan = Chalan::create(array(
                         'user_id'=>$user->id,
-                        'chalan_id'=>time(),
+                        'chalan_id'=>$chalan_id,
                         'name'=>$user->name,
                         'cnic'=>$personalI->cnic,
                         'school'=>$educationalI->school,
                         'issue_date'=>time(),
                         'amount'=>$totalAmount,
                         'due_date'=>strtotime('19-12-2017'),
+                        'registration_type'=>$price->registration_type,
                     ));
                     $pdf = PDF::loadView('chalan',[
                         'user_id'=>$chalan->user_id,
@@ -370,29 +381,41 @@ class PaymentController extends Controller
 
                     $educationalI = $user->educationalI()->get();
                     $educationalI = $educationalI[0];
+                    //chalan id [1=>'registraion_type',2,3=>'noOfGuest',4,5,6,7=>'user_id']
+                    $noOfGuest = 0;
+                    //chalan id [1=>'registraion_type',2=>'disability',3,4=>'noOfGuest',5,6,7,8=>'user_id']
+                    $regType = 1; //one for early bird
+                    if($price->registration_type == 'earlybird'){
+                        $regType = 1;
+                    }
+                    else{
+                        $regType = 2;
+                    }
+                    $chalan_id = $regType.''.str_pad($user->disability, 1, '0', STR_PAD_LEFT).''.str_pad($noOfGuest, 2, '0', STR_PAD_LEFT).''.str_pad($user->id, 4, '0', STR_PAD_LEFT);
                     $chalan = Chalan::create(array(
                         'user_id'=>$user->id,
-                        'chalan_id'=>time(),
+                        'chalan_id'=>$chalan_id,
                         'name'=>$user->name,
                         'cnic'=>$personalI->cnic,
                         'school'=>$educationalI->school,
                         'issue_date'=>time(),
                         'amount'=>$totalAmount,
                         'due_date'=>strtotime('19-12-2017'),
+                        'registration_type'=>$price->registration_type,
                     ));
 
                     $pdf = PDF::loadView('chalan',['user_id'=>$chalan->user_id,
-                    'chalan_id'=>$chalan->chalan_id,
-                    'name'=>$chalan->name,
-                    'accountNo'=>$bank->bank_account_number,
-                    'accountTitle'=>$bank->bank_account_name,
-                    'cnic'=>$chalan->cnic,
-                    'school'=>$chalan->school,
-                    'issue_date'=>$chalan->issue_date,
-                    'amount'=>$chalan->amount,
-                    'due_date'=>$chalan->due_date,
-                    'f'=>$f,
-                ]);
+                        'chalan_id'=>$chalan->chalan_id,
+                        'name'=>$chalan->name,
+                        'accountNo'=>$bank->bank_account_number,
+                        'accountTitle'=>$bank->bank_account_name,
+                        'cnic'=>$chalan->cnic,
+                        'school'=>$chalan->school,
+                        'issue_date'=>$chalan->issue_date,
+                        'amount'=>$chalan->amount,
+                        'due_date'=>$chalan->due_date,
+                        'f'=>$f,
+                    ]);
                     $pdf->setPaper('A4', 'landscape');
                     return $pdf->download('chalan.pdf');
     

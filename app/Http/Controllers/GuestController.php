@@ -16,7 +16,7 @@ class GuestController extends Controller
         $user = Auth::user();
         if($user){
             $guests = $user->guest()->get();
-            $price = Price::where('id',1)->first();
+            $price = Price::where('default',1)->first();
             // if(!$guests || count($guests)<1){
             //     $guests = (array) array(
             //         new Guest,

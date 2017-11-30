@@ -19,6 +19,18 @@ class PriceSeeder extends Seeder
 
                 'guest_price' => 1000,
                 'updated_by'=>'Mukarram Ishaq',
+                'registration_type'=>'earlybird',
+                'default'=>true,
+
+            ]);
+            DB::table('prices')->insert([
+                
+                'alumni_price' => 2000,
+
+                'guest_price' => 1000,
+                'updated_by'=>'Mukarram Ishaq',
+                'registration_type'=>'regular',
+                'default'=>false,
 
             ]);
     }
