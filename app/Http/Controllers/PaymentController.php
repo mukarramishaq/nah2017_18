@@ -75,7 +75,7 @@ class PaymentController extends Controller
         $user = Auth::user();
         if($user){
             $payment = $user->payment()->get();
-            $price = Price::where('id',1)->first();
+            $price = Price::where('default',1)->first();
             $guests = $user->guest()->get();
             $bank = Bank::where('id',1)->first();
             if($payment && count($payment)>0){
@@ -159,17 +159,27 @@ class PaymentController extends Controller
                 }
 
                 if($payment->resident == 'overseas'){
-                    return redirect('overseasMethod');
+                    return redirect()->route('overseasMethod');
                 }
 
-                return redirect('paymentMethod');
+                return redirect()->route('paymentMethod');
             }
             else{
                 $payment = Payment::create(array(
                     'user_id'=>$user->id,
                     'resident'=>$request->input('resident')
                 ));
-                return redirect('paymentMethod');
+                $stage = $user->stage()->get();
+                if($stage && count($stage)>0){
+                    $stage = $stage[0];
+                    $stage->is_residence_done = true;
+                    $stage->save();
+                }
+                if($payment->resident == 'overseas'){
+                    return redirect()->route('overseasMethod');
+                }
+
+                return redirect()->route('paymentMethod');
             }
             return redirect('resident')->with('type','danger')->with('unknown error. Please try again');
         }
@@ -240,6 +250,13 @@ class PaymentController extends Controller
                 $payment->branch_address = $request->input('branch-address');
                 $payment->save();
 
+                $stage = $user->stage()->get();
+                if($stage && count($stage)>0){
+                    $stage = $stage[0];
+                    $stage->is_final_payment_done = true;
+                    $stage->save();
+                }
+
                 return redirect('afterPayment');
             }
             else{
@@ -267,6 +284,13 @@ class PaymentController extends Controller
                 $payment->amount = $request->input('amount');
                 $payment->account_no = $request->input('account-no');
                 $payment->save();
+
+                $stage = $user->stage()->get();
+                if($stage && count($stage)>0){
+                    $stage = $stage[0];
+                    $stage->is_final_payment_done = true;
+                    $stage->save();
+                }
 
                 return redirect('afterPayment');
             }

@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
-
-class CheckResidentStage
+use App\User;
+use App\Stage;
+class CheckAfterOnlineStage
 {
     /**
      * Handle an incoming request.
@@ -21,53 +22,35 @@ class CheckResidentStage
             if($stage && count($stage)>0){
                 $stage = $stage[0];
                 
-                if(!$stage->is_guest_info_done){
-                    return redirect()->route('guestsInfo');
+                
+                if($stage->is_final_payment_done){
+                    // return redirect()->route('chalanMethod');
+                    return redirect()->route('afterPayment');
                 }
                 
-                if(!$stage->is_residence_done){
-                    // return redirect()->route('chalanMethod');
-                    return $next($request);
-                }
                 else{
                     $payment = $user->payment()->get();
                     if($payment && count($payment)>0){
                         $payment = $payment[0];
                         if($payment->resident == 'pakistani'){
-                            return redirect()->route('paymentMethod');
+                            if($payment->payment_method == 'online'){
+                                return $next($request);
+                                
+                            }
+                            // else if($payment->payment_method == 'cod'){
+                            //     return redirect()->route('codMethod');
+                            // }
+                            else{
+                                return redirect()->route('chalanMethod');
+                            }
                         }
                         else if($payment->resident == 'overseas'){
                             return redirect()->route('overseasMethod');
                         }
                     }
                     Auth::logout();
-                    return redirect()->route('login')->with('type','warning')->with('You have been logged out. Logged In to proceed');
+                    return redirect()->route('login')->with('type','warning')->with('msg','You have been logged out. Please login again');
                 }
-                // else if(!$stage->is_payment_method_done){
-                //     $payment = $user->payment()->get();
-                //     if($payment && count($payment)>0){
-                //         $payment = $payment[0];
-                //         if($payment->resident == 'pakistani'){
-                //             return redirect()->route('paymentMethod');
-                //         }
-                //         else if($payment->resident == 'overseas'){
-                //             return redirect()->route('overseasMethod');
-                //         }
-                //     }
-
-                //     $stage->is_residence_done=false;
-                //     $stage->is_payment_method_done=false;
-                //     $stage->save();
-                //     return redirect()->route('resident');
-                    
-                    
-                // }
-                // else{
-                //     $stage->is_residence_done=false;
-                //     $stage->is_payment_method_done=false;
-                //     $stage->save();
-                //     return redirect()->route('resident');
-                // }
                 
             }
             else{

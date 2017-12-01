@@ -47,7 +47,7 @@ class EducationalController extends Controller
             'nustRegistrationNumber' => 'nullable|alpha_num',
             'degreeName'=>'nullable|alpha_dash',
             'school'=>'nullable|alpha_num',
-            'discipline'=>'nullable|alpha_dash',
+            'discipline'=>'nullable|string',
             'enrollmentYear'=>'nullable|min:1948|max:2013|numeric',
             'graduationYear'=>'nullable|min:1948|max:2017|numeric',
             'alumniCard'=>'nullable|boolean',

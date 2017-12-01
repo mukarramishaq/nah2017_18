@@ -116,7 +116,9 @@ class PersonalController extends Controller
         $user = Auth::user();
         //if session is still active
         if($user){
-
+            if(!$user->is_image_uploaded){
+                return response()->json(['type','danger','msg'=>'Upload Your Image Please!']);
+            }
             $data = (object) array(
                 'user_id'=>$user->id,
                 'name'=> $request->input('name'),

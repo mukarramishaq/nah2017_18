@@ -19,6 +19,9 @@
                   <div class="row">
                     <div class="preview-uploaded-image col-md-4 col-md-offset-4" >
                     </div>
+                    <div class="overlay">
+                        <i class="fa fa-refresh fa-spin fa-5x"></i>
+                    </div>
                   </div>
                   <div class="form-group input-picture">
                     <label>Paid Chalan Image:</label>
@@ -212,6 +215,7 @@
     })
 </script>
 <script>
+    $('.overlay').hide();
     // $(document).ready(function(){
     //     var ci = "{{$payment->paid_chalan_path}}";
     //     var i = "{{$payment->user_id}}";
@@ -237,12 +241,15 @@
         d = new Date();
         window.location.replace(url+"?"+d.getTime());
     }
+
 	
     $("body").on("click",".upload-image",function(e){
         $.ajaxSetup({ cache: false });
+        $('.overlay').show();
         $(this).parents("form").ajaxForm({ 
           complete: function(response) 
           {
+            $('.overlay').hide();
             
             if($.isEmptyObject(response.responseJSON.image)){
               $('.error-msg').css('display','none');

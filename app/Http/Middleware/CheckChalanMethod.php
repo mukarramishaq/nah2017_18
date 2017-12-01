@@ -18,29 +18,40 @@ class CheckChalanMethod
         //check user is logged in
         if(Auth::check()){
             $user = Auth::user();
-            $payment = $user->payment()->get();
-            if($payment && count($payment)>0){
-                $payment = $payment[0];
-                if($payment->resident == 'overseas'){
-                    return redirect()->route('overseasMethod');
-                }
-                if($payment->payment_method == 'chalan'){
-                    return  $next($request);
-                }
-                else if($payment->payment_method == 'online'){
-                    return  redirect()->route('onlineMethod');
-                }
-                else if($payment->payment_method == 'cod'){
-                    return  redirect()->route('codMethod');
+            $stage = $user->stage()->get();
+            if($stage && count($stage)>0){
+                $stage = $stage[0];
+                if($stage->is_final_payment_done){
+                    return redirect()->route('afterPayment');
                 }
                 else{
-                    if($payment->resident == 'overseas'){
-                        return redirect()->route('overseasMethod');
+                    $payment = $user->payment()->get();
+                    if($payment && count($payment)>0){
+                        $payment = $payment[0];
+                        if($payment->resident == 'overseas'){
+                            return redirect()->route('overseasMethod');
+                        }
+                        if($payment->payment_method == 'chalan'){
+                            return  $next($request);
+                        }
+                        else if($payment->payment_method == 'online'){
+                            return  redirect()->route('onlineMethod');
+                        }
+                        else if($payment->payment_method == 'cod'){
+                            return  redirect()->route('codMethod');
+                        }
+                        else{
+                            if($payment->resident == 'overseas'){
+                                return redirect()->route('overseasMethod');
+                            }
+                            return redirect()->route('home');
+                        }
+                        
                     }
-                    return redirect()->route('home');
+
                 }
-                
             }
+            
 
             Auth::logout();
             return redirect()->route('login')->with('type','danger')->with('msg',"Don't try to be smart! Otherwise the consequences will not be light!");

@@ -66,5 +66,7 @@ class Kernel extends HttpKernel
         'checkCODMethod'=>\App\Http\Middleware\CheckCODMethod::class,
         'checkOverseasMethod'=>\App\Http\Middleware\CheckOverseasMethod::class,
         'checkGuestStage'=>\App\Http\Middleware\CheckGuestStage::class,
+        'checkAfterChalanStage'=>\App\Http\Middleware\CheckAfterChalanStage::class,
+        'checkAfterOnlineStage'=>\App\Http\Middleware\CheckAfterOnlineStage::class,
     ];
 }
