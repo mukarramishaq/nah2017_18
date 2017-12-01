@@ -15,7 +15,7 @@
                 <div class="box-body">
                     <div class="row">
                         
-                        <p class="col-md-10 col-md-offset-1">Just come and enjeo...</p>
+                        <p class="col-md-10 col-md-offset-1"><b>RESPECTED OVERSEAS ALUMNI:</b> Your payment will be received once you have reached Pakistan</p>
                     </div>
                             
                 </div>
