@@ -68,6 +68,7 @@ class PersonalController extends Controller
             );
             //check if user has an entry of personal information in database
             //if yes
+            
             $personalI = $user->personalI()->get();
             if($personalI && count($personalI)>0){
                 $personalI = $personalI[0];
@@ -78,15 +79,19 @@ class PersonalController extends Controller
                 $personalI->email = $data->email;
                 $personalI->mobile_no = $data->mobile_no;
                 $personalI->emergency_no = $data->emergency_no;
+
                 // $personalI->disability = $data->disability;
                 //save to database
                 $personalI->save();
-
+                $user->name = $data->name;
+                $user->save();
                 return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
             }
             else{
                 
                 $personal = PersonalI::create((array) $data);
+                $user->name = $data->name;
+                $user->save();
                 return \Response::json(['type'=>'success','msg'=>'Data saved successfully.']);
             }
 
@@ -146,6 +151,9 @@ class PersonalController extends Controller
                 //save to database
                 $personalI->save();
 
+                $user->name = $data->name;
+                $user->save();
+
                 $stage = $user->stage()->get();
                 if($stage && count($stage)>0){
                     $stage = $stage[0];
@@ -165,6 +173,8 @@ class PersonalController extends Controller
             else{
                 //otherwise create one
                 $personal = PersonalI::create((array)$data);
+                $user->name = $data->name;
+                $user->save();
                 $stage = $user->stage()->get();
                 if($stage && count($stage)>0){
                     $stage = $stage[0];
