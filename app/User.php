@@ -66,4 +66,12 @@ class User extends Authenticatable
     public function higherEducation(){
         return $this->hasOne('App\HigherEducation');
     }
+    public function admins(){
+        return $this->hasOne('App\Admin');
+    }
+    public function status(){
+        return $this->hasOne('App\Status');
+    }
+    
+    
 }
