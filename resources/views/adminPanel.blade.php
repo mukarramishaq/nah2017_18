@@ -17,8 +17,8 @@
           <th>User Id</th>
           <th>Name</th>
           <th>CNIC</th>
-          <th>Pakage Name</th>
-          <th>Challan ID</th>
+          <th>Phone Number</th>
+          <th>Payment Method</th>
           <th>Status</th>
           <th>Status Updated by</th>
         </tr>
@@ -31,8 +31,8 @@
               <td>{{$person->id}}</td>
               <td>{{$person->name}}</td>
               <td>{{$person->cnic}}</td>              
-              <td>{{$person->package_name}}</td>
-              <td>{{$person->challan_id}}</td>
+              <td>{{$person->phone_number}}</td>
+              <td>{{$person->payment_method}}</td>
               <td>{{$person->status}}</td>
               <td>{{$person->status_updated_by}}</td>
          
