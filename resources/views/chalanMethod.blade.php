@@ -147,14 +147,13 @@
         <div class="col-md-3">
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Instructions</h3>
+              <h3 class="box-title">Guidelines</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <ul>
-                    <li>Download chalan form from Get Chalan Box using Download button</li>
-                    <li>Pay the chalan in any HBL Branch and upload paid chalan image in Paid Chalan Details box using upload button</li>
-                    <li>Enter amount and branch address and submit it</li>
+                    <li>Download generated challan form from “Get Challan” portion by clicking on “Download Challan Form” button.</li>
+                    <li>Pay the challan in any HBL branch and upload a clear image of paid challan in “Paid Challan Details” portion using upload button. Enter amount paid and HBL branch address and submit it to complete your registration process.</li>
                 </ul>
             </div>
             <!-- /.box-body -->

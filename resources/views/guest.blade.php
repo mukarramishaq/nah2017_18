@@ -171,14 +171,15 @@
   <div class="col-md-12">
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Instructions</h3>
+              <h3 class="box-title">Guidelines</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                <ul style="padding-left: 15px;">
-                    <li>If you want to bring your spouse or children with you then you'll have to add their information here</li>
-                    <li><b class="bg-red"><u>Note:</u></b> You'll have to pay for every guest. Your registration fee is {{$price->alumni_price}} whereas registration fee of each guest is {{$price->guest_price}}.</li>
-                    <li>You can see your total registration fee that you'll have to pay in All Red Box</li>
+                    <li>Respected alumni, if you wish to attend Alumni homecoming with your spouse and/or children, kindly add their details with careful precision in this section.</li>
+                    <li>Basic registration fee for alumni attending is PKR {{$price->alumni_price}}.</li>
+                    <li>For every additional guest, you are requested to pay PKR {{$price->guest_price}} per guest.</li>                    
+                    <li>As you add/remove guests, you will be able to view your total registration fee in the All-Red box on the top.</li>
                 </ul>
             </div>
             <!-- /.box-body -->

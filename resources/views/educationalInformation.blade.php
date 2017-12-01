@@ -194,12 +194,13 @@
         <div class="col-md-3">
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Instructions</h3>
+              <h3 class="box-title">Guidelines</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
             <ul>
-                
+                <li>In case you don't remember registration number, fill it with either the number “0” or the abbreviation “NA”.</li>
+                <li>Kindly enter details of the most recent degree that you have obtained from NUST. </li>
                 <li>If you want to edit this page after some time then just click on save button. <b class="bg-red"><i>Once you clicked on Save and Next. Then you won't be able to access this section any more </i></b></li>
             </ul>
             </div>
