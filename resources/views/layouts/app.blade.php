@@ -2,6 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     @include('partials.layout.head')
+    <link rel="icon" href="{{asset('logos/favico.png')}}" type="image/png" sizes="16x16">
     @yield('header-styles')
 </head>
 <body class="hold-transition skin-red-light sidebar-mini">

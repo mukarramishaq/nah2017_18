@@ -57,6 +57,7 @@
                                     <option value="child">Child</option>
                  
                                 </select>
+                                <span class="label label-danger">Children under age of 5 need not to be added.</span>
                             </div>
                         </div>
                         

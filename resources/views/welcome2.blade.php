@@ -9,6 +9,7 @@
     <meta name="author" content="">
 
     <title>Homecoming'17 | NUST Alumni</title>
+    <link rel="icon" href="{{asset('logos/favico.png')}}" type="image/png" sizes="16x16">
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('welcome/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -113,9 +114,7 @@ networking opportunities for entrepreneurs and enthusiasts to promote
 their aims. It also encourages alumni to participate actively in the
 NUST community, to attend events, to volunteer, to create new ways for
 alumni to stay connected to NUST and to contribute to the greatness of
-NUST University.
-
-!</p>
+NUST University.</p>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Reset Password | NUST Alumni Homecoming</title>
+<link rel="icon" href="{{asset('logos/favico.png')}}" type="image/png" sizes="16x16">
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <!-- Bootstrap 3.3.7 -->
