@@ -32,9 +32,12 @@ Route::get('/getChalan',function(){return view('chalan');});
 Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/home', 'HomeController@index')->name('home');
     
-    Route::get('/adminPanel', function () {
-    return view('adminPanel');
-    });
+    // Route::get('/adminPanel', function () {
+    // return view('adminPanel');
+    // });
+    Route::get('/adminPanel',['as'=>'adminPanel','uses'=>'admin\AdminController@index']);
+    
+
     Route::get('/userDetails', function () {
     return view('userDetails');
     });

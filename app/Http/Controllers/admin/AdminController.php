@@ -4,7 +4,15 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
+use App\PersonalI;
+use App\User;
+use App\EducationalI;
+use App\ProfessioanlI;
+use App\Payment;
+use App\Status;
 class AdminController extends Controller
 {
     
@@ -20,21 +28,41 @@ class AdminController extends Controller
                     $admin = $admin[0];
                    if($admin->admin_type == 'registration')
                    {
-                    $personal = $user->personalI()->get();
-                    $educationl = $user->educationalI()->get();
-                    $professional = $user->professionalI()->get();
-                    $payment = $user->payment()->get();
-                    $status = $user->status()->get();
+                    $payments = DB::table('payments')->get();
+                    $data  = [];
+                    foreach($payments as $payment)
+                    {
+                        $u = DB::table('users')->where('id',$payment->user_id)->first();
+                        $personal = DB::table('personal_informations')->where('user_id',$payment->user_id)->first();
+                        $status = DB::table('statuses')->where('user_id',$payment->user_id)->first();
+                        if(!$status)
+                        {
+                            \Log::info('solo');
+                            $status = Status::create([
+                                'user_id'=> $u->id,
+                                
+                            ]);
+                        }
+                        $data1 = array(
+                            'user_id'=>$u->id,
+                            'cnic'=> $personal->cnic,
+                            'name'=> $personal->name,
+                            'number'=> $personal->mobile_no,
+                            // 'paymentMethod'=> $payment->payment_method,
+                            'status'=> $status->status,
+                            'updatedBy'=> $status->updated_by,
+                        );
+                        array_push($data,$data1);
+
+                    }
+                    \Log::info($data);
+                    $data = (object) $data;
+                   
                     
-                    $data = (object) array(
-                        'user_id'=>$user->id,
-                        'name'=> $personal->name,
-                        'cnic'=> $personal->cnic,
-                        'number'=> $personal->mobile_no,
-                        'paymontMethod'=> $payment->payment_method,
-                        'status'=> $status->status,
-                        'updatedBy'=> $status->updated_by,
-                    );
+                    
+
+                    return view('adminPanel')->with('data',$data)->with('user',$user);
+
 
 
                    } 
