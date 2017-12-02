@@ -17,6 +17,19 @@
                         
                         <p class="col-md-10 col-md-offset-1">Thank You for registering for this worderful event. We'll inform you about your payment verification through email or call within 24-48 hours.</p>
                     </div>
+
+                    @if($status->status == 'approved')
+                    <div class="row ">
+                        
+                        <p class="col-md-10 col-md-offset-1 bg-green">Your application has been approved by Registration Team. We hope to see you soon event day. <b>:)</b></p>
+                    </div>
+                    @endif
+                    @if($status->status == 'rejected')
+                    <div class="row ">
+                        
+                        <p class="col-md-10 col-md-offset-1 bg-red">Your application has been rejected by Registrations Team. For further query contact +92-335-3591055.</p>
+                    </div>
+                    @endif
                             
                 </div>
                 <!-- /.box-body -->

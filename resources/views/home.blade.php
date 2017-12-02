@@ -37,6 +37,8 @@
                    @if(!$user->is_verfied)
                     <h3 class="box-title"> {{strtoupper('Hello '.$user->name)}},</h3>
                   @endif
+                  
+                  
                   <p>Homecoming gives the opportunity to reinforce the relationship shared
 between the alumni and their Alma mater, along with providing numerous
 networking opportunities for entrepreneurs and enthusiasts to promote
@@ -51,7 +53,15 @@ NUST University.</p>
           <!-- /.box-body -->
           <br><br><br>
           <div class="box-footer text-right">
+                  @if($status->status == 'approved')
+                    <span class="alert alert-success">Your application has been approved by Registrations Team. We hope to see you soon on event day. :)</span>
+                    
+                  @elseif($status->status == 'rejected')
+                    <span class="alert alert-danger">Your application has been rejected by Registrations Team. For further query contact +92-335-3591055.</span>
+                    
+                  @else
             <a href="{{route('personalInformation')}}" class="btn btn-flat bg-red text-right">Continue</a>
+              @endif
           </div>
         
         

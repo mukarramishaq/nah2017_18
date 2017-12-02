@@ -29,18 +29,29 @@ Route::get('/notFound',function(){return view('notFound');})->name('NotFound');
 
 Route::get('/getChalan',function(){return view('chalan');});
 
+Route::group(['middleware'=>['App\Http\Middleware\IsAdmin']],function(){
+    Route::get('/adminPanel',['as'=>'adminPanel','uses'=>'admin\AdminController@index']);
+    Route::get('/userDetails/{user_id}', ['as'=>'userDetails','uses'=>'admin\AdminController@userDetails']);
+    Route::post('/admin/approve/{admin_id}/{user_id}',['as'=>'adminApprove','uses'=>'admin\AdminController@approve']);
+    Route::post('/admin/reject/{admin_id}/{user_id}',['as'=>'adminReject','uses'=>'admin\AdminController@reject']);
+});
+
+Route::get('/index/admin/{pin}/{phone_no}',['as'=>'adminIndex','uses'=>'Auth\LoginController@adminIndex']);
+Route::post('/authenticate/admin',['as'=>'adminAuthenticate','uses'=>'Auth\LoginController@adminAuthenticate']);
+
 Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/home', 'HomeController@index')->name('home');
     
     // Route::get('/adminPanel', function () {
     // return view('adminPanel');
     // });
-    Route::get('/adminPanel',['as'=>'adminPanel','uses'=>'admin\AdminController@index']);
     
 
-    Route::get('/userDetails', function () {
-    return view('userDetails');
-    });
+
+
+
+
+
 
     Route::get('/personalInformation',['as'=>'personalInformation','uses'=>'PersonalController@index']);
     

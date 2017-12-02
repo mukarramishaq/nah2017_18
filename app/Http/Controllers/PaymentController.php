@@ -8,6 +8,7 @@ use App\Chalan;
 use App\Price;
 use App\Guest;
 use App\Bank;
+use App\Status;
 use NumberFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -118,7 +119,11 @@ class PaymentController extends Controller
             else{
                 $payment = new Payment;
             }
-            return view('overseasMethod')->with('payment',$payment);
+            $status = \DB::table('statuses')->where('user_id',$user->id)->first();
+            if(!$status){
+                $status = new Status;
+            }
+            return view('overseasMethod')->with('payment',$payment)->with('status',$status);
         }
         else{
             return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
@@ -131,7 +136,11 @@ class PaymentController extends Controller
     public function afterPaymentIndex(){
         $user = Auth::user();
         if($user){
-            return view('afterPayment');
+            $status = \DB::table('statuses')->where('user_id',$user->id)->first();
+            if(!$status){
+                $status = new Status;
+            }
+            return view('afterPayment')->with('status',$status);
         }
         else{
             return view('login')->with('type','warning')->with('msg','Session Expired. Please Login again');
@@ -283,6 +292,8 @@ class PaymentController extends Controller
                 $payment = $payment[0];
                 $payment->amount = $request->input('amount');
                 $payment->account_no = $request->input('account-no');
+                $price = Price::where('default',1)->first();
+                $payment->registration_type = $price->registration_type;
                 $payment->save();
 
                 $stage = $user->stage()->get();

@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('sidebar-menu')
-        
-@endsection
-
 @section('content')
 <div class="box">
     <div class="box-header">
@@ -18,72 +14,28 @@
           <th>Name</th>
           <th>CNIC</th>
           <th>Phone Number</th>
+          <th>Residence</th>
           <th>Payment Method</th>
           <th>Status</th>
           <th>Status Updated by</th>
         </tr>
         </thead>
         <tbody>
-          {{--
-
           @foreach($data as $person) 
-        <tr onclick="document.location = 'userDetails/?id={{$person->id}}';"> 
+        <tr onclick="document.location = 'userDetails/{{$person->id}}';"> 
               <td>{{$person->id}}</td>
               <td>{{$person->name}}</td>
               <td>{{$person->cnic}}</td>              
               <td>{{$person->phone_number}}</td>
+              <td>{{$person->residence}}</td>
               <td>{{$person->payment_method}}</td>
               <td>{{$person->status}}</td>
-              <td>{{$person->status_updated_by}}</td>
+              <td>{{$person->updated_by}}</td>
          
         </tr>
          @endforeach
-        --}}
         </a>
-        <tr>
-          <td>Trident</td>
-          <td>Internet
-            Explorer 5.0
-          </td>
-          <td>1</td>
-          <td>5</td>
-          <td>C</td>
-          <td>X</td>
-          <td>X</td>
-        </tr>
-        <tr>
-          <td>Trident</td>
-          <td>Internet
-            Explorer 5.0
-          </td>
-          <td>1</td>
-          <td>5</td>
-          <td>C</td>
-          <td>X</td>
-          <td>X</td>
-        </tr>
-        <tr>
-          <td>Trident2</td>
-          <td>Internet
-            Explorer 4.0
-          </td>
-          <td>1</td>
-          <td>9</td>
-          <td>C</td>
-          <td>E</td>
-          <td>C</td>
-        </tr>
-        <tr>
-          <td>Trident</td>
-          <td>Internet
-            Explorer 5.5
-          </td>
-          <td>Win 96+</td>
-          <td>5.6</td>
-          <td>B</td>
-          <td>Y</td>
-          <td>X</td>
-        </tr>
+        
         </tfoot>
       </table>
     </div>

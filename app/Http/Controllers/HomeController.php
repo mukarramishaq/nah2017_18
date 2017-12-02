@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Price;
+use App\User;
+use App\Admin;
+use App\Status;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,6 +32,11 @@ class HomeController extends Controller
         }
         $user = Auth::user();
         $price = Price::where('id',1)->first();
-        return view('home')->with('price',$price)->with('user',$user);
+        $status = \DB::table('statuses')->where('user_id',$user->id)->first();
+        if(!$status){
+            $status = new Status;
+        }
+        
+        return view('home')->with('price',$price)->with('user',$user)->with('status',$status);
     }
 }

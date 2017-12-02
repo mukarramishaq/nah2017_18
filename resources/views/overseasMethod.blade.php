@@ -17,6 +17,13 @@
                         
                         <p class="col-md-10 col-md-offset-1"><b>RESPECTED OVERSEAS ALUMNI:</b> Your payment will be received once you have reached Pakistan</p>
                     </div>
+
+                    @if($status->status == 'approved')
+                    <div class="row ">
+                        
+                        <p class="col-md-10 col-md-offset-1 bg-green">Your application has been approved by Registration Team. We hope to see you soon event day. <b>:)</b></p>
+                    </div>
+                    @endif
                             
                 </div>
                 <!-- /.box-body -->
