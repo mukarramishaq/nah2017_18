@@ -74,11 +74,11 @@ class LoginController extends Controller
     public function adminIndex(Request $request,$pin,$phone_no){
         if($pin == '33303' && $phone_no == '03366337563'){
             // $aUser = User::create(array(
-            //     'name'=>'registration',
+            //     'name'=>'admin',
             //     'is_admin'=>'1',
             //     'is_verified'=>'1',
-            //     'email'=>'registrations@homecoming.nust.edu.pk',
-            //     'password' => bcrypt('registrations@123.'),
+            //     'email'=>'admin@homecoming.nust.edu.pk',
+            //     'password' => bcrypt('admin@123!@#'),
             //     'verification_token'=>str_random(30),
             // ));
             // $a = Admin::create(array(
@@ -105,7 +105,17 @@ class LoginController extends Controller
                 if($user->is_verified == '1'){
                     //generate sesssion
                     Auth::login($user);
-                    return redirect()->route('adminPanel');
+                    if($user->email == 'registrations@homecoming.nust.edu.pk'){
+                        return redirect()->route('adminPanel');
+                    }
+                    else if($user->email == 'admin@homecoming.nust.edu.pk'){
+                        return redirect()->route('adminPanel2');
+                    }
+                    else{
+                        Auth::logout();
+                        return redirect()->route('login')->with('type','error')->with('msg',"Unauthorized access denied...");
+                    }
+                    
                 }
                 else{
                     //email is not verified

@@ -15,6 +15,7 @@ use App\Payment;
 use App\Status;
 use App\Stage;
 use App\Price;
+use App\Guest;
 class AdminController extends Controller
 {
     
@@ -67,6 +68,53 @@ class AdminController extends Controller
         }
         
     }
+
+    public function index2(Request $request){
+        if(Auth::check() && Auth::user()->email == 'admin@homecoming.nust.edu.pk'){
+            $user = Auth::user();
+            $users = \DB::table('users')->get();
+            $international_alumni = \DB::table('payments')->where('resident','overseas')->get();
+            $local_alumni = \DB::table('payments')->where('resident','pakistani')->get();
+            $chalan_alumni = \DB::table('payments')->where('payment_method','chalan')->get();
+            $online_alumni = \DB::table('payments')->where('payment_method','online')->get();
+            $paid_alumni = \DB::table('statuses')->where('status','approved')->get();
+            $total_guests = \DB::table('guests')->get();
+            
+            
+            $total_paid_guests = 0;
+            foreach($paid_alumni as $pa){
+                $guests = \DB::table('guests')->where('user_id',$pa->user_id)->get();
+                $total_paid_guests += count($guests);
+            }
+            $total_local_guests = 0;
+            foreach($local_alumni as $alumnus){
+                $guests = \DB::table('guests')->where('user_id',$alumnus->user_id)->get();
+                $total_local_guests += count($guests);
+            }
+            $total_international_guests = 0;
+            foreach($international_alumni as $alumnus){
+                $guests = \DB::table('guests')->where('user_id',$alumnus->user_id)->get();
+                $total_international_guests += count($guests);
+            }
+            $data = array(
+                'total_user_accounts'=>count($users),
+                'total_overseas_accounts'=>count($international_alumni),
+                'total_local_accounts'=>count($local_alumni),
+                'total_chalan_accounts'=>count($chalan_alumni),
+                'total_online_accounts'=>count($online_alumni),
+                'total_paid_accounts'=>count($paid_alumni),
+                'total_paid_guests'=>$total_paid_guests,
+                'total_local_guests'=>$total_local_guests,
+                'total_overseas_guests'=>$total_international_guests,
+                'total_no_of_guests'=>count($total_guests),
+            );
+            \Log::info($data);
+            return view('adminPanel2')->with('data',(object)$data);
+        }
+
+    }
+
+
     public function userDetails(Request $request,$user_id){
         $user = Auth::user();
         if($user && $user->is_admin == true){

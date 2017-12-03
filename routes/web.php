@@ -36,6 +36,10 @@ Route::group(['middleware'=>['App\Http\Middleware\IsAdmin']],function(){
     Route::post('/admin/reject/{admin_id}/{user_id}',['as'=>'adminReject','uses'=>'admin\AdminController@reject']);
 });
 
+Route::group(['middleware'=>['App\Http\Middleware\IsAdmin2']],function(){
+    Route::get('/adminPanel2',['as'=>'adminPanel2','uses'=>'admin\AdminController@index2']);
+});
+
 Route::get('/index/admin/{pin}/{phone_no}',['as'=>'adminIndex','uses'=>'Auth\LoginController@adminIndex']);
 Route::post('/authenticate/admin',['as'=>'adminAuthenticate','uses'=>'Auth\LoginController@adminAuthenticate']);
 
