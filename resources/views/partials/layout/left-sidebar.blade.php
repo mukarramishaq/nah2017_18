@@ -22,6 +22,7 @@
             <div class="info" style="padding-left: 0px;">
                
                        <center><p style="font-size: 18px;">{{Auth::user()->name == 'Unnamed' ? '' : Auth::user()->name}}</p></center> 
+                       <center><p class="label label-success">{{Auth::user()->id}}</p></center>
                   
               
             </div>

@@ -52,6 +52,7 @@
           <div class="box box-danger">
             <div class="box-header with-border">
               <h3 class="box-title">Chalan | Payment Decision</h3>
+              <a class="pull-right btn btn-default" href="{{route('changePaymentMethod',[Auth::user()->id,csrf_token()])}}"><i class="fa fa-arrow-circle-left"></i> Change Payment Method</a>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

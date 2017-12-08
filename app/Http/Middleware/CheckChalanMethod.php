@@ -21,6 +21,9 @@ class CheckChalanMethod
             $stage = $user->stage()->get();
             if($stage && count($stage)>0){
                 $stage = $stage[0];
+                if(!$stage->is_payment_method_done){
+                    return redirect()->route('paymentMethod');
+                }
                 if($stage->is_final_payment_done){
                     return redirect()->route('afterPayment');
                 }
@@ -31,6 +34,7 @@ class CheckChalanMethod
                         if($payment->resident == 'overseas'){
                             return redirect()->route('overseasMethod');
                         }
+                        
                         if($payment->payment_method == 'chalan'){
                             return  $next($request);
                         }

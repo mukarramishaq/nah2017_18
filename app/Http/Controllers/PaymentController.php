@@ -19,6 +19,31 @@ class PaymentController extends Controller
 {
     //
 
+    public function changePaymentMethod($user_id,$token){
+        if(Auth::check()){
+            $user = Auth::user();
+            if($user->id == $user_id && \Session::token() == $token){
+                $stage = Stage::where('user_id',$user->id)->first();
+                if($stage){
+                    $stage->is_payment_method_done = false;
+                    $stage->save();
+                    return redirect()->route('paymentMethod')->with('type','warning')->with('msg','Please choose your payment method wisely!');
+                }
+                else{
+                    Auth::logout();
+                    return redirect()->route('login')->with('type','error')->with('msg','Illogical Jump! ;(. Please login again to proceed');
+                }
+            }
+            else{
+                return redirect()->route('NotFound');
+            }
+        }
+        else{
+            return redirect()->route('NotFound');
+        }
+    }
+
+
     public function residentIndex(){
         $user = Auth::user();
         if($user){

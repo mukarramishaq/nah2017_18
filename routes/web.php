@@ -52,7 +52,7 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     
 
 
-
+    Route::get('/change/payment/method/{user_id}/{token}',['as'=>'changePaymentMethod','uses'=>'PaymentController@changePaymentMethod']);
 
 
 
