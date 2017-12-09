@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('sidebar-menu')
-        
+<ul class="sidebar-menu" data-widget="tree">
+    <li class="header"></li>
+    <!-- Optionally, you can add icons to the links -->
+    <li ><a href="{{route('adminPanel')}}"><i class="fa fa-home"></i> <span>Panel</span></a></li>
+    
+</ul>
 @endsection
 
 @section('content')

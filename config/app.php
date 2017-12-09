@@ -183,6 +183,7 @@ return [
 
         'Webpatser\Countries\CountriesServiceProvider',
         Barryvdh\DomPDF\ServiceProvider::class,
+        'Chumper\Zipper\ZipperServiceProvider',
         
 
     ],
@@ -239,6 +240,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Countries' => 'Webpatser\Countries\CountriesFacade',
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Zipper' => 'Chumper\Zipper\Zipper',
     ],
 
 ];

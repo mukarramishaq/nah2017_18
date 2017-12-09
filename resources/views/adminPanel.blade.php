@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@section('sidebar-menu')
+<ul class="sidebar-menu" data-widget="tree">
+    <li class="header"></li>
+    <!-- Optionally, you can add icons to the links -->
+    <li ><a href="{{route('adminPanel')}}"><i class="fa fa-home"></i> <span>Panel</span></a></li>
+    
+</ul>
+@endsection
+
 @section('content')
 <div class="box">
     <div class="box-header">
@@ -14,6 +23,7 @@
           <th>Name</th>
           <th>CNIC</th>
           <th>Phone Number</th>
+          <th>Gender</th>
           <th>Residence</th>
           <th>Payment Method</th>
           <th>Status</th>
@@ -22,14 +32,25 @@
         </thead>
         <tbody>
           @foreach($data as $person) 
-        <tr onclick="document.location = 'userDetails/{{$person->id}}';"> 
+        <tr > 
               <td>{{$person->id}}</td>
-              <td>{{$person->name}}</td>
+              <td onclick="document.location = 'userDetails/{{$person->id}}';">{{$person->name}}</td>
               <td>{{$person->cnic}}</td>              
               <td>{{$person->phone_number}}</td>
+              <td>{{$person->gender}}</td>
               <td>{{$person->residence}}</td>
               <td>{{$person->payment_method}}</td>
-              <td>{{$person->status}}</td>
+              @if($person->status == 'Receipt Uploaded')
+                <td><span class="label label-info">{{$person->status}}</span><a class="btn bg-magenta" href="{{route('downloadUAReceipts',[Auth::user()->id,$person->id,csrf_token()])}}" target="_blank"><i class="fa fa-cloud-download"></i></a></td>
+              @elseif($person->status == 'rejected')
+                <td><span class="label label-danger">{{$person->status}}</span></td>
+              @elseif($person->status == 'approved')
+                <td><span class="label label-success">{{$person->status}}</span></td>
+              @elseif($person->status == 'default')
+                <td><span class="label label-default">{{$person->status}}</span></td>
+              @else
+                <td><span class="label label-default">{{$person->status}}</span></td>
+              @endif
               <td>{{$person->updated_by}}</td>
          
         </tr>

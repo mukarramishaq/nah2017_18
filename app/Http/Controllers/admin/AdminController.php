@@ -52,6 +52,7 @@ class AdminController extends Controller
                     'name'=>$personalI->name,
                     'cnic'=>$personalI->cnic,
                     'phone_number'=>$personalI->mobile_no,
+                    'gender'=>$personalI->gender,
                     'residence'=>$payment->resident,
                     'payment_method'=>$payment->payment_method,
                     'status'=>$status->status,
@@ -212,6 +213,31 @@ class AdminController extends Controller
                 }
                 $status->save();
                 return response()->json(['type'=>'success','msg'=>'Rejected Successfully']);
+            }
+            else{
+                return response()->json(['type'=>'danger','msg'=>'You are not authorized']);
+            }
+        }
+        else{
+            Auth::logout();
+            return response()->json(['type'=>'danger','msg'=>'Session Expired. Login again to continue']);
+        }
+    }
+
+
+
+
+
+    public function downloadUAReceipts($admin_id,$user_id,$token){
+        if(Auth::check() && Auth::user()->is_admin){
+            $user = Auth::user();
+            if($user->id == $admin_id){
+                try{
+                    return response()->download(public_path('chalan_images/'.$user_id.'.png'));
+                }
+                catch(\Exception $e){
+                    return response()->view('notFound');
+                }
             }
             else{
                 return response()->json(['type'=>'danger','msg'=>'You are not authorized']);
