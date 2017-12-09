@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/register2/er/{pin}',['as'=>'register2ER','uses'=>'Auth\RegisterController@register2ER']);
+
 
 Route::post('/auth/login',['as'=>'authLogin','uses'=>'Auth\LoginController@authenticateLogin']);
 Route::get('/register/verify/{email}/{verification_code}','Auth\RegisterController@verifyEmail');

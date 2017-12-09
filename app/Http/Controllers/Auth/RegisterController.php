@@ -56,6 +56,16 @@ class RegisterController extends Controller
             // 'g-recaptcha-response'=>'required|recaptcha'
         ]);
     }
+    
+    public function register2ER($pin){
+    	if($pin == 11101){
+    		return view('auth.register2');
+    	}
+    	else{
+    		return redirect()->route('register');
+    	}
+    
+    }
 
 
     public function resendVerificationEmail($userId,$email){
@@ -98,11 +108,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+    	$is_byus = false;
+    	if(array_key_exists('is_byus',$data) && $data['is_byus'] == 'true'){
+    		$is_byus = true;
+    	}
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'verification_token'=>str_random(30),
+            'is_byus'=>$is_byus,
         ]);
         \Log::info(\Request::ip());
 
