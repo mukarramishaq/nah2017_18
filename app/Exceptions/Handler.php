@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -47,6 +48,10 @@ class Handler extends ExceptionHandler
     	if ($this->isHttpException($exception)) 
 		{
 		    return response()->view('errors.error',['exception'=>$exception],$exception->getStatusCode());
+        }
+        if ($exception instanceof TokenMismatchException) 
+		{
+		    return response()->view('errors.tokenMismatchException');
 		}
         return parent::render($request, $exception);
     }
