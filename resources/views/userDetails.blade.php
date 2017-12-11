@@ -16,10 +16,7 @@
       <h1>
         <small></small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#">Registrations</a></li>
-        <li class="active">Person's Details</li>
-      </ol>
+      
     </section>
 
     <!-- Main content -->
@@ -64,34 +61,44 @@
                 <p>{{$data->cnic}}</p>
               </div> 
               <div class="col-md-4">
+              @if(Auth::user()->email == 'registrations@homecoming.nust.edu.pk')
               <div class="form-group">
                 <label for="">DOB</label>
                 <p>{{$data->dob}}</p>
               </div>
+              @endif
               </div>
               <div class="col-md-4">
+              @if(Auth::user()->email == 'registrations@homecoming.nust.edu.pk')
               <div class="form-group">
               <label>Gender</label>
               <p>{{$data->gender}}</p>
               </div>
+              @endif
               </div>              
               </div>  
               <div class="row"> 
               <div class="col-md-4">
+              @if(Auth::user()->email == 'registrations@homecoming.nust.edu.pk')
                 <label for="">Registration  Number</label>
                 <p>{{$data->reg_no}}</p>
+              @endif
               </div> 
               <div class="col-md-4">
+              @if(Auth::user()->email == 'registrations@homecoming.nust.edu.pk')
                <div class="form-group">
                 <label for="">School</label>
                 <p>{{$data->school}}</p>
               </div>  
+              @endif
               </div>
               <div class="col-md-4">
+              @if(Auth::user()->email == 'registrations@homecoming.nust.edu.pk')
               <div class="form-group">
                 <label for="">Degree</label>
                 <p>{{$data->degree}}</p>
               </div>
+              @endif
               </div>
               </div>              
               <div class="row">
@@ -108,18 +115,22 @@
               </div>
               </div>
               <div class="col-md-4">
+              @if(Auth::user()->email == 'registrations@homecoming.nust.edu.pk')
               <div class="form-group">
                 <label for="">Disability Support</label>
                 <p>{{$data->disability}}</p>
-              </div>    
+              </div> 
+              @endif   
               </div>              
               </div>
               <div class="row">
               <div class="col-md-4">
+              @if(Auth::user()->email == 'registrations@homecoming.nust.edu.pk')
               <div class="form-group">
                 <label for="">Alumni Card</label>
                 <p>{{$data->has_alumni_card}}</p>
-              </div>    
+              </div>  
+              @endif  
               </div> 
               <div class="col-md-4">
                 <label for="">Registration Type</label>
@@ -154,6 +165,7 @@
               </div>
         </div>
         <!-- /.box-body -->
+        @if(Auth::user()->email == 'registrations@homecoming.nust.edu.pk')
         <div class="box-footer">
             <div>
                 <span class=" ajax-info label col-md-12"></span>
@@ -162,6 +174,7 @@
           <span  class="btn btn-flat bg-green" style="float: right;" onclick="approve({{$data->admin_id}},{{$data->user_id}});">Approve</span>
           
         </div>
+        @endif
         <!-- /.box-footer-->
         <div class="overlay">
             <i class="fa fa-refresh fa-spin fa-4x"></i>
@@ -185,13 +198,16 @@
 }
   </style>
 @endsection
+
 @section('footer-scripts')
 
 <!-- DataTables -->
 <script src="{{asset('theme/lte/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('theme/lte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-
- 
+<script>
+$('.overlay').hide();
+</script>
+@if(Auth::user()->email == 'registrations@homecoming.nust.edu.pk')
 <script>
   $('.overlay').hide();
   function approve(admin_id,user_id){
@@ -328,4 +344,5 @@
     });
   }
 </script>
+ @endif
  @endsection

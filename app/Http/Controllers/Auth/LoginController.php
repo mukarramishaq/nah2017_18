@@ -74,11 +74,11 @@ class LoginController extends Controller
     public function adminIndex(Request $request,$pin,$phone_no){
         if($pin == '33303' && $phone_no == '03366337563'){
             // $aUser = User::create(array(
-            //     'name'=>'admin',
-            //     'is_admin'=>'1',
-            //     'is_verified'=>'1',
-            //     'email'=>'admin@homecoming.nust.edu.pk',
-            //     'password' => bcrypt('admin@123!@#'),
+            //     'name'=>'finance',
+            //     'is_admin'=>true,
+            //     'is_verified'=>true,
+            //     'email'=>'finance@homecoming.nust.edu.pk',
+            //     'password' => bcrypt('f!n@Nce'),
             //     'verification_token'=>str_random(30),
             // ));
             // $a = Admin::create(array(
@@ -110,6 +110,9 @@ class LoginController extends Controller
                     }
                     else if($user->email == 'admin@homecoming.nust.edu.pk'){
                         return redirect()->route('adminPanel2');
+                    }
+                    else if($user->email == 'finance@homecoming.nust.edu.pk'){
+                        return redirect()->route('adminPanel3');
                     }
                     else{
                         Auth::logout();

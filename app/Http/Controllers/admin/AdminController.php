@@ -70,6 +70,7 @@ class AdminController extends Controller
         
     }
 
+
     public function index2(Request $request){
         if(Auth::check() && Auth::user()->email == 'admin@homecoming.nust.edu.pk'){
             $user = Auth::user();
@@ -115,6 +116,56 @@ class AdminController extends Controller
 
     }
 
+    public function index3(Request $request){
+        $user = Auth::user();
+        \Log::info($user && $user->is_admin == true);
+        if($user){
+            $stages = DB::table('stages')->where('is_residence_done',true)->get();
+            \Log::info($stages);
+            $data = [];
+            foreach($stages as $stage){
+                $u = DB::table('users')->where('id',$stage->user_id)->first();
+                $personalI = DB::table('personal_informations')->where('user_id',$stage->user_id)->first();
+                $educationalI = DB::table('educational_informations')->where('user_id',$stage->user_id)->first();
+                $professionalI = DB::table('professional_informations')->where('user_id',$stage->user_id)->first();
+                $payment = DB::table('payments')->where('user_id',$stage->user_id)->first();
+                
+                $status = DB::table('statuses')->where('user_id',$stage->user_id)->first();
+                if(!$status){
+                    $sstatus;
+                    if($stage->is_final_payment_done){
+                        $sstatus = 'Receipt Uploaded';
+                    }
+                    else{
+                        $sstatus = 'Not Uploaded';
+                    }
+                    $status = Status::create(array(
+                        'user_id'=>$stage->user_id,
+                        'status'=>$sstatus,
+                    ));
+                }
+                $data1 = (object)array(
+                    'id'=>$u->id,
+                    'name'=>$personalI->name,
+                    'cnic'=>$personalI->cnic,
+                    'phone_number'=>$personalI->mobile_no,
+                    'gender'=>$personalI->gender,
+                    'residence'=>$payment->resident,
+                    'payment_method'=>$payment->payment_method,
+                    'status'=>$status->status,
+                    'updated_by'=>$status->updated_by,
+                );
+                array_push($data,$data1);
+            }
+            \Log::info($data);
+            return view('adminPanel3')->with('data',$data);
+        }
+        else{
+            Auth::logout();
+            return response()->route('login')->with('type','danger')->with('msg','Session Expired');
+        }
+        
+    }
 
     public function userDetails(Request $request,$user_id){
         $user = Auth::user();

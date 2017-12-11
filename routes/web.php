@@ -43,6 +43,11 @@ Route::group(['middleware'=>['App\Http\Middleware\IsAdmin2']],function(){
     Route::get('/adminPanel2',['as'=>'adminPanel2','uses'=>'admin\AdminController@index2']);
 });
 
+Route::group(['middleware'=>['App\Http\Middleware\IsAdmin3']],function(){
+    Route::get('/admin/finance/panel',['as'=>'adminPanel3','uses'=>'admin\AdminController@index3']);
+    Route::get('/userDetails/{user_id}', ['as'=>'userDetails3','uses'=>'admin\AdminController@userDetails']);
+});
+
 Route::get('/index/admin/{pin}/{phone_no}',['as'=>'adminIndex','uses'=>'Auth\LoginController@adminIndex']);
 Route::post('/authenticate/admin',['as'=>'adminAuthenticate','uses'=>'Auth\LoginController@adminAuthenticate']);
 
