@@ -37,6 +37,7 @@ Route::group(['middleware'=>['App\Http\Middleware\IsAdmin']],function(){
     Route::post('/admin/approve/{admin_id}/{user_id}',['as'=>'adminApprove','uses'=>'admin\AdminController@approve']);
     Route::post('/admin/reject/{admin_id}/{user_id}',['as'=>'adminReject','uses'=>'admin\AdminController@reject']);
     Route::get('/download/uploaded/receipts/unapproved/{admin_id}/{user_id}/{token}',['as'=>'downloadUAReceipts','uses'=>'admin\AdminController@downloadUAReceipts']);
+    Route::post('/admin/change/password/',['as'=>'admin.changePassword','uses'=>'admin\AdminController@changePassword']);
 });
 
 Route::group(['middleware'=>['App\Http\Middleware\IsAdmin2']],function(){

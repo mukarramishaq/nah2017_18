@@ -61,7 +61,8 @@ class AdminController extends Controller
                 array_push($data,$data1);
             }
             \Log::info($data);
-            return view('adminPanel')->with('data',$data);
+            $data2 = User::all();
+            return view('adminPanel')->with('data',$data)->with('data2',$data2);
         }
         else{
             Auth::logout();
@@ -298,5 +299,23 @@ class AdminController extends Controller
             Auth::logout();
             return response()->json(['type'=>'danger','msg'=>'Session Expired. Login again to continue']);
         }
+    }
+
+    public function changePassword(Request $request){
+        if(Auth::check() && Auth::user()->email == 'registrations@homecoming.nust.edu.pk'){
+            if($request->input('npassword') != $request->input('repassword')){
+                return response()->json(['type'=>'error','msg'=>'Passwords do not match!']);
+            }
+            $user = User::where('id',$request->input('user_id'))->where('email',$request->input('email'))->first();
+            if($user){
+                $user->password = bcrypt($request->input('npassword'));
+                $user->save();
+                return response()->json(['type'=>'success','msg'=>'Password Changed Successfully']);
+            }
+            else{
+                return response()->json(['type'=>'error','msg'=>'User not found']);
+            }
+        }
+        return response()->json(['type'=>'error','msg'=>'Unauthorized access denied!']);
     }
 }
