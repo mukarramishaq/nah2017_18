@@ -51,7 +51,8 @@ Route::group(['middleware'=>['App\Http\Middleware\IsAdmin3']],function(){
 
 Route::get('/index/admin/{pin}/{phone_no}',['as'=>'adminIndex','uses'=>'Auth\LoginController@adminIndex']);
 Route::post('/authenticate/admin',['as'=>'adminAuthenticate','uses'=>'Auth\LoginController@adminAuthenticate']);
-
+Route::get('/admin/download/paid/approvedUsers',['as'=>'dPaidApprovedUsers','uses'=>'DataDownloadController@paidApprovedUsers']);
+Route::get('/admin/download/paid/approvedGuests',['as'=>'dPaidApprovedGuests','uses'=>'DataDownloadController@paidApprovedGuests']);
 Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::get('/home', 'HomeController@index')->name('home');
     

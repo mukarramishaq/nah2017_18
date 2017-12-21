@@ -46,6 +46,16 @@
         .lmb{
         font-family: 'LemonMilkBold';
         }
+        .cent {
+          margin: auto;
+          width: 100%;
+          opacity: .7;
+          fgcolor:hover: white;
+        }
+        @media only screen and (min-width: 760px) {
+          .cent{
+            width: 500px;
+          }
     </style>
 
   </head>
@@ -91,7 +101,7 @@
               NUST ALUMNI
             </h3>
             <h1 class="text-uppercase gib">Homecoming' 17</h1>
-            
+            <h5 class="text-uppercase gib">30.12.2017</h5><br>
           </div>
           <div class="col-lg-8 mx-auto">
             
@@ -114,7 +124,7 @@ networking opportunities for entrepreneurs and enthusiasts to promote
 their aims. It also encourages alumni to participate actively in the
 NUST community, to attend events, to volunteer, to create new ways for
 alumni to stay connected to NUST and to contribute to the greatness of
-NUST University.</p>
+NUST.</p>
           </div>
         </div>
       </div>
@@ -280,7 +290,7 @@ NUST University.</p>
       </div>
     </section>  -->
 
-    <section class="bg-dark text-white">
+    <section class="bg-dark text-white" id="registration">
       <div class="container text-center">
         <h2 class="mb-4">Registrations Are Open!</h2>
         <a class="btn btn-light btn-xl sr-button" href="{{route('register')}}">Register Now!</a>
@@ -310,7 +320,7 @@ NUST University.</p>
           <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-              <a href="mailto:your-email@your-domain.com">registrations@homecoming.nust.edu.pk</a>
+              <a href="mailto:your-email@your-domain.com">info@alumni.nust.edu.pk</a>
             </p>
           </div>
         </div>
