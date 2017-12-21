@@ -30,6 +30,31 @@ class GuestController extends Controller
             return redirect('login')->with('type','danger')->with('msg','Your session is expired. Please login again');
         }
     }
+    
+    public function changeGuestInfo($user_id,$token){
+    	if(Auth::check()){
+    		$user = Auth::user();
+    		if($user_id == $user->id && $token == \Session::token()){
+    			$stage = $user->stage()->get();
+    			if($stage && count($stage)>0){
+    				$stage = $stage[0];
+    				$stage->is_guest_info_done = false;
+    				$stage->save();
+    				return redirect()->route('guestsInfo');
+    			}
+    			
+    		}
+    		else{
+    			Auth::logout();
+    			return redirect()->route('login')->with('type','error')->with('msg','logged out because of unauthorized attempt.');
+    		}
+    	}
+    	else{
+    		Auth::logout();
+    		return redirect()->route('login')->with('type','warning')->with('msg','Session expired. Login again please');
+    	}
+    
+    }
 
     public function addGuest(Request $request)
     {

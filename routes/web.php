@@ -108,6 +108,7 @@ Route::group(['middleware'=>['App\Http\Middleware\IsEmailVerified']],function(){
     Route::post('/guest/add', ['as'=>'guestAdd','uses'=>'GuestController@addGuest'])->middleware('checkGuestStage');
     Route::get('/guest/delete/{id}', ['as'=> 'guestDelete', 'uses' => 'GuestController@removeGuest'])->middleware('checkGuestStage');
     Route::post('/guests/saveAndNext',['as'=>'doneAndNext','uses'=>'GuestController@saveAndNext'])->middleware('checkGuestStage');
+    Route::get('/change/changeGuestInfo/{user_id}/{token}',['as'=>'changeGuestInfo','uses'=>'GuestController@changeGuestInfo']);
 
 
 

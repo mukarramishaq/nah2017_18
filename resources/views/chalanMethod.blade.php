@@ -53,6 +53,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Chalan | Payment Decision</h3>
               <a class="pull-right btn btn-default" href="{{route('changePaymentMethod',[Auth::user()->id,csrf_token()])}}"><i class="fa fa-arrow-circle-left"></i> Change Payment Method</a>
+              <a class="pull-right btn btn-default" href="{{route('changeGuestInfo',[Auth::user()->id,csrf_token()])}}"><i class="fa fa-gear"></i> Add/Remove Guests</a>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
